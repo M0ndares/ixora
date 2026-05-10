@@ -2,7 +2,7 @@ main.html (PAGINA PRINCIPAL)
 sesion.html (INICIO DE SESION Y REGISTRO)
 ---------------------------------------------------
 DEJAR DOCUMENTADOS LOS IDS DE LOS OBJETOS QUE SERÁN
-UTILIZADOS EN EL BACK EN ESTE DOCUMENTADO, ABAJO 
+UTILIZADOS EN EL BACK EN ESTE DOCUMENTO. ABAJO 
 SE MUESTRA UN EJEMPLO DE LA ESTRUCTURA SOLICITADA:
 ---------------------------------------------------
 main.html

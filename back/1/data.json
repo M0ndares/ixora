@@ -1,0 +1,21 @@
+{
+	"usuarios": [
+        { "id": 93944,
+		"nombre": "xyz",
+		"preferencias": "a-b-c" },
+
+        { "id": 49009,
+		"nombre": "abc",
+		"preferencias": "a-b-c" }
+    ],
+
+	"habitaciones": [
+		{ "id": 93944,
+		"nombre": "xyz",
+		"disponibilidad": 23 },
+
+        { "id": 49009,
+		"nombre": "abc",
+		"disponibilidad": 48 }
+    ]
+}
