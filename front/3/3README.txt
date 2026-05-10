@@ -10,5 +10,9 @@ main.html
 .class = clase de los botones del cambio de pestaña
 ---------------------------------------------------
 sesion.html
-#id = id del div para mostrar reservaciones
+#botonAutenticar = id del boton para iniciar sesion
+#inputClave = id del input de la contraseña al inciar sesion
+#inputUsuario = id del input del usuario al iniciar sesion
+#botonCambio = id del boton que cambia de crear usuario a 
+iniciar sesion y viceversa
 .class = clase de la barra nav

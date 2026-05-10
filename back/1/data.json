@@ -1,21 +1,53 @@
 {
 	"usuarios": [
-        { "id": 93944,
+        { "id": "U001",
 		"nombre": "xyz",
+		"clave": "123",
 		"preferencias": "a-b-c" },
 
-        { "id": 49009,
+        { "id": "U002",
 		"nombre": "abc",
+		"clave": "456",
 		"preferencias": "a-b-c" }
     ],
 
 	"habitaciones": [
-		{ "id": 93944,
+		{ "id": "H001",
 		"nombre": "xyz",
-		"disponibilidad": 23 },
+		"disponibilidad": 23,
+		"costo": 3840 },
 
-        { "id": 49009,
+        { "id": "H002",
 		"nombre": "abc",
-		"disponibilidad": 48 }
+		"disponibilidad": 48,
+		"costo": 9594 }
+    ],
+
+	"servicios": [
+		{ "id": "S001",
+		"nombre": "xyz",
+		"descripcion": "",
+		"costo": 228 },
+
+        { "id": "S002",
+		"nombre": "abc",
+		"descripcion": "",
+		"costo": 203 }
+    ],
+
+	"reservaciones": [
+		{ "id": "R001",
+		"idUsuario": "U002",
+		"idServicios": [],
+		"idHabitaciones": [],
+		"costo": 94490,
+		"metodoPago": "credito"},
+
+        { "id": "R002",
+		"idUsuario": "U001",
+		"idServicios": [],
+		"idHabitaciones": [],
+		"costo": 94490,
+		"metodoPago": "credito"}
     ]
 }
