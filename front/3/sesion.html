@@ -1,19 +1,324 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h4>Usuario</h4>
-    <input type="text" id="inputUsuario">
-    <h4>Contraseña</h4>
-    <input type="text" id="inputClave">
-    <button id="botonAutenticar">Prueba</button>
-    <div id="respuestaInput">
-    </div>
-    <button id="botonCambio"></button>
-    <script src="../../back/2/mostrar.js"></script>
-</body>
+<!doctype html>
+
+<html class="light" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Login | IXORA Contemporary Heritage</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@200..800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-background": "#1b1c19",
+              "surface-dim": "#dbdad5",
+              tertiary: "#735c00",
+              "on-primary-container": "#7f868f",
+              "error-container": "#ffdad6",
+              secondary: "#b3282a",
+              "on-primary-fixed-variant": "#40474f",
+              "surface-container-low": "#f5f3ee",
+              "inverse-on-surface": "#f2f1ec",
+              "tertiary-fixed": "#ffe085",
+              "on-secondary-container": "#650009",
+              "on-surface-variant": "#44474b",
+              "on-primary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              primary: "#000408",
+              "primary-container": "#171e25",
+              "on-error": "#ffffff",
+              "on-tertiary-fixed-variant": "#574500",
+              "on-tertiary-container": "#4e3e00",
+              outline: "#75777b",
+              error: "#ba1a1a",
+              "surface-container-high": "#eae8e3",
+              "on-secondary-fixed-variant": "#910916",
+              "surface-container-lowest": "#ffffff",
+              background: "#fbf9f4",
+              surface: "#fbf9f4",
+              "surface-bright": "#fbf9f4",
+              "tertiary-fixed-dim": "#e3c466",
+              "on-secondary-fixed": "#410004",
+              "secondary-container": "#ff605b",
+              "outline-variant": "#c5c6cb",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#c0c7d1",
+              "surface-tint": "#585f67",
+              "secondary-fixed": "#ffdad7",
+              "secondary-fixed-dim": "#ffb3ad",
+              "on-secondary": "#ffffff",
+              "surface-container": "#f0eee9",
+              "on-tertiary-fixed": "#231b00",
+              "primary-fixed-dim": "#c0c7d1",
+              "on-primary-fixed": "#151c23",
+              "surface-container-highest": "#e4e2dd",
+              "on-surface": "#1b1c19",
+              "inverse-surface": "#30312e",
+              "tertiary-container": "#c5a94d",
+              "primary-fixed": "#dce3ed",
+              "surface-variant": "#e4e2dd",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              gutter: "24px",
+              "container-max-width": "1280px",
+              "margin-mobile": "20px",
+              "margin-desktop": "64px",
+              unit: "8px",
+            },
+            fontFamily: {
+              "label-md": ["Manrope"],
+              "display-lg-mobile": ["Libre Caslon Text"],
+              "display-lg": ["Libre Caslon Text"],
+              "headline-lg": ["Libre Caslon Text"],
+              "headline-xl": ["Libre Caslon Text"],
+              "body-lg": ["Manrope"],
+              "body-md": ["Manrope"],
+              "label-sm": ["Manrope"],
+            },
+            fontSize: {
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+              "display-lg-mobile": [
+                "40px",
+                { lineHeight: "1.2", fontWeight: "400" },
+              ],
+              "display-lg": [
+                "64px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "400",
+                },
+              ],
+              "headline-lg": ["32px", { lineHeight: "1.3", fontWeight: "400" }],
+              "headline-xl": ["48px", { lineHeight: "1.2", fontWeight: "400" }],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+              "label-sm": ["12px", { lineHeight: "1.2", fontWeight: "700" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 300,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        background-color: #fbf9f4;
+        color: #1b1c19;
+      }
+    </style>
+  </head>
+  <body class="bg-background font-body-md text-on-surface antialiased">
+    <!-- TopNavBar: Hidden based on Shell Visibility Rule (Transactional Page) -->
+    <!-- Per instructions: Suppress navigation shell if the page intent is Linear/Transactional: Login. -->
+    <main class="min-h-screen flex flex-col md:flex-row">
+      <!-- Brand Visual Anchor (Left Side Desktop) -->
+      <section
+        class="hidden md:flex md:w-1/2 relative bg-surface-container overflow-hidden"
+      >
+        <div class="absolute inset-0 z-0">
+          <img
+            alt="IXORA Heritage Architecture"
+            class="w-full h-full object-cover grayscale opacity-40 mix-blend-multiply"
+            data-alt="A grand architectural view of a luxury Mexican heritage villa with clean minimalist lines and high-end natural materials. The scene is bathed in soft, warm golden hour sunlight reflecting off smooth plaster walls and elegant arches. The color palette consists of soft creams, deep charcoals, and natural stone textures, conveying a sense of serene, contemporary exclusivity and timeless peace."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPkr2_bS98SDoNjgeOtIG5GZonkgBrxEf3dUII_HiQhbSytKRNWb6gzoG1mJGTaLVoHrG-WOKhAZNYf9A11oZlKfM-FJbB4JLSydCsy2TrrwqEzEYMdf2_ajBgKqQAdwAXyjBBWIFizIVDrzS_7zmmxidAYtxPi_fzwNO0llK4vpc6RxIzdc3gKk_O75rQUIRD0bX-8ZQh0H0lGmLqW-AyAzWAWTg1pLjM1nojvsX_VG0ebeatMghrnYbe-Rlt5msfH99g77Pim9M"
+          />
+        </div>
+        <div
+          class="relative z-10 flex flex-col justify-between p-margin-desktop w-full"
+        >
+          <div
+            class="font-display-lg text-display-lg tracking-tighter text-primary"
+          >
+            IXORA
+          </div>
+          <div class="max-w-md">
+            <h2 class="font-headline-xl text-headline-xl text-primary mb-6">
+              Contemporary Heritage
+            </h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">
+              Un refugio donde la historia y la modernidad se encuentran en
+              perfecta armonía.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Login Form Section -->
+      <section
+        class="flex-1 flex items-center justify-center bg-surface px-margin-mobile py-16 md:px-margin-desktop"
+      >
+        <div class="w-full max-w-sm">
+          <!-- Mobile Branding (Logo only visible on small screens) -->
+          <div class="md:hidden flex justify-center mb-12">
+            <span
+              class="font-display-lg text-display-lg-mobile tracking-tighter text-primary"
+              >IXORA</span
+            >
+          </div>
+          <div class="mb-12 text-center md:text-left">
+            <h1 class="font-headline-xl text-headline-xl text-primary mb-2">
+              Bienvenido de Nuevo
+            </h1>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Accede a tu refugio personal.
+            </p>
+          </div>
+          <form class="space-y-6">
+            <div class="space-y-1">
+              <label
+                class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-widest"
+                for="email"
+                >Correo electrónico</label
+              >
+              <input
+                class="w-full bg-surface-container-low border-b border-outline-variant py-3 px-1 focus:outline-none focus:border-primary transition-colors text-body-md font-body-md placeholder-outline"
+                id="email"
+                name="email"
+                placeholder="tu@correo.com"
+                type="email"
+              />
+            </div>
+            <div class="space-y-1">
+              <div class="flex justify-between items-center">
+                <label
+                  class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-widest"
+                  for="password"
+                  >Contraseña</label
+                >
+              </div>
+              <input
+                class="w-full bg-surface-container-low border-b border-outline-variant py-3 px-1 focus:outline-none focus:border-primary transition-colors text-body-md font-body-md"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                type="password"
+              />
+              <div class="pt-2 text-right">
+                <a
+                  class="font-label-sm text-label-sm text-secondary hover:text-secondary-container transition-colors uppercase tracking-widest"
+                  href="#"
+                  >¿Olvidaste tu contraseña?</a
+                >
+              </div>
+            </div>
+          </form>
+            <div class="pt-6">
+              <button
+                class="w-full bg-primary text-on-primary py-4 font-label-md text-label-md uppercase tracking-[0.2em] rounded-none hover:bg-primary-container active:scale-[0.98] transition-all shadow-sm"
+                id="botonAutenticar">
+                Iniciar Sesión
+              </button>
+            </div>
+            <div id="respuestaInput"></div>
+          <div class="mt-16 pt-8 border-t border-outline-variant">
+            <p
+              class="font-body-md text-body-md text-on-surface-variant text-center md:text-left mb-4"
+            >
+              ¿Aún no eres parte de Ixora?
+            </p>
+            <a
+              class="inline-block w-full text-center md:text-left font-label-md text-label-md text-primary border border-primary py-4 px-6 uppercase tracking-[0.2em] hover:bg-primary hover:text-on-primary transition-all active:scale-[0.98]"
+              href="registro.html"
+            >
+              Crear una cuenta
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer Component -->
+    <footer
+      class="bg-surface-container-lowest border-t border-outline-variant py-16"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-start gap-8 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto"
+      >
+        <div class="space-y-4">
+          <span class="font-display-lg text-headline-lg text-primary"
+            >IXORA</span
+          >
+          <p class="font-label-sm text-label-sm text-on-surface-variant">
+            © 2024 IXORA CONTEMPORARY HERITAGE. ALL RIGHTS RESERVED.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 md:flex gap-8 md:gap-12">
+          <nav class="flex flex-col gap-3">
+            <a
+              class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-all"
+              href="#"
+              >Privacidad</a
+            >
+            <a
+              class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-all"
+              href="#"
+              >Sostenibilidad</a
+            >
+          </nav>
+          <nav class="flex flex-col gap-3">
+            <a
+              class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-all"
+              href="#"
+              >Prensa</a
+            >
+            <a
+              class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-all"
+              href="#"
+              >Ubicación</a
+            >
+          </nav>
+        </div>
+        <div class="flex gap-6">
+          <a
+            class="text-on-surface-variant hover:text-primary transition-opacity opacity-100 hover:opacity-80"
+            href="#"
+          >
+            <span class="material-symbols-outlined" data-icon="share"
+              >share</span
+            >
+          </a>
+          <a
+            class="text-on-surface-variant hover:text-primary transition-opacity opacity-100 hover:opacity-80"
+            href="#"
+          >
+            <span class="material-symbols-outlined" data-icon="language"
+              >language</span
+            >
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="../../back/2/sesion.js"></script>
+  </body>
 </html>

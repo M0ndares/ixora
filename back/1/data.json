@@ -1,36 +1,36 @@
 {
 	"usuarios": [
         { "id": "U001",
-		"nombre": "xyz",
-		"clave": "123",
+		"email": "xyz@ucol.mx",
+		"password": "123",
 		"preferencias": "a-b-c" },
 
         { "id": "U002",
-		"nombre": "abc",
-		"clave": "456",
+		"email": "abc@ucol.mx",
+		"password": "456",
 		"preferencias": "a-b-c" }
     ],
 
 	"habitaciones": [
 		{ "id": "H001",
-		"nombre": "xyz",
+		"email": "xyz",
 		"disponibilidad": 23,
 		"costo": 3840 },
 
         { "id": "H002",
-		"nombre": "abc",
+		"email": "abc",
 		"disponibilidad": 48,
 		"costo": 9594 }
     ],
 
 	"servicios": [
 		{ "id": "S001",
-		"nombre": "xyz",
+		"email": "xyz",
 		"descripcion": "",
 		"costo": 228 },
 
         { "id": "S002",
-		"nombre": "abc",
+		"email": "abc",
 		"descripcion": "",
 		"costo": 203 }
     ],

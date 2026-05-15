@@ -11,8 +11,13 @@ main.html
 ---------------------------------------------------
 sesion.html
 #botonAutenticar = id del boton para iniciar sesion
-#inputClave = id del input de la contraseña al inciar sesion
-#inputUsuario = id del input del usuario al iniciar sesion
-#botonCambio = id del boton que cambia de crear usuario a 
-iniciar sesion y viceversa
-.class = clase de la barra nav
+#password = id del input de la contraseña al iniciar sesion
+#email = id del input del correo al iniciar sesion
+
+---------------------------------------------------
+registro.html
+#botonCrearCuenta = id del boton para registrarse
+#password = id del input de la contraseña al registrarse
+#phone = id del input del teléfono al registrarse
+#email = id del input del correo al registrarse
+#full-name = id del nombre del correo al registrarse
