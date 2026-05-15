@@ -8,7 +8,7 @@ exports.getAllHabitaciones = (callback) => {
 
 // Consultar habitaciones por estado de disponibilidad (Equivalente al "estatus")
 // Ejemplo de estados: 'Disponible', 'Ocupada', 'Mantenimiento'
-exports.getHabitacionesByEstado = (estado_disponibilidad, callback) => {
+exports.getHabitacionesByStatus = (estado_disponibilidad, callback) => {
   const query = 'SELECT * FROM Habitacion WHERE estado_disponibilidad = ?';
   db.query(query, [estado_disponibilidad], callback);
 };
