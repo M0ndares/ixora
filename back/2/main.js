@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (datos && datos.length > 0) {
             nombre = datos[0].nombre_usuario.split(' ')[0]
             document.getElementById('anuncioBienvenida').innerText = `BIENVENID@ ${nombre.toUpperCase()}`
+            document.getElementById('emailBienvenida').innerText = `${datos[0].email.toLowerCase()}`
+            fecha = new Date(datos[0].fecha_registro)
+            document.getElementById('fechaBienvenida').innerText = `Miembro desde ${fecha.toISOString().slice(0, 10)}`
         }
     } catch (error) {
         console.error('Error al cargar la página principal:', error);
