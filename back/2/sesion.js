@@ -1,3 +1,4 @@
+import main from main.js
 async function autenticar(inputEmail, inputClave) {
             try {
                 const respuestaInput = document.getElementById('respuestaInput');
@@ -5,7 +6,9 @@ async function autenticar(inputEmail, inputClave) {
                 const data = await response.json();
                 const usuario = data.find(u => u.email === inputEmail);
                 if (!usuario) respuestaInput.innerHTML = "<h3>Usuario inexistente<h3>"
-                else if (usuario.password == inputClave) respuestaInput.innerHTML = `<h3>Usuario: ${usuario.email}<h3> <br> <h3> nombre: ${usuario.nombre_usuario}<h3>`
+                else if (usuario.password == inputClave) {
+                    main(inputEmail);
+                }
                 else respuestaInput.innerHTML = "<h3>Contraseña incorrecta<h3>"
             } catch (error) {
                 console.error('Error:', error);

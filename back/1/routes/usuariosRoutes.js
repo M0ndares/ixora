@@ -9,6 +9,9 @@ router.get('/usuarios', usuariosController.getAllUsuarios);
 
 // Ruta para obtener Usuarioes por estatus
 router.get('/usuarios/status/:estatus', usuariosController.getUsuariosByStatus);
+
+router.post('/usuario/activo/', usuariosController.getUsuariosByStatus);
+
 // Ruta para agregar una nueva Usuario
 router.post('/usuario', usuariosController.addUsuarios);
 

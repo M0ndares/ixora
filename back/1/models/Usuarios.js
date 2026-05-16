@@ -13,6 +13,15 @@ exports.getUsuariosByStatus = (estado_disponibilidad, callback) => {
   db.query(query, [estado_disponibilidad], callback);
 };
 
+exports.updateUsuariosActivos = (id_usuarios, activo, callback) => {
+  const query = `
+    UPDATE usuario 
+    SET activo = ?
+    WHERE id_usuario = ?
+  `;
+  db.query(query, [activo, id_usuarios], callback);
+};
+
 // Agregar una nueva habitación
 exports.addUsuarios = (usuariosData, callback) => {
   const query = `
