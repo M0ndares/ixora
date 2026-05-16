@@ -8,9 +8,9 @@ exports.getAllUsuarios = (req, res) => {
 };
 
 // Obtener Usuarios por estatus
-exports.getUsuariosByStatus = (req, res) => {
-  const { estatus } = req.params;
-  Usuario.getUsuariosByStatus(estatus, (err, results) => {
+exports.getUsuariosByEmail = (req, res) => {
+  const { email } = req.params;
+  Usuario.getUsuariosByEmail(email, (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.status(200).json(results);
   });
@@ -28,11 +28,11 @@ exports.addUsuarios = (req, res) => {
 
 // Modificar Usuario
 exports.updateUsuarios = (req, res) => {
-  const { id } = req.params;
+  const { email } = req.params;
   const updatedData = req.body;
-  Usuario.updateUsuarios(id, updatedData, (err) => {
+  Usuario.updateUsuarios(email, updatedData, (err) => {
     if (err) return res.status(500).json({ error: err.message });
-    res.status(200).json({ message: 'Usuario actualizada' });
+    res.status(200).json({ message: 'Usuario actualizado' });
   });
 };
 
@@ -41,6 +41,6 @@ exports.deleteUsuarios = (req, res) => {
   const { id } = req.params;
   Usuario.deleteUsuarios(id, (err) => {
     if (err) return res.status(500).json({ error: err.message });
-    res.status(200).json({ message: 'Usuario eliminada' });
+    res.status(200).json({ message: 'Usuario eliminado'});
   });
 };

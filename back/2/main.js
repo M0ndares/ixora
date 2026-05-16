@@ -1,5 +1,18 @@
-async function main(inputEmail) {
-    fetch('http://127.0.0.1:3000/usuario/activo', {
-        method: postMessage,
-    })
-}
+document.addEventListener('DOMContentLoaded', async() => {
+    const email = localStorage.getItem('emailUsuario');
+    if (!email) {
+        alert('No has iniciado sesión');
+        window.location.href = '../../front/3/sesion.html'; // Lo regresamos
+        return;
+    }
+    try {
+        const response = await fetch(`http://127.0.0.1:3000/api/usuarios/status/${email}`)
+        const datos = await response.json()
+        if(datos && datos.length > 0) {
+            nombre = datos[0].nombre_usuario.split(' ')[0]
+            document.getElementById('anuncioBienvenida').innerText = `BIENVENID@ ${nombre.toUpperCase()}`
+        }
+    } catch(error) {
+        console.error('Error al cargar la página principal:', error);
+    }
+})
