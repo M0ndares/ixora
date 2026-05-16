@@ -11,6 +11,7 @@ async function main(inputEmail) {
             },
             body: JSON.stringify(usuarioData)     
         });
+        localStorage.clear()
         localStorage.setItem('emailUsuario', inputEmail);   
     }
     catch (error) {
@@ -26,7 +27,7 @@ async function autenticar(inputEmail, inputClave) {
                 const usuario = data.find(u => u.email === inputEmail);
                 if (!usuario) respuestaInput.innerHTML = "<h3>Usuario inexistente</h3>"
                 else if (usuario.password == inputClave) {
-                    main(inputEmail)
+                    await main(inputEmail)
                     window.location.href = '../../front/3/main.html'
                 }
                 else respuestaInput.innerHTML = "<h3>Contraseña incorrecta</h3>"
