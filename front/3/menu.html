@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html lang="es-419">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>IXORA Boutique Hotel | Hospitalidad que trasciende</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#585f67",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#44474b",
+                        "tertiary-fixed": "#ffe088",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-primary-fixed": "#151c23",
+                        "primary-container": "#2c333a",
+                        "secondary": "#b3282a",
+                        "surface-container-highest": "#e4e2dd",
+                        "secondary-fixed": "#ffdad7",
+                        "surface": "#fbf9f4",
+                        "on-primary-fixed-variant": "#40474f",
+                        "surface-container": "#f0eee9",
+                        "on-secondary-fixed": "#410004",
+                        "surface-container-high": "#eae8e3",
+                        "secondary-container": "#fc5d58",
+                        "surface-variant": "#e4e2dd",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#fbf9f4",
+                        "tertiary-container": "#cba72f",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#c0c7d0",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#949ba4",
+                        "primary-fixed": "#dce3ec",
+                        "secondary-fixed-dim": "#ffb3ad",
+                        "primary": "#171e25",
+                        "outline-variant": "#c5c6cb",
+                        "surface-container-low": "#f5f3ee",
+                        "on-secondary-container": "#600008",
+                        "primary-fixed-dim": "#c0c7d0",
+                        "surface-dim": "#dbdad5",
+                        "on-surface": "#1b1c19",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-background": "#1b1c19",
+                        "outline": "#75777b",
+                        "on-secondary-fixed-variant": "#910915",
+                        "background": "#fbf9f4",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#4e3d00",
+                        "tertiary": "#735c00",
+                        "on-tertiary-fixed-variant": "#574500"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "section-gap": "120px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Manrope"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "headline-lg": ["Libre Caslon Text"],
+                        "body-md": ["Manrope"],
+                        "headline-lg-mobile": ["Libre Caslon Text"],
+                        "headline-xl": ["Libre Caslon Text"],
+                        "label-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "fontWeight": "400" }],
+                        "label-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #fbf9f4;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(23, 30, 37, 0.4), rgba(23, 30, 37, 0.1));
+        }
+    </style>
+</head>
+
+<body class="font-body-md text-on-background selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+    <!-- TopAppBar -->
+    <header
+        class="bg-surface/90 dark:bg-primary/90 backdrop-blur-md fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 border-b border-outline-variant/30 shadow-sm">
+        <div class="font-display-lg text-headline-lg text-primary dark:text-primary-fixed tracking-widest uppercase">
+            IXORA</div>
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="text-secondary dark:text-secondary-fixed-dim font-semibold border-b-2 border-secondary font-body-md text-body-md tracking-wide"
+                href="#">Habitaciones</a>
+            <a class="text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md tracking-wide"
+                href="#">Experiencias</a>
+            <a class="text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md tracking-wide"
+                href="#">Gastronomía</a>
+            <a class="text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md tracking-wide"
+                href="#">Galería</a>
+        </nav>
+        <button
+            class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-sm text-label-sm hover:bg-secondary transition-all active:scale-95 duration-300">Reservar
+            Ahora</button>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section
+            class="relative h-screen w-full flex flex-col justify-center items-center text-center px-margin-mobile">
+            <div class="absolute inset-0 z-0">
+                <img alt="Hotel Ixora Boutique" class="w-full h-full object-cover"
+                    data-alt="A breathtaking view of a luxury boutique hotel in Mexico at dusk, featuring colonial architecture blended with modern minimalist lines. The scene is illuminated by warm, soft ambient lighting that highlights the textured stone walls and lush tropical gardens. The atmosphere is serene and exclusive, with a deep charcoal and terracotta color palette under a soft cream-colored sky."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR64454HMJ5r7s2mpHHOkB8nDJq0OS1_qBEk_13gZLkC31S-G7gZKHf4adEXz-tg-YR9QvaYsxL22AZsgit3o2V-tQLHP6sSi80iNuLamXMzHfSsJP-lGaIG6xqBH6ALW2zhK0v4xxfAy3aVHiDfvGkWLhb6-u540HO8Xcksrn2LRXocdZa3A8x_y4_994cPipUH6rprUg3bIFjwTtO-DFyj6KENCVu7vS1xUseVykvxcqy2vfse1FhQ_qRPu09cyeRTyNcW3ebA" />
+                <div class="absolute inset-0 hero-gradient"></div>
+            </div>
+            <div class="relative z-10 max-w-4xl">
+                <h1 class="font-display-lg text-display-lg text-white mb-6 drop-shadow-lg">Hospitalidad que trasciende
+                </h1>
+                <p class="font-body-lg text-body-lg text-white/90 mb-12 max-w-2xl mx-auto drop-shadow-md">Descubra un
+                    refugio donde la tradición mexicana se encuentra con el lujo contemporáneo en el corazón de paisajes
+                    ancestrales.</p>
+                <!-- Availability Search -->
+                <div
+                    class="bg-surface p-4 md:p-2 rounded-xl md:rounded-full shadow-2xl flex flex-col md:flex-row items-stretch md:items-center gap-4 w-full max-w-5xl border border-outline-variant/20">
+                    <div class="flex-1 flex flex-col md:flex-row">
+                        <div
+                            class="flex-1 px-6 py-3 border-b md:border-b-0 md:border-r border-outline-variant/30 text-left">
+                            <label
+                                class="block font-label-sm text-label-sm text-on-surface-variant mb-1">LLEGADA</label>
+                            <input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary"
+                                type="date" />
+                        </div>
+                        <div
+                            class="flex-1 px-6 py-3 border-b md:border-b-0 md:border-r border-outline-variant/30 text-left">
+                            <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">SALIDA</label>
+                            <input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary"
+                                type="date"/>
+                        </div>
+                        <div class="flex-1 px-6 py-3 text-left">
+                            <label
+                                class="block font-label-sm text-label-sm text-on-surface-variant mb-1">HUESPEDES</label>
+                            <select
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary appearance-none">
+
+                            </select>
+                        </div>
+                    </div>
+                    <button
+                        class="bg-primary text-on-primary px-10 py-4 rounded-xl md:rounded-full font-label-sm text-label-sm hover:bg-secondary transition-colors uppercase tracking-widest">Consultar</button>
+                </div>
+            </div>
+        </section>
+        <!-- Nuestra Esencia -->
+        <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+                        <img alt="Esencia Ixora" class="w-full h-full object-cover"
+                            data-alt="A close-up of artisanal Mexican textiles and handcrafted clay pottery arranged in a minimalist, sun-drenched hotel lobby. The lighting is bright and high-key, emphasizing the warm cream tones of the stone walls and the rich terracotta accents. The composition is clean and modern, reflecting a sophisticated boutique aesthetic that honors local craftsmanship."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfP_AblZ_6Fw0-qlDu3aPLZcOUmLcZ6W3ZFfQ_3goDIsBU_jQFoL5TC-BGZRbat-4_-3SgNmadIvhAo2jw05mQ81wmS6HFJI6Uhj9ybbEqa_R7fr-_AO0m1kmKFv6AMqaNO-ZwLXCmcZm2XhmaBW7-kv3kp42N26vyrWNJRAynYkCtnTWVTBdLFIyH4nmisbvSY1fiArpTEtI9VRkGfm6JW35sM5VjpgeiTPHTxe0KbsCbLUs_FfZQnxQr1Uq6vkMKQWFPIBBu8g" />
+                    </div>
+                    <div
+                        class="absolute -bottom-8 -right-8 w-1/2 aspect-square rounded-xl overflow-hidden shadow-xl hidden md:block border-4 border-surface">
+                        <img alt="Detalle Ixora" class="w-full h-full object-cover"
+                            data-alt="Detail of a luxury outdoor lounge area with hand-woven furniture and local greenery under a pergola. The lighting is soft morning sun, creating gentle shadows on a cream-colored patio. The palette consists of charcoal frames, cream cushions, and vibrant red floral accents, embodying modern Mexican luxury."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKbtiwXqUibzPFet3TjjnPOUTp_UUC77Vc5Ao8V-Cpikl60c3XYE0Lme08utYeklef2Y2Lc-8H2DqWfUnf1v1BqngKfDEf4Aabkdc3Hv0yUAvZyi-VFaH4t2gJVaR0dUWMvw_AUOf88glp07710_7QdFMx9rkeuZtXC4yJTilqpvsPXTLjZJIsZr_A0t39iXCx78FX_sgWvCDyeioS9KFWqDVdnJhvqmI2EV9DPNJZ0j_E1F9k0TuY_B3TGGDdxy-nj7xonOWMMQ" />
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <span class="font-label-sm text-label-sm text-tertiary uppercase tracking-[0.2em]">Nuestra
+                        Esencia</span>
+                    <h2 class="font-headline-xl text-headline-xl text-primary">Un santuario de calma y diseño</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant">
+                        En Ixora, hemos curado cada detalle para ofrecer una experiencia que trasciende el alojamiento.
+                        Nuestra arquitectura rinde homenaje a las raíces de México, fusionando materiales ancestrales
+                        como el barro y la piedra con un minimalismo cálido y sofisticado.
+                    </p>
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        Desde los textiles tejidos a mano por artesanos locales hasta nuestra propuesta gastronómica de
+                        autor, cada momento en Ixora es una invitación a reconectar con lo esencial en un entorno de
+                        exclusividad absoluta.
+                    </p>
+                    <button
+                        class="border-b-2 border-primary pb-1 font-label-sm text-label-sm text-primary uppercase tracking-widest hover:text-secondary hover:border-secondary transition-colors inline-flex items-center gap-2">
+                        Conoce nuestra historia
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Las habitaciones destacadas -->
+        <section class="py-section-gap bg-surface-container-low px-margin-mobile md:px-margin-desktop">
+            <div class="max-w-container-max mx-auto">
+                <div class="flex justify-between items-end mb-16">
+                    <div class="max-w-xl">
+                        <span
+                            class="font-label-sm text-label-sm text-tertiary uppercase tracking-[0.2em] block mb-4">Alojamiento</span>
+                        <h2 class="font-headline-xl text-headline-xl text-primary">Habitaciones de Autor</h2>
+                    </div>
+                    <button
+                        class="hidden md:block bg-transparent border border-outline px-8 py-3 rounded-full font-label-sm text-label-sm text-primary hover:bg-primary hover:text-on-primary transition-all">Ver
+                        todas</button>
+                </div>
+                <div class="grid md:grid-cols-3 gap-gutter">
+                    <!-- Room card 1 -->
+                    <div
+                        class="bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group border border-outline-variant/20">
+                        <div class="aspect-[3/4] overflow-hidden">
+                            <img alt="Habitación Sencilla"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="A minimalist luxury hotel suite with a king-size bed, white linens, and a charcoal grey headboard. Large windows open to a private balcony with tropical plants. The floor is made of polished cream-colored stone, and the room is filled with soft, natural daylight. The design is elegant, featuring clean lines and high-end Mexican textures."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7PowAtPXtzX64JtGX8-oGfKnAui-40-6xPdL2d8zuO4brcBbSEF7Pw_SZzRCQj3uEHOAARdYWkZSZHBng53_h2kPQ5VYh_xMO49hCffrnH7Ms68IGUumA_vb-u65pr9kpaKUFglNOkoSWuXWrZbUMeisD81odSJN2NCdXvvNEpvmO_gsWBYQlutoO1W6-kuffvaSCPnQqh0sH0h16MK8rQLjsw2QDSsZ89ctUgjXx0m3oBNNq9QxsliPVsNo5mikeGynANJz-kA" />
+                        </div>
+                        <div class="p-8">
+                            <span class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest">Desde $250
+                                USD</span>
+                            <h3 class="font-headline-lg text-headline-lg text-primary mt-2 mb-4">Sencilla Deluxe</h3>
+                            <div class="flex items-center gap-4 text-on-surface-variant font-body-md text-body-md">
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-[18px]">person</span> 2 Huéspedes</span>
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-[18px]">square_foot</span> 45 m²</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Room card 2 -->
+                    <div
+                        class="bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group border border-outline-variant/20 md:translate-y-8">
+                        <div class="aspect-[3/4] overflow-hidden">
+                            <img alt="Habitación Doble"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="A spacious luxury double room with two queen beds, featuring terracotta accent walls and dark charcoal wood furniture. Sunlight streams through wooden shutters, creating a warm, inviting atmosphere. The design is a blend of traditional Mexican craftsmanship and modern comfort, with premium cream textiles and minimalist decor."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz8UsQ-mYJlh07R1O6Wqs5ZVKlF5zpCz9Ib3SIK8RcVuQ9XYHAFkup3M4qCwi37OZAho98a05wff2FwHG2GBd0nfh3nhhaKen5PpP3QfN-V6V5fF4l-nwAVeoRx36lWqZdgEzc9QczdrlytKf_BQpGCzvoN7CZY1FcLnlWFDJLsoJ-Avx_ivEGe0i-NL3DGSlCW9Ad7arL8lfgYDJl-WB2Uk_2TasG_-ut29gpO7W8dsP7cSBruSFNtPEprwOrQCapY0eA8MZcVg" />
+                        </div>
+                        <div class="p-8">
+                            <span class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest">Desde $380
+                                USD</span>
+                            <h3 class="font-headline-lg text-headline-lg text-primary mt-2 mb-4">Doble Premium</h3>
+                            <div class="flex items-center gap-4 text-on-surface-variant font-body-md text-body-md">
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-[18px]">person</span> 4 Huéspedes</span>
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-[18px]">square_foot</span> 65 m²</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Room card 3 -->
+                    <div
+                        class="bg-surface rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group border border-outline-variant/20">
+                        <div class="aspect-[3/4] overflow-hidden">
+                            <img alt="Suite Ixora"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="The master suite of a boutique hotel, featuring a private plunge pool on a spacious terrace. The interior has high ceilings, exposed beams, and a sophisticated mix of charcoal, terracotta, and cream colors. The lighting is soft and golden from a setting sun, highlighting the luxurious and expansive layout designed for ultimate privacy and relaxation."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeM5yPEgvmhS37cUEi9DZ-jKV3ph6z3K_IsqnnA8MRKfDFJ30Ttb5xNvfUV9gN1PYVnjucW4Ozhv9Wtly56biH2lzmZbIIcTrxHDNuG3FzBxgpE7Kk4CiEoADinwFDtslUXZldTHrgh-JerqJoW_8RbpO3r7oavSRY6Kfdn4SE1ri3Rnq6lsocEBMFw6Cj2KipcPFAehMDsIb8uG5mY1i1Vkvww7kEtFXBufgKEjMq_KCaU97P8VQKHFiJgpRXsJcPPmP0bMYsKQ" />
+                        </div>
+                        <div class="p-8">
+                            <span class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest">Desde $620
+                                USD</span>
+                            <h3 class="font-headline-lg text-headline-lg text-primary mt-2 mb-4">Suite Ixora</h3>
+                            <div class="flex items-center gap-4 text-on-surface-variant font-body-md text-body-md">
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-[18px]">person</span> 2 Huéspedes</span>
+                                <span class="flex items-center gap-1"><span
+                                        class="material-symbols-outlined text-[18px]">bathtub</span> Spa Privado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Experiencias -->
+        <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+            <div class="text-center mb-20">
+                <span
+                    class="font-label-sm text-label-sm text-tertiary uppercase tracking-[0.2em] block mb-4">Momentos</span>
+                <h2 class="font-headline-xl text-headline-xl text-primary">Más que una estancia</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-[700px]">
+                <div class="md:col-span-8 relative rounded-xl overflow-hidden group">
+                    <img alt="Spa Ixora"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                        data-alt="A luxury spa interior with a serene infinity pool reflecting a warm terracotta ceiling. The space is minimalist, featuring natural stone walls and soft, indirect lighting that creates a peaceful, meditative mood. The color palette is dominated by calming creams and deep charcoals, with a focus on wellness and high-end relaxation."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDShtQVnG6nEGr87xC4V0fIZZ1TllsS-Pp3qLU0vAlKIGP8REQODBnuhzCzVLwPGPBtrlTTq26jSB87ZpW6gY4SXuWYVijYm65lfolBIeuHHNdJABdO2YPZxXCqcCTyD_PVUW16YphRh1WgOxfHrMfBP8VfE54v6WWQVvVUph_mVmUYtcaJHTjvU_SOO-izv7M89x04tvooQyMKX0iahTXB2hXEIWRIePzjPfVKLn4IwPAqCjI4muLOn1foJK9cCG7HigK-vePWWg" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex flex-col justify-end p-12">
+                        <h4 class="font-headline-lg text-headline-lg text-white mb-2">Sanctuary Spa</h4>
+                        <p class="text-white/80 max-w-md font-body-md">Tratamientos con ingredientes
+                            orgánicos locales para renovar cuerpo y alma.</p>
+                    </div>
+                </div>
+                <div class="md:col-span-4 grid grid-rows-2 gap-8">
+                    <div class="relative rounded-xl overflow-hidden group">
+                        <img alt="Gastronomía"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                            data-alt="A gourmet dining scene featuring contemporary Mexican cuisine served on handcrafted black ceramic plates. The setting is an outdoor terrace at night, lit by candlelight and dim warm lamps. The mood is intimate and sophisticated, highlighting the rich textures of the food and the elegant, minimalist table setting."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD7VGXBfyIV2fSN3u9JYVEj7e3OZHi1iVtp222HkbzJR9P5_d1Ti--6hdbMvI-09fwcn9nige6mJEGqkPbEj1Zrpr7dhdutb8Oj-YczRZkJKFf7_LgbZPBpxHx9wIah0giQZWHGmGPt7KT9mGoqPgm7xuBq3z5sz6J9Qb-99VNiQqDnmTIU-hx7CXpUx4AQjiy-GTSI-iwX6iDDgs2DNnv5qxSnZQy-_qtgBrVmY8ZSDe_--wtbM1Vwq4YdTTgPusruNJRU22Txg" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex flex-col justify-end p-8">
+                            <h4 class="font-headline-lg text-headline-lg text-white mb-2">Cocina de Autor</h4>
+                        </div>
+                    </div>
+                    <div class="relative rounded-xl overflow-hidden group">
+                        <img alt="Experiencias"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                            data-alt="An exclusive private tour through a vibrant Mexican landscape, showing a small group walking near ancient ruins at sunrise. The lighting is golden and ethereal, casting long shadows and highlighting the rich greens of the nature. The scene evokes a sense of discovery and high-end, curated adventure."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJM3UbtpkQSY0f3Im9Hkl4mk8blcDBoLQdNsnrY2AHDByV24Hzv1oxGHOrZgCE8RNjRNhlhXwQ84EKsIwvWED5Hl6IzlZkRTWAZl22-R9fBVopwA4vZhrp2XfvC2d5p61jm9t75CiLbrLU27muFfICk328AcJwJEhs1hmkx5Dn5SRF8NHUT6yYJNLEz83ql7RspT7fspuoKB330Kh4a--9M5PhnqBjBUO9SVBykLfojs-Xf3IZSC9aXRwLTthklrYZn1Y-YCyMyA" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex flex-col justify-end p-8">
+                            <h4 class="font-headline-lg text-headline-lg text-white mb-2">Tours Privados</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section class="py-section-gap px-margin-mobile md:px-margin-desktop">
+            <div class="bg-primary rounded-3xl p-16 md:p-24 text-center relative overflow-hidden">
+                <div class="relative z-10 max-w-3xl mx-auto">
+                    <h2 class="font-headline-xl text-headline-xl text-primary-fixed mb-8">Su viaje hacia lo
+                        extraordinario comienza aquí</h2>
+                    <p class="font-body-lg text-body-lg text-primary-fixed-dim/80 mb-12">Reserve su estancia hoy y
+                        reciba un beneficio exclusivo en su primera experiencia gastronómica.</p>
+                    <button
+                        class="bg-secondary text-on-secondary px-12 py-5 rounded-full font-label-sm text-label-sm uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl">Reservar
+                        Ahora</button>
+                </div>
+                <!-- Abstract -->
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-96 h-96 bg-tertiary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2">
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full py-16 px-margin-mobile md:px-margin-desktop flex flex-col items-center text-center bg-primary dark:bg-surface-container-lowest border-t border-outline-variant/10">
+        <div
+            class="font-display-lg text-headline-xl text-primary-fixed dark:text-primary mb-6 tracking-widest uppercase">
+            IXORA</div>
+        <div class="flex flex-wrap justify-center gap-8 mb-12">
+            <a class="text-primary-fixed-dim/80 dark:text-on-surface-variant hover:text-secondary-fixed transition-colors font-body-md text-body-md hover:underline decoration-secondary"
+                href="#">Privacidad</a>
+            <a class="text-primary-fixed-dim/80 dark:text-on-surface-variant hover:text-secondary-fixed transition-colors font-body-md text-body-md hover:underline decoration-secondary"
+                href="#">Términos</a>
+            <a class="text-primary-fixed-dim/80 dark:text-on-surface-variant hover:text-secondary-fixed transition-colors font-body-md text-body-md hover:underline decoration-secondary"
+                href="#">Contacto</a>
+            <a class="text-primary-fixed-dim/80 dark:text-on-surface-variant hover:text-secondary-fixed transition-colors font-body-md text-body-md hover:underline decoration-secondary"
+                href="#">Prensa</a>
+        </div>
+        <div class="flex gap-6 mb-12">
+            <a class="text-primary-fixed-dim/60 hover:text-white transition-colors" href="#"><span
+                    class="material-symbols-outlined">public</span></a>
+            <a class="text-primary-fixed-dim/60 hover:text-white transition-colors" href="#"><span
+                    class="material-symbols-outlined">camera</span></a>
+            <a class="text-primary-fixed-dim/60 hover:text-white transition-colors" href="#"><span
+                    class="material-symbols-outlined">mail</span></a>
+        </div>
+        <p class="font-body-md text-body-md text-primary-fixed-dim/40">© 2024 Hotel Ixora Boutique. Todos los derechos
+            reservados.</p>
+    </footer>
+    <!-- BottomNavBar -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface dark:bg-primary md:hidden shadow-[0_-4px_12px_rgba(44,51,58,0.04)] border-t border-outline-variant/20 rounded-t-xl">
+        <a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim active:scale-110 transition-transform"
+            href="#">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+            <span class="font-label-sm text-label-sm">Inicio</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest/50"
+            href="#">
+            <span class="material-symbols-outlined">search</span>
+            <span class="font-label-sm text-label-sm">Buscar</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest/50"
+            href="#">
+            <span class="material-symbols-outlined">calendar_month</span>
+            <span class="font-label-sm text-label-sm">Reservas</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest/50"
+            href="#">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-label-sm text-label-sm">Perfil</span>
+        </a>
+    </nav>
+</body>
+
+</html>
