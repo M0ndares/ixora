@@ -1,8 +1,17 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const PORT = 3000;
+
+app.use(cors({
+    origin: 'http://127.0.0.1:5500',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 // Aquí debemos importar las rutas que definamos
 const habitacionesRoutes = require('./routes/habitacionesRoutes');
+const usuariosRoutes = require('./routes/usuariosRoutes');
 const testRoutes = require('./routes/testRoutes');  // Ruta de prueba
 app.use(express.json());
 
@@ -10,6 +19,7 @@ app.use('/prueba', (req,res) => {
    res.send('Esto es un ruta de prueba, puedo definir una ruta o algo aquí');
 });  
 app.use('/api', habitacionesRoutes);
+app.use('/api', usuariosRoutes);
 
 //probar la conexión a la base de datos
 app.use('/test', testRoutes);

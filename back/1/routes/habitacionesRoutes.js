@@ -13,10 +13,10 @@ router.get('/habitaciones/status/:estatus', habitacionesController.getHabitacion
 router.post('/habitacion', habitacionesController.addHabitacion);
 
 // Ruta para modificar una habitacion existente
-router.put('/actualizar/:id', habitacionesController.updateHabitacion);
+router.put('/habitaciones/actualizar/:id', habitacionesController.updateHabitacion);
 
 // Ruta para eliminar una habitacion
-router.delete('/borrar/:id', habitacionesController.deleteHabitacion);
+router.delete('/habitaciones/borrar/:id', habitacionesController.deleteHabitacion);
 
 
 module.exports = router;

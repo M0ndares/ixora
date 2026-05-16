@@ -6,8 +6,9 @@ UTILIZADOS EN EL BACK EN ESTE DOCUMENTO. ABAJO
 SE MUESTRA UN EJEMPLO DE LA ESTRUCTURA SOLICITADA:
 ---------------------------------------------------
 main.html
-#id = id del campo de usuario
+#anuncioBienvenida = Contiene el nombre del usuario
 .class = clase de los botones del cambio de pestaña
+
 ---------------------------------------------------
 sesion.html
 #botonAutenticar = id del boton para iniciar sesion
