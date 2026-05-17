@@ -1,5 +1,13 @@
 async function crear(nombre_usuario, email_usuario, password_usuario) {
     try {
+        if (nombre_usuario.split(' ').length < 2) {
+            alert('Debe de incluir al menos un apellido.');
+            return;
+        } else if (password_usuario.length < 8) {
+            alert('La contraseña debe de tener al menos 8 caracteres.');
+            return;
+        }
+        
         const usuarioData = {
             nombre_usuario: nombre_usuario,
             email: email_usuario,
