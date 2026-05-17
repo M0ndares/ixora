@@ -1,0 +1,503 @@
+<!doctype html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>IXORA - Contemporary Heritage Booking</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 300,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        background-color: #fbf9f4; /* surface from config */
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "outline-variant": "#c5c6cb",
+              "on-secondary-container": "#650009",
+              error: "#ba1a1a",
+              "on-tertiary-fixed": "#231b00",
+              "tertiary-fixed-dim": "#e3c466",
+              "tertiary-fixed": "#ffe085",
+              "primary-fixed-dim": "#c0c7d1",
+              "secondary-fixed": "#ffdad7",
+              "surface-dim": "#dbdad5",
+              "secondary-container": "#ff605b",
+              outline: "#75777b",
+              "tertiary-container": "#c5a94d",
+              "on-tertiary": "#ffffff",
+              "on-background": "#1b1c19",
+              "surface-bright": "#fbf9f4",
+              "inverse-surface": "#30312e",
+              "on-primary": "#ffffff",
+              "surface-variant": "#e4e2dd",
+              "primary-fixed": "#dce3ed",
+              "on-tertiary-container": "#4e3e00",
+              "on-surface-variant": "#44474b",
+              "surface-container-low": "#f5f3ee",
+              "on-tertiary-fixed-variant": "#574500",
+              background: "#fbf9f4",
+              "on-primary-container": "#7f868f",
+              primary: "#000408",
+              tertiary: "#735c00",
+              "on-secondary-fixed-variant": "#910916",
+              "surface-container-highest": "#e4e2dd",
+              secondary: "#b3282a",
+              "surface-container-high": "#eae8e3",
+              "inverse-on-surface": "#f2f1ec",
+              "primary-container": "#171e25",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#c0c7d1",
+              "secondary-fixed-dim": "#ffb3ad",
+              "on-surface": "#1b1c19",
+              "surface-tint": "#585f67",
+              "on-error": "#ffffff",
+              "on-primary-fixed": "#151c23",
+              "on-secondary-fixed": "#410004",
+              "on-secondary": "#ffffff",
+              surface: "#fbf9f4",
+              "surface-container": "#f0eee9",
+              "on-primary-fixed-variant": "#40474f",
+              "error-container": "#ffdad6",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              gutter: "24px",
+              unit: "8px",
+              "margin-mobile": "20px",
+              "margin-desktop": "64px",
+              "container-max-width": "1280px",
+            },
+            fontFamily: {
+              "headline-xl": ["Libre Caslon Text"],
+              "label-md": ["Manrope"],
+              "headline-lg": ["Libre Caslon Text"],
+              "label-sm": ["Manrope"],
+              "display-lg": ["Libre Caslon Text"],
+              "display-lg-mobile": ["Libre Caslon Text"],
+              "body-lg": ["Manrope"],
+              "body-md": ["Manrope"],
+            },
+            fontSize: {
+              "headline-xl": ["48px", { lineHeight: "1.2", fontWeight: "400" }],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-lg": ["32px", { lineHeight: "1.3", fontWeight: "400" }],
+              "label-sm": ["12px", { lineHeight: "1.2", fontWeight: "700" }],
+              "display-lg": [
+                "64px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "400",
+                },
+              ],
+              "display-lg-mobile": [
+                "40px",
+                { lineHeight: "1.2", fontWeight: "400" },
+              ],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-body-md text-on-surface selection:bg-secondary-fixed">
+    <!-- Top Navigation Bar (Shared Component Strategy) -->
+    <header
+        class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/90 dark:bg-primary/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+        <div class="font-display-lg text-headline-lg text-primary dark:text-primary-fixed tracking-widest uppercase">
+            IXORA</div>
+         <nav class="hidden md:flex gap-8 items-center">
+            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                href="../3/main.html">Perfil</a>
+            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                href="habitaciones.html">Habitaciones</a>
+            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                href="servicios.html">Experiencias</a>
+            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                href="historico.html">Historia</a>
+        </nav>
+        <button
+            class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-sm text-label-sm uppercase tracking-wider hover:bg-secondary transition-all transform active:scale-95" onclick="window.location.href = 'reservacion.html'">
+            Reservar Ahora
+        </button>
+    </header>
+    <br><br><br>
+    <!-- Date Selection Bar -->
+    <section
+      class="bg-surface-container-low py-8 px-margin-mobile md:px-margin-desktop border-b border-outline-variant/30"
+    >
+      <div
+        class="max-w-container-max-width mx-auto flex flex-wrap gap-8 items-center justify-center"
+      >
+        <div class="flex flex-col gap-2 min-w-[200px]">
+          <label
+            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest"
+            >Check-in</label
+          >
+          <div
+            class="flex items-center gap-3 border-b border-primary py-2 cursor-pointer"
+          >
+            <span class="material-symbols-outlined text-primary"
+              >calendar_today</span
+            >
+            <span class="font-headline-lg text-headline-lg">14 Oct</span>
+          </div>
+        </div>
+        <div class="hidden md:block w-[1px] h-12 bg-outline-variant"></div>
+        <div class="flex flex-col gap-2 min-w-[200px]">
+          <label
+            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest"
+            >Check-out</label
+          >
+          <div
+            class="flex items-center gap-3 border-b border-primary py-2 cursor-pointer"
+          >
+            <span class="material-symbols-outlined text-primary"
+              >calendar_month</span
+            >
+            <span class="font-headline-lg text-headline-lg">18 Oct</span>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 min-w-[120px]">
+          <label
+            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest"
+            >Huéspedes</label
+          >
+          <div
+            class="flex items-center gap-3 border-b border-outline py-2 cursor-pointer"
+          >
+            <span class="font-body-lg text-body-lg">2 Adultos</span>
+            <span class="material-symbols-outlined text-outline"
+              >expand_more</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Main Grid Layout -->
+    <main
+      class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
+    >
+      <!-- Left Sidebar: Reservation Summary -->
+      <aside class="lg:col-span-4 sticky top-32">
+        <div
+          class="bg-white border border-outline-variant/50 p-8 rounded-xl shadow-sm space-y-8"
+        >
+          <h2
+            class="font-headline-lg text-headline-lg border-b border-outline-variant pb-4"
+          >
+            Resumen de Reserva
+          </h2>
+          <!-- Room Selection -->
+          <div class="space-y-2">
+            <p
+              class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest"
+            >
+              Alojamiento
+            </p>
+            <h3 class="font-body-lg text-body-lg font-bold">
+              Suite Atrio Jardin
+            </h3>
+            <p class="text-on-surface-variant text-body-md">
+              4 Noches — $3,400.00 USD
+            </p>
+          </div>
+          <!-- Services Selected -->
+          <div class="space-y-4">
+            <p
+              class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest"
+            >
+              Servicios Adicionales
+            </p>
+            <div class="flex justify-between items-center text-body-md">
+              <span>Experiencia Spa Ixora (2)</span>
+              <span>$450.00</span>
+            </div>
+            <div class="flex justify-between items-center text-body-md">
+              <span>Traslado Aeropuerto (Privado)</span>
+              <span>$120.00</span>
+            </div>
+          </div>
+          <!-- Cost Breakdown -->
+          <div class="pt-6 border-t border-outline-variant/30 space-y-3">
+            <div class="flex justify-between text-body-md">
+              <span class="text-on-surface-variant">Subtotal</span>
+              <span>$3,970.00</span>
+            </div>
+            <div class="flex justify-between text-body-md">
+              <span class="text-on-surface-variant">Impuestos (16%)</span>
+              <span>$635.20</span>
+            </div>
+            <div class="flex justify-between items-baseline pt-4">
+              <span class="font-label-md text-label-md text-primary"
+                >TOTAL</span
+              >
+              <span class="font-headline-lg text-headline-lg text-primary"
+                >$4,605.20 USD</span
+              >
+            </div>
+          </div>
+          <!-- Actions -->
+          <div class="flex flex-col gap-3 pt-4">
+            <button
+              class="w-full bg-primary text-on-primary py-4 font-label-md text-label-md rounded-lg hover:opacity-90 transition-opacity"
+            >
+              Guardar
+            </button>
+            <button
+              class="w-full border border-secondary text-secondary py-4 font-label-md text-label-md rounded-lg hover:bg-secondary/5 transition-colors"
+            onclick="window.location.href = '../3/main.html'">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </aside>
+      <!-- Main Content Area: Right -->
+      <div class="lg:col-span-8 space-y-12">
+        <!-- Tabbed Navigation -->
+        <nav class="flex border-b border-outline-variant">
+          <button
+            class="px-8 py-4 font-label-md text-label-md text-primary border-b-2 border-primary"
+          >
+            Habitaciones
+          </button>
+          <button
+            class="px-8 py-4 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors"
+          >
+            Servicios
+          </button>
+          <button
+            class="px-8 py-4 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors"
+          >
+            Preferencias
+          </button>
+        </nav>
+        <!-- Habitaciones Content (Active State) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Suite Card 1 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden group border border-outline-variant/30 hover:shadow-lg transition-shadow duration-500"
+          >
+            <div class="relative aspect-[4/5] overflow-hidden">
+              <img
+                alt="Ixora Garden Suite"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                data-alt="A luxurious minimalist hotel suite in Mexico featuring high ceilings, warm cream walls, and organic wooden furniture. Natural light floods the space from a private interior garden. The aesthetic is contemporary heritage with soft linen textiles and a sculptural stone bathtub visible in the background. Calm, serene, high-end photography."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6bJJJWRsV6pCPELwnq9uk-MTmB6KZKz_QsOhHNORk5fBUlOai0gxPwh0C988RJrJON0yWk3TE00uIzXJkWWOLTKhnmzhROlqEg-6uH-jkwWKz5vxkXLNpX6IySjIVwgj61kwAOVppmAdBdjg9KVcXcGgG_OuK_DOlmtigG3VM8hcV4xmiZJQb-6VQ9zxIDcZO8og-IRSnJ3kQKOvW0z5naADNLX0xRFTLfD7TIVrhVBNcodc699zz4fU30kyf85oZ4n58_56DLAA"
+              />
+              <div
+                class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-1 rounded-full font-label-sm text-label-sm text-primary"
+              >
+                Más Popular
+              </div>
+            </div>
+            <div class="p-8 space-y-4">
+              <div class="flex justify-between items-baseline">
+                <h4 class="font-headline-lg text-headline-lg">Atrio Jardin</h4>
+                <span class="text-on-surface-variant font-body-md"
+                  >$850 / noche</span
+                >
+              </div>
+              <p class="text-on-surface-variant font-body-md">
+                Santuario privado de 75m² con jardin interior, cama King con
+                sábanas de 800 hilos y ducha tipo lluvia.
+              </p>
+              <button
+                class="w-full py-3 border border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all"
+              >
+                Seleccionar
+              </button>
+            </div>
+          </div>
+          <!-- Suite Card 2 -->
+          <div
+            class="bg-white rounded-xl overflow-hidden group border border-outline-variant/30 hover:shadow-lg transition-shadow duration-500"
+          >
+            <div class="relative aspect-[4/5] overflow-hidden">
+              <img
+                alt="Ixora Master Suite"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                data-alt="An expansive master suite in a boutique hotel in Oaxaca, showcasing brutalist architecture softened by traditional Mexican crafts. Large floor-to-ceiling glass doors open to a private terrace with a terracotta plunge pool. The interior uses a palette of charcoal, warm woods, and cream plaster walls. Minimalist luxury lighting creating long, soft shadows."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFeNPXBUq-GGuG43KYKQrt6CPbj5t_3SzDYN4Za_8FfHZRAoLCckjZT9Nh9Kxf8TKpTCK_h07zGj5cVbeqtSN0sjYYxR_ryF5B4yLxruc17aC7RlYJnYIdBtFDi05nzcbcmmbw6ORjZiYuDT7Q_m6b4HpqzXFwZG0-kfRz9acbKVHWhvNXo63l8KOaD-0-f5AM4gpH7nPAJB3mG9VxdcKTnWVwrbFJRniWjJ8VGv7JSK5Z-ZvESTUIlQNsR-z0JuOSmRkRh8vmJ4A"
+              />
+            </div>
+            <div class="p-8 space-y-4">
+              <div class="flex justify-between items-baseline">
+                <h4 class="font-headline-lg text-headline-lg">
+                  Terraza Master
+                </h4>
+                <span class="text-on-surface-variant font-body-md"
+                  >$1,200 / noche</span
+                >
+              </div>
+              <p class="text-on-surface-variant font-body-md">
+                Vistas panorámicas a la ciudad histórica, terraza privada con
+                piscina de inmersión y servicio de mayordomo.
+              </p>
+              <button
+                class="w-full py-3 border border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all"
+              >
+                Seleccionar
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Additional Luxury Amenities (Bento Grid Style) -->
+        <div class="pt-8">
+          <h3 class="font-headline-lg text-headline-lg mb-8">
+            Complementos Exclusivos
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div
+              class="md:col-span-2 bg-tertiary-fixed text-on-tertiary-fixed p-10 rounded-xl relative overflow-hidden group"
+            >
+              <div class="relative z-10 space-y-4 max-w-sm">
+                <h5 class="font-headline-lg text-headline-lg">Ritual de Spa</h5>
+                <p class="font-body-md">
+                  Recupere el equilibrio con técnicas ancestrales y aceites
+                  botánicos locales.
+                </p>
+                <button
+                  class="flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest group-hover:translate-x-2 transition-transform"
+                >
+                  Añadir a reserva
+                  <span class="material-symbols-outlined">arrow_right_alt</span>
+                </button>
+              </div>
+              <div
+                class="absolute right-[-10%] bottom-[-20%] opacity-20 transform -rotate-12 group-hover:rotate-0 transition-transform duration-700"
+              >
+                <span
+                  class="material-symbols-outlined text-[200px]"
+                  style="font-variation-settings: &quot;wght&quot; 100"
+                  >spa</span
+                >
+              </div>
+            </div>
+            <div class="bg-surface-container-high p-10 rounded-xl space-y-4">
+              <span class="material-symbols-outlined text-secondary text-4xl"
+                >restaurant</span
+              >
+              <h5 class="font-headline-lg text-headline-lg">Mesa del Chef</h5>
+              <p class="font-body-md text-on-surface-variant">
+                Reserva prioritaria en Ixora Cocina.
+              </p>
+              <button
+                class="font-label-sm text-label-sm text-secondary uppercase tracking-tighter"
+              >
+                Reservar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer (Shared Component Strategy) -->
+    <footer
+      class="bg-surface-container-lowest border-t border-outline-variant mt-24"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-start gap-8 px-margin-mobile md:px-margin-desktop py-16 max-w-container-max-width mx-auto"
+      >
+        <div class="space-y-6">
+          <span
+            class="font-display-lg text-headline-lg text-primary tracking-tighter"
+            >IXORA</span
+          >
+          <p class="text-on-surface-variant font-body-md max-w-xs">
+            Herencia contemporánea y serenidad minimalista en el corazón de
+            México.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-x-12 gap-y-6">
+          <div class="flex flex-col gap-3">
+            <span class="font-label-md text-label-md text-primary"
+              >Navegación</span
+            >
+            <a
+              class="text-on-surface-variant font-label-sm text-label-sm hover:text-secondary hover:underline underline-offset-4 transition-all"
+              href="#"
+              >Privacidad</a
+            >
+            <a
+              class="text-on-surface-variant font-label-sm text-label-sm hover:text-secondary hover:underline underline-offset-4 transition-all"
+              href="#"
+              >Sostenibilidad</a
+            >
+            <a
+              class="text-on-surface-variant font-label-sm text-label-sm hover:text-secondary hover:underline underline-offset-4 transition-all"
+              href="#"
+              >Prensa</a
+            >
+            <a
+              class="text-on-surface-variant font-label-sm text-label-sm hover:text-secondary hover:underline underline-offset-4 transition-all"
+              href="#"
+              >Ubicación</a
+            >
+          </div>
+          <div class="flex flex-col gap-3">
+            <span class="font-label-md text-label-md text-primary">Redes</span>
+            <a
+              class="text-on-surface-variant font-label-sm text-label-sm hover:text-secondary transition-all"
+              href="#"
+              >Instagram</a
+            >
+            <a
+              class="text-on-surface-variant font-label-sm text-label-sm hover:text-secondary transition-all"
+              href="#"
+              >Vogue Living</a
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="px-margin-mobile md:px-margin-desktop py-8 border-t border-outline-variant/30 max-w-container-max-width mx-auto"
+      >
+        <p
+          class="font-label-sm text-label-sm text-outline tracking-widest uppercase"
+        >
+          © 2024 IXORA CONTEMPORARY HERITAGE. ALL RIGHTS RESERVED.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
