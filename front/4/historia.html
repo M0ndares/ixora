@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dbdad5",
+                        "surface-variant": "#e4e2dd",
+                        "on-secondary-container": "#600008",
+                        "surface-bright": "#fbf9f4",
+                        "outline-variant": "#c5c6cb",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0eee9",
+                        "secondary": "#b3282a",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#fc5d58",
+                        "secondary-fixed": "#ffdad7",
+                        "surface-container-highest": "#e4e2dd",
+                        "primary-fixed-dim": "#c0c7d0",
+                        "on-secondary-fixed": "#410004",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#241a00",
+                        "background": "#fbf9f4",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-surface": "#1b1c19",
+                        "tertiary-fixed": "#ffe088",
+                        "on-primary-fixed": "#151c23",
+                        "surface-container-low": "#f5f3ee",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#ffb3ad",
+                        "on-surface-variant": "#44474b",
+                        "outline": "#75777b",
+                        "on-background": "#1b1c19",
+                        "inverse-primary": "#c0c7d0",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-primary-fixed-variant": "#40474f",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dce3ec",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#735c00",
+                        "on-primary-container": "#949ba4",
+                        "surface": "#fbf9f4",
+                        "inverse-surface": "#30312e",
+                        "surface-tint": "#585f67",
+                        "surface-container-high": "#eae8e3",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-tertiary-container": "#4e3d00",
+                        "primary": "#171e25",
+                        "on-secondary-fixed-variant": "#910915",
+                        "tertiary-container": "#cba72f",
+                        "primary-container": "#2c333a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "section-gap": "120px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Manrope"],
+                        "headline-xl": ["Libre Caslon Text"],
+                        "headline-lg-mobile": ["Libre Caslon Text"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "headline-lg": ["Libre Caslon Text"],
+                        "body-lg": ["Manrope"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #fbf9f4;
+            /* Cream base layer */
+            color: #171e25;
+            /* Primary charcoal text */
+        }
+    </style>
+</head>
+
+<body class="bg-background text-primary overflow-x-hidden">
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+        <div class="font-display-lg text-headline-lg text-primary tracking-widest uppercase">IXORA</div>
+        <nav class="hidden md:flex space-x-8 items-center">
+            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant hover:text-primary transition-colors"
+                href="#">Habitaciones</a>
+            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant hover:text-primary transition-colors"
+                href="#">Experiencias</a>
+            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant hover:text-primary transition-colors"
+                href="#">Gastronomía</a>
+            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant hover:text-primary transition-colors"
+                href="#">Galería</a>
+        </nav>
+        <button
+            class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-sm text-label-sm uppercase hover:bg-secondary transition-all active:scale-95">
+            Reservar Ahora
+        </button>
+    </header>
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img alt="Ixora Heritage Hero" class="w-full h-full object-cover brightness-75"
+                data-alt="A cinematic, low-angle shot of a grand Mexican courtyard during the golden hour. The warm sunlight reflects off aged stone walls and lush Ixora flowers blooming in clay pots. The composition is clean and symmetrical, evoking a sense of heritage and luxury boutique hospitality. The atmosphere is serene, with a soft haze and a palette of warm creams, deep shadows, and vibrant terracotta accents."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLNmZsUBcFBfiC35gZjW4mgHskwqbCmrW1fXiZMpI14cZ0REBmIyUlAQIgpK1-vIJKsRgIohUaOkalfGCpRlT7Czpb-4uOcrTYmOm5dtHqErnLXJmuuukLcwZrbySxD58ob6_dLDowDAcVMGDc2xtqgXpW3wXENaNOaVJ42KmErItKCMCieLv-s9cscdCmyzTjdGWdbPZmD-Lf5KZY_5YIW2sAt1B7PgnD38ptkEQ_v1riPPZ9k3y5psDIL1tSjAXJuSgJPdtY9A" />
+        </div>
+        <div class="relative z-10 px-margin-mobile">
+            <span
+                class="font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-widest mb-4 block">Nuestra
+                Identidad</span>
+            <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-white mb-6">Nuestra Historia: <br
+                    class="hidden md:block" /> Raíces y Visión</h1>
+            <p class="font-body-lg text-body-lg text-white/90 max-w-2xl mx-auto italic">Un santuario de calma donde el
+                pasado de México se encuentra con la quietud del diseño contemporáneo.</p>
+        </div>
+    </section>
+    <!-- Origins Section -->
+    <section class="py-section-gap px-margin-mobile md:px-margin-desktop container mx-auto max-w-container-max">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="relative group">
+                <div
+                    class="absolute -inset-4 bg-surface-container-high rounded-xl -z-10 transition-transform group-hover:scale-105">
+                </div>
+                <img alt="Inspiración Ixora" class="w-full rounded-xl shadow-lg"
+                    data-alt="A detailed close-up of a vibrant Ixora flower surrounded by dark, waxy green leaves in a high-end botanical garden setting. The lighting is soft and diffused, highlighting the delicate textures of the red petals. The background is a blurred view of a minimalist, luxury hotel exterior with neutral-toned stone walls. The overall mood is sophisticated and organic, emphasizing the natural inspiration behind the brand name."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD22yttLZ1ISE7-F6KU-o-SncsPQhEdGCcpkfz5sADOfzozyrTKc0Meq6ZTYqUCZKTqzFygGwxBOOARwOGQ6u25n9PNvzCM1s8QZD8Ufb3Coer7iUY3AZM8NJCy7-Y4Lg29UAnk9FJkzWEJQL0g7B9o6L8gR281q5deusPtSvrzySix1RBEnB4ROKqNLQxY2mVknEykpKWfxAfbaVpK8uT88HK8fzpsQhdpm9KqSshYvK5Lsg8nTTym2_XspW2QUUQIrE98BzHtOQ" />
+            </div>
+            <div class="flex flex-col space-y-8">
+                <div>
+                    <span
+                        class="font-label-sm text-label-sm text-tertiary-container uppercase tracking-widest block mb-2">Inspiración</span>
+                    <h2 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary">El Origen del
+                        Nombre</h2>
+                </div>
+                <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    Ixora nace de la flor que adorna los jardines tropicales de nuestra región, símbolo de resistencia y
+                    belleza atemporal. Nuestra historia comenzó con el deseo de preservar las tradiciones locales
+                    mientras creábamos un espacio de exclusividad absoluta.
+                </p>
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    Fundado bajo el concepto de "lujo pausado", cada rincón de Hotel Ixora Boutique cuenta el relato de
+                    familias artesanas, mercados locales y la sabiduría de una tierra que sabe recibir al viajero con
+                    los brazos abiertos.
+                </p>
+                <div class="pt-4">
+                    <div class="flex items-center gap-4 text-secondary">
+                        <span class="material-symbols-outlined" data-icon="local_florist">local_florist</span>
+                        <span class="font-label-sm text-label-sm uppercase">Cuidado por la Naturaleza</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Architecture Section -->
+    <section class="bg-surface-container-low py-section-gap">
+        <div class="px-margin-mobile md:px-margin-desktop container mx-auto max-w-container-max">
+            <div class="text-center mb-16">
+                <span
+                    class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest block mb-2">Diseño</span>
+                <h2 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary">Arquitectura y
+                    Diseño</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <div class="md:col-span-2 relative h-[500px] overflow-hidden rounded-xl shadow-sm">
+                    <img alt="Diseño Arquitectónico" class="w-full h-full object-cover"
+                        data-alt="A wide interior shot of a minimalist luxury hotel lobby that integrates natural stone and dark wood. High ceilings, large open-air spaces, and soft indirect lighting create a peaceful atmosphere. Minimalist furniture with clean lines sits on polished concrete floors, while traditional Mexican textile accents add warmth. The color palette is composed of charcoal, cream, and natural wood tones, reflecting a modern boutique aesthetic."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_t-RIbs-d4e7vYt3jCvqeTQqb9bUSJDfYhUBmbV9HG15FxaoemslRrGCLrXaBAvUeh3YzG-Ewek4QztWmm7s-Bx2ut_lyU28wQoTpMLJOmdn9KUW1LXwdbq8S5WZTguN4PtLwZ7NtXUV6e_PDYv7z3lWe1qP7pZKONGI4SYUUXgy86SQxV3RYK-MvJZSain6pQ1pUL3TyBLigBxD4RWa74fIqLtjNyqbMMfDbxDcuFhlgVnNpPfI2fmd3Fa-zfhTZPpbg92yMvw" />
+                    <div
+                        class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/60 to-transparent w-full text-white">
+                        <h3 class="font-headline-lg text-headline-lg mb-2">Sinfonía de Piedra y Barro</h3>
+                        <p class="font-body-md text-body-md max-w-lg">Materiales ancestrales reinterpretados para el
+                            viajero moderno.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col space-y-gutter">
+                    <div
+                        class="bg-white p-8 rounded-xl shadow-[0_4px_12px_rgba(44,51,58,0.04)] flex flex-col justify-center h-full">
+                        <span class="material-symbols-outlined text-4xl text-secondary mb-4"
+                            data-icon="architecture">architecture</span>
+                        <h3 class="font-headline-lg text-headline-lg text-primary mb-4">Minimalismo Táctil</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Priorizamos la honestidad de los
+                            materiales. La rugosidad del barro y la frescura de la piedra caliza crean una experiencia
+                            sensorial única.</p>
+                    </div>
+                    <div class="bg-primary text-on-primary p-8 rounded-xl flex flex-col justify-center h-full">
+                        <span class="material-symbols-outlined text-4xl text-tertiary-fixed mb-4"
+                            data-icon="light_mode">light_mode</span>
+                        <h3 class="font-headline-lg text-headline-lg mb-4">Luz y Espacio</h3>
+                        <p class="font-body-md text-body-md text-on-primary-container">El diseño permite que la luz
+                            natural sea el principal elemento decorativo, transformando los espacios a lo largo del día.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Timeline / Experience Flow -->
+    <section class="py-section-gap px-margin-mobile md:px-margin-desktop container mx-auto max-w-container-max">
+        <div class="text-center mb-16">
+            <h2 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary">La Experiencia Ixora
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-4">Un viaje a través de nuestra evolución.
+            </p>
+        </div>
+        <div
+            class="relative before:absolute before:left-1/2 before:-translate-x-1/2 before:w-[1px] before:h-full before:bg-outline-variant/50 hidden md:block">
+            <!-- Timeline Item 1 -->
+            <div class="flex items-center justify-between mb-24 relative">
+                <div class="w-[45%] text-right pr-12">
+                    <span class="font-headline-lg text-headline-lg text-secondary mb-2 block">2018</span>
+                    <h3 class="font-headline-lg text-headline-lg text-primary mb-3">La Semilla</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Descubrimiento de la propiedad
+                        histórica y conceptualización del refugio boutique.</p>
+                </div>
+                <div
+                    class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-secondary border-4 border-background">
+                </div>
+                <div class="w-[45%] pl-12">
+                    <img alt="La Semilla" class="rounded-xl shadow-md w-full h-48 object-cover"
+                        data-alt="A vintage black and white photograph of an old Mexican hacienda ruin undergoing restoration. Scaffolding is visible against ancient stone walls, with light streaming through empty arches. The image conveys a sense of history and the beginning of a transformation, with a focus on structural texture and architectural heritage."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5vfA3ldoSBV3L7aMT6ZZbqUje9ZkwDc3zqUpt2aYVENcYuoPBtgRjk11sfOWFYghTtw8l0Dl8khh0Pp4heOLkm31l8O9Lj_Zt_QEgHoNYs0oQj429sMvtleZrFhCHhDfUU7D8GKWlsY40CH77gP80wOsEFRkqjnZkS34Bt3u21G4FpyAIYh70NYB6BLROMdyoODKrwRlppWRf05zRF0tG0fKHFltey1g1vZFYdm-HdM4LkOVH-C8D45XUCQqxtvMZMyzLA9vugw" />
+                </div>
+            </div>
+            <!-- Timeline Item 2 -->
+            <div class="flex items-center justify-between mb-24 relative flex-row-reverse">
+                <div class="w-[45%] text-left pl-12">
+                    <span class="font-headline-lg text-headline-lg text-secondary mb-2 block">2021</span>
+                    <h3 class="font-headline-lg text-headline-lg text-primary mb-3">Apertura</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Ixora abre sus puertas, recibiendo a
+                        los primeros huéspedes en busca de una experiencia de lujo auténtica.</p>
+                </div>
+                <div
+                    class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-secondary border-4 border-background">
+                </div>
+                <div class="w-[45%] pr-12">
+                    <img alt="Apertura" class="rounded-xl shadow-md w-full h-48 object-cover"
+                        data-alt="A bright and welcoming luxury hotel reception area with high-end finishes. A professional staff member in a minimalist uniform is seen in a soft-focus background, while the foreground shows a hand-crafted stone desk with a single red Ixora flower. The lighting is warm and invites the viewer into the space, representing the moment of opening and hospitality."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh5LgTuFQT-CfsN0giNccC3Cz4-EGRsOhQNPgMNNzwpnchYrD-DUUTV30jo2gLDrcOK-saQDFT3tWiUqIu4WkuprQxdwdvedCSu1zHVhD9rp55aZ5rOQd4mx3UBHN4Z7n4ECX3iVCSoT29gVuz0tlIIZvYBHVWL-3Tlp2TvX9w6ion0gT82PvSIOT46cJ7_zbMwoj3RnnTVTR-ElAQY681oQnsYzpSYQp1UWfpcGRINuyqA56tjHX8bbibUVw4lkrutxvPYKVUIQ" />
+                </div>
+            </div>
+            <!-- Timeline Item 3 -->
+            <div class="flex items-center justify-between relative">
+                <div class="w-[45%] text-right pr-12">
+                    <span class="font-headline-lg text-headline-lg text-secondary mb-2 block">Hoy</span>
+                    <h3 class="font-headline-lg text-headline-lg text-primary mb-3">La Evolución</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Consolidación como un referente de
+                        hospitalidad boutique en México, integrando gastronomía de autor.</p>
+                </div>
+                <div
+                    class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-secondary border-4 border-background">
+                </div>
+                <div class="w-[45%] pl-12">
+                    <img alt="Hoy" class="rounded-xl shadow-md w-full h-48 object-cover"
+                        data-alt="A modern, high-end restaurant table setting at dusk. The table is made of dark, polished wood and features minimalist ceramic plates, fine crystal glassware, and a small arrangement of local wildflowers. In the background, the soft ambient lighting of the hotel courtyard creates a romantic and exclusive atmosphere. The scene represents the culinary excellence and sophisticated evolution of the hotel experience."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAWuyVFlDeQMViNkxTPPUxFKr3zjpbDgNdYeN8FAenH9Xf9htHGi4rZxhqEg71KxMhGCkj3nXC5oASaemJRnMP8ugSMNOhF5btlz4VaGQKzx75QH8N-XDViWo1vkg_aOi5Lx5cLYUCoMNSI_iOHUWBnbloLdarKl4m2QnKdqewe5YuJGfo6Xi6soSgynyqxJ3-LcYNxlyerCBiFRD3mIOtCWoSnU69DLfjbKUquBfJuQM-cNrW1aYubIDh4qZHLKtGBzADpw80_w" />
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Timeline (Simplified) -->
+        <div class="md:hidden flex flex-col space-y-12">
+            <div class="space-y-4">
+                <span class="font-headline-lg text-headline-lg text-secondary">2018</span>
+                <h3 class="font-headline-lg text-headline-lg text-primary">La Semilla</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Conceptualización del refugio boutique en
+                    una propiedad histórica.</p>
+            </div>
+            <div class="space-y-4">
+                <span class="font-headline-lg text-headline-lg text-secondary">2021</span>
+                <h3 class="font-headline-lg text-headline-lg text-primary">Apertura</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Bienvenida a los primeros huéspedes en un
+                    entorno de lujo pausado.</p>
+            </div>
+            <div class="space-y-4">
+                <span class="font-headline-lg text-headline-lg text-secondary">Hoy</span>
+                <h3 class="font-headline-lg text-headline-lg text-primary">La Evolución</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Un referente de hospitalidad y diseño
+                    contemporáneo mexicano.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Call to Action -->
+    <section class="py-section-gap px-margin-mobile">
+        <div class="max-w-4xl mx-auto bg-primary text-on-primary rounded-2xl p-12 text-center relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <img alt="Background Texture" class="w-full h-full object-cover grayscale"
+                    data-alt="A faint, artistic pattern of Ixora flowers and leaves, creating a subtle texture over a dark charcoal background. The composition is organic and high-end, providing a sophisticated backdrop for the final call to action without distracting from the primary text."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr2lsJTzPq98rnVrf6G9Er1wQ5aygqs8N0OoYBMip0430ICsk7kQbLPQAfL8V0ZHqxtJPYB9quhhEgxPSGpFeOlGKwRjznRNM40Bmaj6S7wmHsEbLF7TIY_cOLDOj_20VQRCoMrBU2i7j4sHhN0tHVhho5X2-vY0MmKtkL8O59NriP__7HyD3F8-1qbZ18SO8IikkXgDiHS3S_DoFT7s7bRZ90FulOhRBr6uwUeHYRNffo0d2QlqQ5CLdoCYiMIsBl-dSWWi2q0Q" />
+            </div>
+            <div class="relative z-10">
+                <h2 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl mb-6">Sea parte de nuestra
+                    historia continua.</h2>
+                <p class="font-body-lg text-body-lg text-primary-fixed-dim/80 mb-10 max-w-xl mx-auto">Reserve su
+                    estancia y descubra el equilibrio perfecto entre el legado ancestral y el confort moderno.</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <button
+                        class="bg-secondary text-white px-10 py-4 rounded-lg font-label-sm text-label-sm uppercase hover:scale-105 transition-transform">
+                        Ver Disponibilidad
+                    </button>
+                    <button
+                        class="border border-outline-variant/50 text-white px-10 py-4 rounded-lg font-label-sm text-label-sm uppercase hover:bg-white/10 transition-colors">
+                        Contactar Concierge
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer
+        class="w-full py-16 px-margin-mobile md:px-margin-desktop flex flex-col items-center text-center bg-primary mt-section-gap">
+        <div class="font-display-lg text-headline-xl text-primary-fixed mb-6">IXORA</div>
+        <div class="flex flex-wrap justify-center gap-8 mb-12">
+            <a class="font-body-md text-body-md text-primary-fixed-dim/80 hover:text-secondary-fixed transition-colors"
+                href="#">Privacidad</a>
+            <a class="font-body-md text-body-md text-primary-fixed-dim/80 hover:text-secondary-fixed transition-colors"
+                href="#">Términos</a>
+            <a class="font-body-md text-body-md text-primary-fixed-dim/80 hover:text-secondary-fixed transition-colors"
+                href="#">Contacto</a>
+            <a class="font-body-md text-body-md text-primary-fixed-dim/80 hover:text-secondary-fixed transition-colors"
+                href="#">Prensa</a>
+        </div>
+        <div class="w-full h-[1px] bg-primary-fixed-dim/20 mb-8 max-w-lg"></div>
+        <p class="font-body-md text-body-md text-primary-fixed-dim/60">© 2026 Hotel Ixora. Todos los derechos
+            reservados.</p>
+    </footer>
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface md:hidden border-t border-outline-variant/20 shadow-[0_-4px_12px_rgba(44,51,58,0.04)]">
+        <div class="flex flex-col items-center justify-center text-on-surface-variant">
+            <span class="material-symbols-outlined" data-icon="home">home</span>
+            <span class="font-label-sm text-[10px] uppercase">Inicio</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-on-surface-variant">
+            <span class="material-symbols-outlined" data-icon="search">search</span>
+            <span class="font-label-sm text-[10px] uppercase">Buscar</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-on-surface-variant">
+            <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+            <span class="font-label-sm text-[10px] uppercase">Reservas</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-on-surface-variant">
+            <span class="material-symbols-outlined" data-icon="person">person</span>
+            <span class="font-label-sm text-[10px] uppercase">Perfil</span>
+        </div>
+    </nav>
+</body>
+
+</html>
