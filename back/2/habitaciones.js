@@ -1,15 +1,30 @@
-async function habitacion(cantidadHuespedes) {
+const fotos = ['https://lh3.googleusercontent.com/aida-public/AB6AXuBJYtQhIdgODOCZz_rG7ig5N0HflGTv5HsUGF_eVkcEEBBTT4Ol-CB_IOIQRiIIfe-mJ-I_OetLXONK_ssSob5-UXDMpyfH5nU4qtjCWUN3o_1erB8PnTAPANlCztA3m1pFML9zwBe6s-kPA-AoESBRTrxWyX2AsdS0jlJQP0euXIBgbkQsbGH38xBKu2E5b8hx3z8SmF-bCWe4r0g17BZ00qeq6nsyrLUMZ-2gY7Yvl3f5Na7-6nGhU0S_8fIUEg-aSEVAFNosFQ',
+            'https://lh3.googleusercontent.com/aida-public/AB6AXuAkmIuJUOcLui9meulmrFwOM_kLaXI0SQa2s0EpL4cZs5LLweGenCkDalUCUXooVUcdJm7Absb6wCrdrNp1mpXDDfNyLvobwLPJww-XLcbsGJI7UVJSBOYAlVI4fMLhuhxoG7r0j-OPmIh__W7MPbaXfWT-w4xd6nz4ZkdYhXi0S75uXQLurQZWLnmg-a2KaohAMUHFnzE52hgagQ_JPtLwQLvlML8HbyZ614v5Kxh4uAjnaMEeFXrH2LjjSwf6wUA16WC3ulvWvQ', 
+            'https://lh3.googleusercontent.com/aida-public/AB6AXuDhOCD4Fe9mKJHMJzjxKwxnhVzl7EX99V9_h7xC97hHdI1loBeTReiOsFrmrp60WLwqbkyU4Dvitx9E1A-EGPUVHz-WgldELTv1oyVEaxKtNpJiF1kMqfV3CcPrZSrmZaFi-Amj7dz4eAx0E5e3BHfpK8-Y37nyWSXVMVmD6u5GXFC1tmOuRl2icRg6WnXo1BiCsY5dXMvVNi7hTbsb-m631UJIRdYwpCJOSGUP-De7jjyQlPvUMV6vUYxTti-9FuiIATwRksfTZA', 
+            'https://lh3.googleusercontent.com/aida-public/AB6AXuCKbtiwXqUibzPFet3TjjnPOUTp_UUC77Vc5Ao8V-Cpikl60c3XYE0Lme08utYeklef2Y2Lc-8H2DqWfUnf1v1BqngKfDEf4Aabkdc3Hv0yUAvZyi-VFaH4t2gJVaR0dUWMvw_AUOf88glp07710_7QdFMx9rkeuZtXC4yJTilqpvsPXTLjZJIsZr_A0t39iXCx78FX_sgWvCDyeioS9KFWqDVdnJhvqmI2EV9DPNJZ0j_E1F9k0TuY_B3TGGDdxy-nj7xonOWMMQ', 
+            'https://lh3.googleusercontent.com/aida-public/AB6AXuBeM5yPEgvmhS37cUEi9DZ-jKV3ph6z3K_IsqnnA8MRKfDFJ30Ttb5xNvfUV9gN1PYVnjucW4Ozhv9Wtly56biH2lzmZbIIcTrxHDNuG3FzBxgpE7Kk4CiEoADinwFDtslUXZldTHrgh-JerqJoW_8RbpO3r7oavSRY6Kfdn4SE1ri3Rnq6lsocEBMFw6Cj2KipcPFAehMDsIb8uG5mY1i1Vkvww7kEtFXBufgKEjMq_KCaU97P8VQKHFiJgpRXsJcPPmP0bMYsKQ']
+
+async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+    if (isNaN(inicio.getTime()) || isNaN(final.getTime())) {
+            alert('Debe de introducir un rango de fechas');
+            return;
+    } else if (inicio.getTime() > final.getTime()) {
+            alert('El rango de fechas debe de ser válido.');
+            return;
+    } else if(hoy.getTime() > inicio.getTime()) {
+            alert('La fecha de inicio tiene que ser futura.');
+            return;
+    }
     try {
         const response = await fetch(`http://127.0.0.1:3000/api/habitaciones/status/${cantidadHuespedes}`);
         const data = await response.json();
         console.log(data)
         const contenedorHabitaciones = document.getElementById('contenedorHabitaciones');
-        contenedorHabitaciones.innerHTML = ''
-        const fotos = ['https://lh3.googleusercontent.com/aida-public/AB6AXuBJYtQhIdgODOCZz_rG7ig5N0HflGTv5HsUGF_eVkcEEBBTT4Ol-CB_IOIQRiIIfe-mJ-I_OetLXONK_ssSob5-UXDMpyfH5nU4qtjCWUN3o_1erB8PnTAPANlCztA3m1pFML9zwBe6s-kPA-AoESBRTrxWyX2AsdS0jlJQP0euXIBgbkQsbGH38xBKu2E5b8hx3z8SmF-bCWe4r0g17BZ00qeq6nsyrLUMZ-2gY7Yvl3f5Na7-6nGhU0S_8fIUEg-aSEVAFNosFQ',
-            'https://lh3.googleusercontent.com/aida-public/AB6AXuAkmIuJUOcLui9meulmrFwOM_kLaXI0SQa2s0EpL4cZs5LLweGenCkDalUCUXooVUcdJm7Absb6wCrdrNp1mpXDDfNyLvobwLPJww-XLcbsGJI7UVJSBOYAlVI4fMLhuhxoG7r0j-OPmIh__W7MPbaXfWT-w4xd6nz4ZkdYhXi0S75uXQLurQZWLnmg-a2KaohAMUHFnzE52hgagQ_JPtLwQLvlML8HbyZ614v5Kxh4uAjnaMEeFXrH2LjjSwf6wUA16WC3ulvWvQ', 
-            'https://lh3.googleusercontent.com/aida-public/AB6AXuDhOCD4Fe9mKJHMJzjxKwxnhVzl7EX99V9_h7xC97hHdI1loBeTReiOsFrmrp60WLwqbkyU4Dvitx9E1A-EGPUVHz-WgldELTv1oyVEaxKtNpJiF1kMqfV3CcPrZSrmZaFi-Amj7dz4eAx0E5e3BHfpK8-Y37nyWSXVMVmD6u5GXFC1tmOuRl2icRg6WnXo1BiCsY5dXMvVNi7hTbsb-m631UJIRdYwpCJOSGUP-De7jjyQlPvUMV6vUYxTti-9FuiIATwRksfTZA', 
-            'https://lh3.googleusercontent.com/aida-public/AB6AXuCKbtiwXqUibzPFet3TjjnPOUTp_UUC77Vc5Ao8V-Cpikl60c3XYE0Lme08utYeklef2Y2Lc-8H2DqWfUnf1v1BqngKfDEf4Aabkdc3Hv0yUAvZyi-VFaH4t2gJVaR0dUWMvw_AUOf88glp07710_7QdFMx9rkeuZtXC4yJTilqpvsPXTLjZJIsZr_A0t39iXCx78FX_sgWvCDyeioS9KFWqDVdnJhvqmI2EV9DPNJZ0j_E1F9k0TuY_B3TGGDdxy-nj7xonOWMMQ', 
-            'https://lh3.googleusercontent.com/aida-public/AB6AXuBeM5yPEgvmhS37cUEi9DZ-jKV3ph6z3K_IsqnnA8MRKfDFJ30Ttb5xNvfUV9gN1PYVnjucW4Ozhv9Wtly56biH2lzmZbIIcTrxHDNuG3FzBxgpE7Kk4CiEoADinwFDtslUXZldTHrgh-JerqJoW_8RbpO3r7oavSRY6Kfdn4SE1ri3Rnq6lsocEBMFw6Cj2KipcPFAehMDsIb8uG5mY1i1Vkvww7kEtFXBufgKEjMq_KCaU97P8VQKHFiJgpRXsJcPPmP0bMYsKQ']
+        if (!esCiclo) {{
+            contenedorHabitaciones.innerHTML = ''
+        }}
         for(let i = 0; i < data.length; i++) {
             const disponibles = await fetch(`http://127.0.0.1:3000/api/habitaciones/total/${data[i].id_tipo_habitacion}`)
             const habitacionesDisponibles = await disponibles.json()
@@ -42,7 +57,7 @@ async function habitacion(cantidadHuespedes) {
                                     <span class="font-label-sm">45 m²</span>
                                 </div>
                                 <div class="flex items-center gap-2 text-outline">
-                                    <span class="material-symbols-outlined text-[20px]">wifi</span>
+                                    <span class="material-symbols-outlined text-[20px]">home</span>
                                     <span class="font-label-sm">Fiber Optic</span>
                                 </div>
                                 <div class="flex items-center gap-2 text-outline">
@@ -71,6 +86,17 @@ async function habitacion(cantidadHuespedes) {
 document.getElementById('botonConsultar').addEventListener('click', (event) => {
     event.preventDefault();
     const cantidadHuespedes = document.getElementById('selectorHuespedes').value;
-    console.log(cantidadHuespedes[0])
-    habitacion(cantidadHuespedes[0])
+    const inicio = new Date (document.getElementById('selectorInicio').value);
+    const final = new Date (document.getElementById('selectorFinal').value);
+    console.log(inicio)
+    console.log(final)
+    habitacion(cantidadHuespedes[0], inicio, final)
+})
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    for(let i = 0; i < 6; i++) {
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+        habitacion(i, hoy, hoy, true)
+    }
 })
