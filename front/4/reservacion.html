@@ -170,45 +170,45 @@
       >
         <div class="flex flex-col gap-2 min-w-[200px]">
           <label
-            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest"
+            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest" id="selectorInicio"
             >Check-in</label
           >
           <div
             class="flex items-center gap-3 border-b border-primary py-2 cursor-pointer"
           >
-            <span class="material-symbols-outlined text-primary"
-              >calendar_today</span
-            >
-            <span class="font-headline-lg text-headline-lg">14 Oct</span>
+            <input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary"
+                                type="date" id="selectorInicio"/>
           </div>
         </div>
         <div class="hidden md:block w-[1px] h-12 bg-outline-variant"></div>
         <div class="flex flex-col gap-2 min-w-[200px]">
           <label
-            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest"
+            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest" id="selectorFinal"
             >Check-out</label
           >
           <div
             class="flex items-center gap-3 border-b border-primary py-2 cursor-pointer"
           >
-            <span class="material-symbols-outlined text-primary"
-              >calendar_month</span
-            >
-            <span class="font-headline-lg text-headline-lg">18 Oct</span>
+            <input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary"
+                                type="date" id="selectorFinal"/>
           </div>
         </div>
         <div class="flex flex-col gap-2 min-w-[120px]">
           <label
-            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest"
+            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest" id="selectorHuespedes"
             >Huéspedes</label
           >
           <div
             class="flex items-center gap-3 border-b border-outline py-2 cursor-pointer"
           >
-            <span class="font-body-lg text-body-lg">2 Adultos</span>
-            <span class="material-symbols-outlined text-outline"
-              >expand_more</span
-            >
+            <select
+              class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary appearance-none" id="selectorHuespedes">
+              <option>1 persona</option>
+              <option>2 personas</option>
+              <option>3 personas</option>
+              <option>4 personas</option>
+              <option>5 personas</option>
+            </select>
           </div>
         </div>
       </div>

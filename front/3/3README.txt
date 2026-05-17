@@ -5,6 +5,11 @@ DEJAR DOCUMENTADOS LOS IDS DE LOS OBJETOS QUE SERÁN
 UTILIZADOS EN EL BACK EN ESTE DOCUMENTO. ABAJO 
 SE MUESTRA UN EJEMPLO DE LA ESTRUCTURA SOLICITADA:
 ---------------------------------------------------
+menu.html
+#selectorHuespedes = Contiene la cantidad de huéspedes
+#selectorInicio = Contiene la fecha de inicio
+#selectorFinal = Contiene la fecha final
+---------------------------------------------------
 main.html
 #anuncioBienvenida = Contiene el nombre del usuario
 .class = clase de los botones del cambio de pestaña

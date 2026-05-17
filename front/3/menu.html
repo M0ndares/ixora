@@ -126,13 +126,13 @@
             IXORA</div>
          <nav class="hidden md:flex gap-8 items-center">
             <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
-                href="sesion.html">Perfil</a>
+                href="main.html">Perfil</a>
             <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
-                href="habitaciones.html">Habitaciones</a>
+                href="../4/habitaciones.html">Habitaciones</a>
             <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
-                href="servicios.html">Experiencias</a>
+                href="../4/servicios.html">Experiencias</a>
             <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
-                href="historico.html">Historia</a>
+                href="../4/historico.html">Historia</a>
         </nav>
         <button
             class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-sm text-label-sm hover:bg-secondary transition-all active:scale-95 duration-300" onclick="window.location.href='sesion.html'">Iniciar
@@ -163,20 +163,24 @@
                             <label
                                 class="block font-label-sm text-label-sm text-on-surface-variant mb-1">LLEGADA</label>
                             <input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary"
-                                type="date" />
+                                type="date" id="selectorInicio"/>
                         </div>
                         <div
                             class="flex-1 px-6 py-3 border-b md:border-b-0 md:border-r border-outline-variant/30 text-left">
                             <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">SALIDA</label>
                             <input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary"
-                                type="date"/>
+                                type="date" id="selectorFinal"/>
                         </div>
                         <div class="flex-1 px-6 py-3 text-left">
                             <label
                                 class="block font-label-sm text-label-sm text-on-surface-variant mb-1">HUESPEDES</label>
                             <select
-                                class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary appearance-none">
-
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary appearance-none" id="selectorHuespedes">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
                             </select>
                         </div>
                     </div>
