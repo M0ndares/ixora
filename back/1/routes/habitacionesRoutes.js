@@ -8,7 +8,7 @@ const habitacionesController = require('../controllers/habitacionesController.js
 router.get('/habitaciones',habitacionesController.getAllHabitaciones);
 
 // Ruta para obtener habitaciones por estatus
-router.get('/habitaciones/status/:estatus', habitacionesController.getHabitacionesByStatus);
+router.get('/habitaciones/status/:idTipo', habitacionesController.getHabitacionesByTipo);
 // Ruta para agregar una nueva habitacion
 router.post('/habitacion', habitacionesController.addHabitacion);
 

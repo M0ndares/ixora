@@ -166,108 +166,45 @@
                     <h1 class="font-headline-xl text-headline-xl text-primary mt-2">Encuentra tu refugio</h1>
                 </div>
                 <div class="flex flex-wrap gap-4 items-center">
-                    <div
-                        class="flex items-center gap-3 bg-surface px-4 py-3 rounded-lg border border-outline-variant/30">
-                        <span class="material-symbols-outlined text-primary">calendar_month</span>
-                        <div>
-                            <p class="text-[10px] font-bold uppercase text-outline">Fechas</p>
-                            <p class="font-body-md text-body-md">12 Oct - 18 Oct</p>
+                    <div class="flex-1 flex flex-col md:flex-row">
+                        <div
+                            class="flex-1 px-6 py-3 border-b md:border-b-0 md:border-r border-outline-variant/30 text-left">
+                            <label
+                                class="block font-label-sm text-label-sm text-on-surface-variant mb-1">LLEGADA</label>
+                            <input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary"
+                                type="date" id="selectorInicio"/>
                         </div>
-                    </div>
-                    <div
-                        class="flex items-center gap-3 bg-surface px-4 py-3 rounded-lg border border-outline-variant/30">
-                        <span class="material-symbols-outlined text-primary">person</span>
-                        <div>
-                            <p class="text-[10px] font-bold uppercase text-outline">Huéspedes</p>
-                            <p class="font-body-md text-body-md">2 Adultos</p>
+                        <div
+                            class="flex-1 px-6 py-3 border-b md:border-b-0 md:border-r border-outline-variant/30 text-left">
+                            <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">SALIDA</label>
+                            <input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary"
+                                type="date" id="selectorFinal"/>
+                        </div>
+                        <div class="flex-1 px-6 py-3 text-left">
+                            <label
+                                class="block font-label-sm text-label-sm text-on-surface-variant mb-1">HUESPEDES</label>
+                            <select
+                                class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary appearance-none" id="selectorHuespedes">
+                                <option>1 persona</option>
+                                <option>2 personas</option>
+                                <option>3 personas</option>
+                                <option>4 personas</option>
+                                <option>5 personas</option>
+                            </select>
                         </div>
                     </div>
                     <button
-                        class="h-full px-6 py-3 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary hover:text-on-primary transition-all">
-                        Modificar
+                        class="h-full w-full px-6 py-3 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary hover:text-on-primary transition-all" id="botonConsultar">
+                        Consultar
                     </button>
                 </div>
             </div>
         </section>
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
             <!-- Filters Sidebar -->
-            <aside class="lg:col-span-3 space-y-8">
-                <div class="bg-surface-container-highest/30 p-6 rounded-xl border border-outline-variant/20">
-                    <h3 class="font-label-sm text-label-sm text-primary uppercase mb-6 tracking-widest">Filtros</h3>
-                    <!-- Room Type -->
-                    <div class="mb-8">
-                        <label class="font-label-sm text-label-sm text-outline block mb-3 uppercase">Tipo de
-                            Habitación</label>
-                        <div class="space-y-3">
-                            <label class="flex items-center gap-3 cursor-pointer group">
-                                <input class="rounded border-outline text-secondary focus:ring-secondary w-5 h-5"
-                                    type="checkbox" />
-                                <span
-                                    class="font-body-md text-on-surface group-hover:text-primary transition-colors">Suite
-                                    Nupcial</span>
-                            </label>
-                            <label class="flex items-center gap-3 cursor-pointer group">
-                                <input checked=""
-                                    class="rounded border-outline text-secondary focus:ring-secondary w-5 h-5"
-                                    type="checkbox" />
-                                <span
-                                    class="font-body-md text-on-surface group-hover:text-primary transition-colors">Deluxe
-                                    Garden</span>
-                            </label>
-                            <label class="flex items-center gap-3 cursor-pointer group">
-                                <input class="rounded border-outline text-secondary focus:ring-secondary w-5 h-5"
-                                    type="checkbox" />
-                                <span
-                                    class="font-body-md text-on-surface group-hover:text-primary transition-colors">Terraza
-                                    Ixora</span>
-                            </label>
-                        </div>
-                    </div>
-                    <!-- Price Range -->
-                    <div class="mb-8">
-                        <label class="font-label-sm text-label-sm text-outline block mb-3 uppercase">Rango de
-                            Precio</label>
-                        <input
-                            class="w-full h-1.5 bg-surface-container rounded-lg appearance-none cursor-pointer accent-secondary"
-                            max="1500" min="200" type="range" value="800" />
-                        <div class="flex justify-between mt-3">
-                            <span class="font-label-sm text-on-surface-variant">$200 USD</span>
-                            <span class="font-label-sm text-on-surface-variant">$1500+ USD</span>
-                        </div>
-                    </div>
-                    <!-- Capacity -->
-                    <div class="mb-4">
-                        <label class="font-label-sm text-label-sm text-outline block mb-3 uppercase">Capacidad</label>
-                        <select
-                            class="w-full bg-surface border-b border-outline focus:border-tertiary focus:ring-0 py-2 font-body-md">
-                            <option>Cualquiera</option>
-                            <option>1 Huésped</option>
-                            <option>2 Huéspedes</option>
-                            <option>3+ Huéspedes</option>
-                        </select>
-                    </div>
-                </div>
-                <!-- Promo Banner -->
-                <div class="relative rounded-xl overflow-hidden aspect-[4/5] flex items-end p-6 group">
-                    <img alt="Spa Ixora"
-                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        data-alt="A serene luxury spa interior at Ixora Hotel featuring a stone soaking tub filled with rose petals. Soft morning sunlight filters through wooden slats creating geometric shadows on the textured cream walls. The atmosphere is peaceful and opulent, emphasizing the Mexican boutique aesthetic with warm earth tones and minimal decor. A single glass of herbal tea sits on a low wooden table next to the tub."
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCllAES0fighUw7AkMMCawEbZm5DL5kPXLW49l5migbPyjhOtgqO8hUw2T_7V4QPbgBKByweExRg6XQyPDuf_rIAvmfutB5Yy27V1fSXrkRBx5Bs1S4HgoD-omISr_JpSjb9g2cwSBxl7lUnSk32dV9ypN3bv2Q7Pu_jKoAen2S1EuDFCP-Gm0KJus1fRpP55QGA8bZmWuOsoqWsPbIEcfceK72CgDlQ_ooFBlOj3IzcJojuot2l_stHdg2zIn-QSZjz4OZ-yjdzw" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
-                    <div class="relative z-10">
-                        <p class="font-label-sm text-label-sm text-tertiary-fixed uppercase mb-2">Especial de Temporada
-                        </p>
-                        <h4 class="font-headline-lg text-headline-lg text-on-primary-fixed mb-4 leading-tight">20% Off
-                            en Spa Ixora</h4>
-                        <button
-                            class="text-on-primary-fixed font-label-sm border-b border-on-primary-fixed pb-1 hover:border-tertiary-fixed transition-colors">Conocer
-                            más</button>
-                    </div>
-                </div>
-            </aside>
-            <!-- Room Listings -->
-            <div class="lg:col-span-9">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+            <!--- Room listings -->
+            <div class="lg:col-span-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter" id="contenedorHabitaciones">
                     <!-- Card 1 -->
                     <article class="bg-surface rounded-xl overflow-hidden luxury-shadow group flex flex-col">
                         <div class="relative h-72 overflow-hidden">
@@ -473,6 +410,7 @@
             <span class="font-label-sm text-label-sm">Perfil</span>
         </button>
     </nav>
+    <script src="../../back/2/habitaciones.js"></script>
 </body>
 
 </html>

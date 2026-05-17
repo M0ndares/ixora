@@ -8,9 +8,9 @@ exports.getAllHabitaciones = (req, res) => {
 };
 
 // Obtener Habitacions por estatus
-exports.getHabitacionesByStatus = (req, res) => {
-  const { estatus } = req.params;
-  Habitacion.getHabitacionesByStatus(estatus, (err, results) => {
+exports.getHabitacionesByTipo = (req, res) => {
+  const { idTipo } = req.params;
+  Habitacion.getHabitacionesByTipo(idTipo, (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.status(200).json(results);
   });
