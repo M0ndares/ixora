@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const datos = await response.json()
         if (datos && datos.length > 0) {
             nombre = datos[0].nombre_usuario.split(' ')[0]
+            apellido = datos[0].nombre_usuario.split(' ')[datos[0].nombre_usuario.split(' ').length - 1]
             document.getElementById('anuncioBienvenida').innerText = `BIENVENID@ ${nombre.toUpperCase()}`
+            document.getElementById('nombreBienvenida').innerText = `${nombre.toUpperCase()} ${apellido.toUpperCase()}`
             document.getElementById('emailBienvenida').innerText = `${datos[0].email.toLowerCase()}`
             fecha = new Date(datos[0].fecha_registro)
             document.getElementById('fechaBienvenida').innerText = `Miembro desde ${fecha.toISOString().slice(0, 10)}`
