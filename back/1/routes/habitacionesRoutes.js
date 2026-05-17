@@ -9,6 +9,9 @@ router.get('/habitaciones',habitacionesController.getAllHabitaciones);
 
 // Ruta para obtener habitaciones por estatus
 router.get('/habitaciones/status/:idTipo', habitacionesController.getHabitacionesByTipo);
+
+router.get('/habitaciones/total/:idTipo', habitacionesController.getTotalHabitacionesByTipo);
+
 // Ruta para agregar una nueva habitacion
 router.post('/habitacion', habitacionesController.addHabitacion);
 

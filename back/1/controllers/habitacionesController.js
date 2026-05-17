@@ -16,6 +16,13 @@ exports.getHabitacionesByTipo = (req, res) => {
   });
 };
 
+exports.getTotalHabitacionesByTipo = (req, res) => {
+  const { idTipo } = req.params;
+  Habitacion.getTotalHabitacionesByTipo(idTipo, (err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.status(200).json(results);
+  });
+};
 
 // Agregar un nuevo Habitacion
 exports.addHabitacion = (req, res) => {

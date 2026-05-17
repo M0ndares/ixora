@@ -9,7 +9,12 @@ exports.getAllHabitaciones = (callback) => {
 // Consultar habitaciones por estado de disponibilidad (Equivalente al "estatus")
 // Ejemplo de estados: 'Disponible', 'Ocupada', 'Mantenimiento'
 exports.getHabitacionesByTipo = (tipo, callback) => {
-  const query = 'SELECT * FROM tipohabitacion WHERE id_tipo_habitacion = ?';
+  const query = 'SELECT * FROM tipohabitacion WHERE capacidad = ?';
+  db.query(query, [tipo], callback);
+};
+
+exports.getTotalHabitacionesByTipo = (tipo, callback) => {
+  const query = 'SELECT count(id_habitacion) from habitacion where estado_disponibilidad = "Disponible" AND id_tipo_habitacion = ?';
   db.query(query, [tipo], callback);
 };
 

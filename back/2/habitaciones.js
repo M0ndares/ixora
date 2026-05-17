@@ -1,6 +1,6 @@
-async function habitacion(id_habitacion) {
+async function habitacion(cantidadHuespedes) {
     try {
-        const response = await fetch(`http://127.0.0.1:3000/api/habitaciones/status/${id_habitacion}`);
+        const response = await fetch(`http://127.0.0.1:3000/api/habitaciones/status/${cantidadHuespedes}`);
         const data = await response.json();
         console.log(data)
         const contenedorHabitaciones = document.getElementById('contenedorHabitaciones');
@@ -11,16 +11,18 @@ async function habitacion(id_habitacion) {
             'https://lh3.googleusercontent.com/aida-public/AB6AXuCKbtiwXqUibzPFet3TjjnPOUTp_UUC77Vc5Ao8V-Cpikl60c3XYE0Lme08utYeklef2Y2Lc-8H2DqWfUnf1v1BqngKfDEf4Aabkdc3Hv0yUAvZyi-VFaH4t2gJVaR0dUWMvw_AUOf88glp07710_7QdFMx9rkeuZtXC4yJTilqpvsPXTLjZJIsZr_A0t39iXCx78FX_sgWvCDyeioS9KFWqDVdnJhvqmI2EV9DPNJZ0j_E1F9k0TuY_B3TGGDdxy-nj7xonOWMMQ', 
             'https://lh3.googleusercontent.com/aida-public/AB6AXuBeM5yPEgvmhS37cUEi9DZ-jKV3ph6z3K_IsqnnA8MRKfDFJ30Ttb5xNvfUV9gN1PYVnjucW4Ozhv9Wtly56biH2lzmZbIIcTrxHDNuG3FzBxgpE7Kk4CiEoADinwFDtslUXZldTHrgh-JerqJoW_8RbpO3r7oavSRY6Kfdn4SE1ri3Rnq6lsocEBMFw6Cj2KipcPFAehMDsIb8uG5mY1i1Vkvww7kEtFXBufgKEjMq_KCaU97P8VQKHFiJgpRXsJcPPmP0bMYsKQ']
         for(let i = 0; i < data.length; i++) {
+            const disponibles = await fetch(`http://127.0.0.1:3000/api/habitaciones/total/${data[i].id_tipo_habitacion}`)
+            const habitacionesDisponibles = await disponibles.json()
             contenedorHabitaciones.innerHTML += `<article class="bg-surface rounded-xl overflow-hidden luxury-shadow group flex flex-col">
                         <div class="relative h-72 overflow-hidden">
                             <img alt="Suite Deluxe Ixora"
                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                 data-alt="A spacious and high-end hotel suite with a king-size bed draped in premium linen. Large floor-to-ceiling windows reveal a lush tropical garden with sunlight pouring in. The interior features natural wood textures, minimalist Mexican furniture, and soft cream walls. The mood is tranquil and sophisticated, utilizing a light-mode color palette with subtle red accents in the textiles."
-                                src=${fotos[id_habitacion - 1]} />
+                                src=${fotos[cantidadHuespedes - 1]} />
                             <div
                                 class="absolute top-4 left-4 bg-surface/90 px-3 py-1 rounded-full flex items-center gap-2">
                                 <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                                <span class="font-label-sm text-label-sm text-primary uppercase">${data[i]} Disponible(s)</span>
+                                <span class="font-label-sm text-label-sm text-primary uppercase">${habitacionesDisponibles[0]["count(id_habitacion)"]} Disponible(s)</span>
                             </div>
                         </div>
                         <div class="p-6 flex-grow">
