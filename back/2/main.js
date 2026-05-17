@@ -21,3 +21,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error al cargar la página principal:', error);
     }
 })
+
+document.getElementById('cerrarSesion').addEventListener('click', (event) => {
+    event.preventDefault();
+    try {
+        const email = localStorage.getItem('emailUsuario');
+        const usuarioData = {
+            activo: 0
+        };
+        const response = fetch(`http://127.0.0.1:3000/api/usuarios/actualizar/${email}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json' 
+            },
+            body: JSON.stringify(usuarioData)     
+        });
+        localStorage.clear()
+        window.location.href = '../../front/3/menu.html' 
+    }
+    catch (error) {
+        console.error('Error de red o conexión:', error);
+    }
+})
