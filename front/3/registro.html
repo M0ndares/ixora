@@ -151,8 +151,15 @@
       class="fixed top-0 z-50 w-full bg-surface/80 dark:bg-surface/80 backdrop-blur-md shadow-sm dark:shadow-none"
     >
       <div
-        class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-6 max-w-container-max-width mx-auto"
+        class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max-width mx-auto"
       >
+        <div class="absolute inset-0 pointer-events-none z-0">
+          <div class="absolute bottom-2 left-12 w-5 h-7 rounded-full transform -rotate-45" style="background-color: #b63c47; border-radius: 100% 0% 100% 0%;"></div>
+          <div class="absolute top-2 left-4 w-7 h-9 rounded-full transform rotate-12" style="background-color: #b63c47; border-radius: 100% 0% 100% 0%;"></div>
+          
+          <div class="absolute bottom-2 right-12 w-5 h-7 rounded-full transform rotate-45" style="background-color: #b63c47; border-radius: 0% 100% 0% 100%;"></div>
+          <div class="absolute top-2 right-4 w-7 h-9 rounded-full transform -rotate-12" style="background-color: #b63c47; border-radius: 0% 100% 0% 100%;"></div>
+        </div>
         <div class="font-display-lg text-headline-lg text-primary dark:text-primary-fixed tracking-widest uppercase" onclick="window.location.href = 'menu.html'" role="button">
             IXORA</div>
         <nav class="hidden md:flex gap-8 items-center">

@@ -117,6 +117,10 @@
             color: #1b1c19;
         }
 
+        header {
+            background-color: #b63c47;
+        }
+
         .text-balance {
             text-wrap: balance;
         }
@@ -126,25 +130,34 @@
 <body class="font-body-md overflow-x-hidden">
     <!-- TopAppBar -->
     <header
-        class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
-        <div class="font-display-lg text-headline-lg text-primary dark:text-primary-fixed tracking-widest uppercase" onclick="window.location.href = '../3/menu.html'" role="button">
-            IXORA</div>
-        <nav class="hidden md:flex gap-8 items-center">
-            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
-                href="../3/main.html">Perfil</a>
-            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
-                href="habitaciones.html">Habitaciones</a>
-            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
-                href="servicios.html">Experiencias</a>
-            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
-                href="historico.html">Historia</a>
-        </nav>
-        <button
-            class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-sm text-label-sm uppercase tracking-wider hover:bg-secondary transition-all active:scale-95" onclick="window.location.href = 'reservacion.html'">
-            Reservar Ahora
-        </button>
-    </header>
-    <main class="pt-20">
+    class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm overflow-hidden relative">
+    
+    <div class="absolute inset-0 pointer-events-none z-0">
+        <div class="absolute bottom-2 left-12 w-5 h-7 rounded-full transform -rotate-45" style="background-color: #b63c47; border-radius: 100% 0% 100% 0%;"></div>
+        <div class="absolute top-2 left-4 w-7 h-9 rounded-full transform rotate-12" style="background-color: #b63c47; border-radius: 100% 0% 100% 0%;"></div>
+        
+        <div class="absolute bottom-2 right-12 w-5 h-7 rounded-full transform rotate-45" style="background-color: #b63c47; border-radius: 0% 100% 0% 100%;"></div>
+        <div class="absolute top-2 right-4 w-7 h-9 rounded-full transform -rotate-12" style="background-color: #b63c47; border-radius: 0% 100% 0% 100%;"></div>
+    </div>
+
+    <div class="font-display-lg text-headline-lg text-primary dark:text-primary-fixed tracking-widest uppercase" onclick="window.location.href = '../3/menu.html'" role="button">
+        IXORA</div>
+    <nav class="hidden md:flex gap-8 items-center">
+        <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
+            href="../3/main.html">Perfil</a>
+        <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
+            href="habitaciones.html">Habitaciones</a>
+        <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
+            href="servicios.html">Experiencias</a>
+        <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
+            href="historico.html">Historia</a>
+    </nav>
+    <button
+        class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-sm text-label-sm uppercase tracking-wider hover:bg-secondary transition-all active:scale-95" onclick="window.location.href = 'reservacion.html'">
+        Reservar Ahora
+    </button>
+</header>
+    <main>
         <!-- Hero Section -->
         <section class="relative h-[819px] w-full flex items-center justify-center overflow-hidden">
             <div class="absolute inset-0 z-0">
