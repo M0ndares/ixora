@@ -51,7 +51,7 @@ exports.updateHabitacion = (id_habitacion, habitacionData, callback) => {
     habitacionData.piso,
     habitacionData.estado_disponibilidad,
     habitacionData.descripcion,
-    id_habitacion // El ID va al final porque corresponde al último '?' en el WHERE
+    id_habitacion 
   ], callback);
 };
 
