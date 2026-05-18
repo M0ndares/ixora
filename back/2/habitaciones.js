@@ -3,7 +3,9 @@ const fotos = ['https://lh3.googleusercontent.com/aida-public/AB6AXuBJYtQhIdgODO
             'https://lh3.googleusercontent.com/aida-public/AB6AXuDhOCD4Fe9mKJHMJzjxKwxnhVzl7EX99V9_h7xC97hHdI1loBeTReiOsFrmrp60WLwqbkyU4Dvitx9E1A-EGPUVHz-WgldELTv1oyVEaxKtNpJiF1kMqfV3CcPrZSrmZaFi-Amj7dz4eAx0E5e3BHfpK8-Y37nyWSXVMVmD6u5GXFC1tmOuRl2icRg6WnXo1BiCsY5dXMvVNi7hTbsb-m631UJIRdYwpCJOSGUP-De7jjyQlPvUMV6vUYxTti-9FuiIATwRksfTZA', 
             'https://lh3.googleusercontent.com/aida-public/AB6AXuCKbtiwXqUibzPFet3TjjnPOUTp_UUC77Vc5Ao8V-Cpikl60c3XYE0Lme08utYeklef2Y2Lc-8H2DqWfUnf1v1BqngKfDEf4Aabkdc3Hv0yUAvZyi-VFaH4t2gJVaR0dUWMvw_AUOf88glp07710_7QdFMx9rkeuZtXC4yJTilqpvsPXTLjZJIsZr_A0t39iXCx78FX_sgWvCDyeioS9KFWqDVdnJhvqmI2EV9DPNJZ0j_E1F9k0TuY_B3TGGDdxy-nj7xonOWMMQ', 
             'https://lh3.googleusercontent.com/aida-public/AB6AXuBeM5yPEgvmhS37cUEi9DZ-jKV3ph6z3K_IsqnnA8MRKfDFJ30Ttb5xNvfUV9gN1PYVnjucW4Ozhv9Wtly56biH2lzmZbIIcTrxHDNuG3FzBxgpE7Kk4CiEoADinwFDtslUXZldTHrgh-JerqJoW_8RbpO3r7oavSRY6Kfdn4SE1ri3Rnq6lsocEBMFw6Cj2KipcPFAehMDsIb8uG5mY1i1Vkvww7kEtFXBufgKEjMq_KCaU97P8VQKHFiJgpRXsJcPPmP0bMYsKQ']
-
+const size = ['15', '20', '30', '45', '70'];
+const cama = ['Individual', 'Matrimonial', 'King Size', '2 matrimoniales', '2 King Size'] 
+const estrellas = ['4.4', '4.7', '4.8', '4.5', '4.9']
 async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
@@ -54,15 +56,15 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
                                 </div>
                                 <div class="flex items-center gap-2 text-outline">
                                     <span class="material-symbols-outlined text-[20px]">aspect_ratio</span>
-                                    <span class="font-label-sm">45 m²</span>
+                                    <span class="font-label-sm">${size[cantidadHuespedes - 1]} m²</span>
                                 </div>
                                 <div class="flex items-center gap-2 text-outline">
-                                    <span class="material-symbols-outlined text-[20px]">home</span>
-                                    <span class="font-label-sm">Fiber Optic</span>
+                                    <span class="material-symbols-outlined text-[20px]">hotel_class</span>
+                                    <span class="font-label-sm">${estrellas[cantidadHuespedes - 1]}/5</span>
                                 </div>
                                 <div class="flex items-center gap-2 text-outline">
                                     <span class="material-symbols-outlined text-[20px]">king_bed</span>
-                                    <span class="font-label-sm">King Size</span>
+                                    <span class="font-label-sm">${cama[cantidadHuespedes - 1]}</span>
                                 </div>
                             </div>
                         </div>
