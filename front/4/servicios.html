@@ -133,11 +133,11 @@
     class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm overflow-hidden relative">
     
     <div class="absolute inset-0 pointer-events-none z-0">
-        <div class="absolute bottom-2 left-12 w-5 h-7 rounded-full transform -rotate-45" style="background-color: #b63c47; border-radius: 100% 0% 100% 0%;"></div>
-        <div class="absolute top-2 left-4 w-7 h-9 rounded-full transform rotate-12" style="background-color: #b63c47; border-radius: 100% 0% 100% 0%;"></div>
+        <div class="hidden md:block absolute bottom-2 left-12 w-5 h-7 rounded-full transform -rotate-45" style="background-color: #b63c47; border-radius: 100% 0% 100% 0%;"></div>
+        <div class="hidden md:block absolute top-2 left-4 w-7 h-9 rounded-full transform rotate-12" style="background-color: #b63c47; border-radius: 100% 0% 100% 0%;"></div>
         
-        <div class="absolute bottom-2 right-12 w-5 h-7 rounded-full transform rotate-45" style="background-color: #b63c47; border-radius: 0% 100% 0% 100%;"></div>
-        <div class="absolute top-2 right-4 w-7 h-9 rounded-full transform -rotate-12" style="background-color: #b63c47; border-radius: 0% 100% 0% 100%;"></div>
+        <div class="hidden md:block absolute bottom-2 right-12 w-5 h-7 rounded-full transform rotate-45" style="background-color: #b63c47; border-radius: 0% 100% 0% 100%;"></div>
+        <div class="hidden md:block absolute top-2 right-4 w-7 h-9 rounded-full transform -rotate-12" style="background-color: #b63c47; border-radius: 0% 100% 0% 100%;"></div>
     </div>
 
     <div class="font-display-lg text-headline-lg text-primary dark:text-primary-fixed tracking-widest uppercase" onclick="window.location.href = '../3/menu.html'" role="button">
@@ -184,28 +184,37 @@
         <!-- Experience Catalog -->
         <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
             <div class="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        
                 <div class="max-w-xl">
                     <h2 class="font-headline-xl text-headline-xl text-primary mb-6">Catálogo de Experiencias</h2>
-                    <p class="font-body-md text-body-md text-on-surface-variant">Cada servicio en Ixora ha sido curado
-                        para ofrecer una ventana a la riqueza cultural de la región, combinando confort contemporáneo
-                        con tradiciones milenarias.</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        Cada servicio en Ixora ha sido curado para ofrecer una ventana a la riqueza cultural de la región, 
+                        combinando confort contemporáneo con tradiciones milenarias.
+                    </p>
                 </div>
-                <div class="flex gap-4 border-b border-outline-variant w-fit">
-                    <label
-                        class="block font-label-sm text-label-sm text-on-surface-variant mb-1">CATEGORIA</label>
-                    <select
-                            class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary appearance-none" id="selectorCategoria">
-                        <option>Gastronomía</option>
-                        <option>Transporte</option>
-                        <option>Relajación</option>
-                        <option>Aventura</option>
-                        <option>Cultura</option>
-                    </select>
-                    <button
-                        class="h-16 w-full px-6 py-3 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary hover:text-on-primary transition-all" id="botonConsultar">
+                
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-end gap-4 min-w-[300px]">
+                    
+                    <div class="flex flex-col border-b border-outline-variant pb-1 flex-grow">
+                        <label for="selectorCategoria" class="block font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">
+                            Categoría
+                        </label>
+                        <select class="w-full bg-transparent border-none focus:ring-0 font-body-md text-primary appearance-none cursor-pointer pr-8" id="selectorCategoria">
+                            <option>Gastronomía</option>
+                            <option>Transporte</option>
+                            <option>Relajación</option>
+                            <option>Aventura</option>
+                            <option>Cultura</option>
+                        </select>
+                    </div>
+                    
+                    <button class="h-11 px-6 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary hover:text-on-primary transition-all active:scale-95 whitespace-nowrap" id="botonConsultar">
                         Consultar
                     </button>
+                    
                 </div>
+
+            </div>
             </div>
             <!-- Bento Grid of Experiences -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter" id="contenedorServicios">

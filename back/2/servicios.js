@@ -36,8 +36,8 @@ async function servicio(categoria = null, esCiclo = false) {
                             </p>
                             <div class="grid grid-cols-2 gap-4 mb-8">
                                 <div class="flex items-center gap-2 text-outline">
-                                    <span class="material-symbols-outlined text-[20px]">groups</span>
-                                    <span class="font-label-sm">${data[i].precio} persona(s)</span>
+                                    <span class="material-symbols-outlined text-[20px]">category</span>
+                                    <span class="font-label-sm">${data[i].categoria} </span>
                                 </div>
                                 <div class="flex items-center gap-2 text-outline">
                                     <span class="material-symbols-outlined text-[20px]">hotel_class</span>
