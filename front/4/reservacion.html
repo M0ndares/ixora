@@ -170,57 +170,49 @@
     </header>
     <br><br><br>
     <!-- Date Selection Bar -->
-    <section
-      class="bg-surface-container-low py-8 px-margin-mobile md:px-margin-desktop border-b border-outline-variant/30"
-    >
-      <div
-        class="max-w-container-max-width mx-auto flex flex-wrap gap-8 items-center justify-center"
-      >
-        <div class="flex flex-col gap-2 min-w-[200px]">
-          <label
-            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest" id="selectorInicio"
-            >Check-in</label
-          >
-          <div
-            class="flex items-center gap-3 border-b border-primary py-2 cursor-pointer"
-          >
-            <input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary"
-                                type="date" id="selectorInicio"/>
-          </div>
-        </div>
-        <div class="hidden md:block w-[1px] h-12 bg-outline-variant"></div>
-        <div class="flex flex-col gap-2 min-w-[200px]">
-          <label
-            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest" id="selectorFinal"
-            >Check-out</label
-          >
-          <div
-            class="flex items-center gap-3 border-b border-primary py-2 cursor-pointer"
-          >
-            <input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary"
-                                type="date" id="selectorFinal"/>
-          </div>
-        </div>
-        <div class="flex flex-col gap-2 min-w-[120px]">
-          <label
-            class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest" id="selectorHuespedes"
-            >Huéspedes</label
-          >
-          <div
-            class="flex items-center gap-3 border-b border-outline py-2 cursor-pointer"
-          >
-            <select
-              class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary appearance-none" id="selectorHuespedes">
-              <option>1 persona</option>
-              <option>2 personas</option>
-              <option>3 personas</option>
-              <option>4 personas</option>
-              <option>5 personas</option>
-            </select>
-          </div>
-        </div>
+    <section class="bg-surface-container-low py-8 px-margin-mobile md:px-margin-desktop border-b border-outline-variant/30">
+  <div class="max-w-container-max-width mx-auto flex flex-wrap gap-8 items-center justify-center">
+    
+    <div class="flex flex-col gap-2 min-w-[200px]">
+      <label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Check-in</label>
+      <div class="flex items-center gap-3 border-b border-primary py-2 cursor-pointer">
+        <input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary" type="date" id="selectorInicio"/>
       </div>
-    </section>
+    </div>
+    
+    <div class="hidden md:block w-[1px] h-12 bg-outline-variant"></div>
+    
+    <div class="flex flex-col gap-2 min-w-[200px]">
+      <label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Check-out</label>
+      <div class="flex items-center gap-3 border-b border-primary py-2 cursor-pointer">
+        <input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary" type="date" id="selectorFinal"/>
+      </div>
+    </div>
+    
+    <div class="hidden md:block w-[1px] h-12 bg-outline-variant"></div>
+    
+    <div class="flex flex-col gap-2 min-w-[120px]">
+      <label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Huéspedes</label>
+      <div class="flex items-center gap-3 border-b border-outline py-2 cursor-pointer">
+        <select class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-primary appearance-none" id="selectorHuespedes">
+          <option>1 persona</option>
+          <option>2 personas</option>
+          <option>3 personas</option>
+          <option>4 personas</option>
+          <option>5 personas</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="flex flex-col gap-2 min-w-[160px] self-end">
+      <span class="hidden sm:block font-label-sm text-label-sm opacity-0 select-none">Consultar</span>
+      <button class="w-full px-6 py-2 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary hover:text-on-primary transition-all" id="botonConsultar">
+        Consultar
+      </button>
+    </div>
+
+  </div>
+</section>
     <!-- Main Grid Layout -->
     <main
       class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
@@ -304,137 +296,20 @@
         <!-- Tabbed Navigation -->
         <nav class="flex border-b border-outline-variant">
           <button
-            class="px-8 py-4 font-label-md text-label-md text-primary border-b-2 border-primary"
+            class="px-8 py-4 font-label-md text-label-md  border-primary" id="consultarHabitaciones"
           >
             Habitaciones
           </button>
           <button
-            class="px-8 py-4 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors"
+            class="px-8 py-4 font-label-md text-label-md text-on-surface-variant  transition-colors" id="consultarServicios"
           >
             Servicios
           </button>
-          <button
-            class="px-8 py-4 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors"
-          >
-            Preferencias
-          </button>
         </nav>
         <!-- Habitaciones Content (Active State) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="containerVisual">
           <!-- Suite Card 1 -->
-          <div
-            class="bg-white rounded-xl overflow-hidden group border border-outline-variant/30 hover:shadow-lg transition-shadow duration-500"
-          >
-            <div class="relative aspect-[4/5] overflow-hidden">
-              <img
-                alt="Ixora Garden Suite"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                data-alt="A luxurious minimalist hotel suite in Mexico featuring high ceilings, warm cream walls, and organic wooden furniture. Natural light floods the space from a private interior garden. The aesthetic is contemporary heritage with soft linen textiles and a sculptural stone bathtub visible in the background. Calm, serene, high-end photography."
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6bJJJWRsV6pCPELwnq9uk-MTmB6KZKz_QsOhHNORk5fBUlOai0gxPwh0C988RJrJON0yWk3TE00uIzXJkWWOLTKhnmzhROlqEg-6uH-jkwWKz5vxkXLNpX6IySjIVwgj61kwAOVppmAdBdjg9KVcXcGgG_OuK_DOlmtigG3VM8hcV4xmiZJQb-6VQ9zxIDcZO8og-IRSnJ3kQKOvW0z5naADNLX0xRFTLfD7TIVrhVBNcodc699zz4fU30kyf85oZ4n58_56DLAA"
-              />
-              <div
-                class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-1 rounded-full font-label-sm text-label-sm text-primary"
-              >
-                Más Popular
-              </div>
-            </div>
-            <div class="p-8 space-y-4">
-              <div class="flex justify-between items-baseline">
-                <h4 class="font-headline-lg text-headline-lg">Atrio Jardin</h4>
-                <span class="text-on-surface-variant font-body-md"
-                  >$850 / noche</span
-                >
-              </div>
-              <p class="text-on-surface-variant font-body-md">
-                Santuario privado de 75m² con jardin interior, cama King con
-                sábanas de 800 hilos y ducha tipo lluvia.
-              </p>
-              <button
-                class="w-full py-3 border border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all"
-              >
-                Seleccionar
-              </button>
-            </div>
-          </div>
-          <!-- Suite Card 2 -->
-          <div
-            class="bg-white rounded-xl overflow-hidden group border border-outline-variant/30 hover:shadow-lg transition-shadow duration-500"
-          >
-            <div class="relative aspect-[4/5] overflow-hidden">
-              <img
-                alt="Ixora Master Suite"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                data-alt="An expansive master suite in a boutique hotel in Oaxaca, showcasing brutalist architecture softened by traditional Mexican crafts. Large floor-to-ceiling glass doors open to a private terrace with a terracotta plunge pool. The interior uses a palette of charcoal, warm woods, and cream plaster walls. Minimalist luxury lighting creating long, soft shadows."
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFeNPXBUq-GGuG43KYKQrt6CPbj5t_3SzDYN4Za_8FfHZRAoLCckjZT9Nh9Kxf8TKpTCK_h07zGj5cVbeqtSN0sjYYxR_ryF5B4yLxruc17aC7RlYJnYIdBtFDi05nzcbcmmbw6ORjZiYuDT7Q_m6b4HpqzXFwZG0-kfRz9acbKVHWhvNXo63l8KOaD-0-f5AM4gpH7nPAJB3mG9VxdcKTnWVwrbFJRniWjJ8VGv7JSK5Z-ZvESTUIlQNsR-z0JuOSmRkRh8vmJ4A"
-              />
-            </div>
-            <div class="p-8 space-y-4">
-              <div class="flex justify-between items-baseline">
-                <h4 class="font-headline-lg text-headline-lg">
-                  Terraza Master
-                </h4>
-                <span class="text-on-surface-variant font-body-md"
-                  >$1,200 / noche</span
-                >
-              </div>
-              <p class="text-on-surface-variant font-body-md">
-                Vistas panorámicas a la ciudad histórica, terraza privada con
-                piscina de inmersión y servicio de mayordomo.
-              </p>
-              <button
-                class="w-full py-3 border border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all"
-              >
-                Seleccionar
-              </button>
-            </div>
-          </div>
-        </div>
-        <!-- Additional Luxury Amenities (Bento Grid Style) -->
-        <div class="pt-8">
-          <h3 class="font-headline-lg text-headline-lg mb-8">
-            Complementos Exclusivos
-          </h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div
-              class="md:col-span-2 bg-tertiary-fixed text-on-tertiary-fixed p-10 rounded-xl relative overflow-hidden group"
-            >
-              <div class="relative z-10 space-y-4 max-w-sm">
-                <h5 class="font-headline-lg text-headline-lg">Ritual de Spa</h5>
-                <p class="font-body-md">
-                  Recupere el equilibrio con técnicas ancestrales y aceites
-                  botánicos locales.
-                </p>
-                <button
-                  class="flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest group-hover:translate-x-2 transition-transform"
-                >
-                  Añadir a reserva
-                  <span class="material-symbols-outlined">arrow_right_alt</span>
-                </button>
-              </div>
-              <div
-                class="absolute right-[-10%] bottom-[-20%] opacity-20 transform -rotate-12 group-hover:rotate-0 transition-transform duration-700"
-              >
-                <span
-                  class="material-symbols-outlined text-[200px]"
-                  style="font-variation-settings: &quot;wght&quot; 100"
-                  >spa</span
-                >
-              </div>
-            </div>
-            <div class="bg-surface-container-high p-10 rounded-xl space-y-4">
-              <span class="material-symbols-outlined text-secondary text-4xl"
-                >restaurant</span
-              >
-              <h5 class="font-headline-lg text-headline-lg">Mesa del Chef</h5>
-              <p class="font-body-md text-on-surface-variant">
-                Reserva prioritaria en Ixora Cocina.
-              </p>
-              <button
-                class="font-label-sm text-label-sm text-secondary uppercase tracking-tighter"
-              >
-                Reservar
-              </button>
-            </div>
+           <p class = "font-headline-xl text-headline-xl border-outline-variant">Consulte un rango de fechas.</p>
           </div>
         </div>
       </div>
@@ -507,5 +382,6 @@
         </p>
       </div>
     </footer>
+    <script src="../../back/2/reservacion.js"></script>
   </body>
 </html>

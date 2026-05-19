@@ -10,11 +10,8 @@ async function servicio(categoria = null, esCiclo = false) {
     try {
         const response = await fetch(`http://127.0.0.1:3000/api/servicios`);
         const data = await response.json();
-        console.log(data)
         for(let i = 0; i < data.length; i++) {
             if (categoria != null && categoria != data[i].categoria) continue;
-            
-            console.log('si'); 
             contenedorServicios.innerHTML += `<article class="bg-surface rounded-xl overflow-hidden luxury-shadow group flex flex-col">
                         <div class="relative h-72 overflow-hidden">
                             <img alt="Suite Deluxe Ixora"
@@ -41,7 +38,7 @@ async function servicio(categoria = null, esCiclo = false) {
                                 </div>
                                 <div class="flex items-center gap-2 text-outline">
                                     <span class="material-symbols-outlined text-[20px]">hotel_class</span>
-                                    <span class="font-label-sm">${estrellas[data[i].id_servicio]}/5</span>
+                                    <span class="font-label-sm">${estrellas[data[i].id_servicio - 1]}/5</span>
                                 </div>
                             </div>
                         </div>
