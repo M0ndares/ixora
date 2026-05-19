@@ -73,7 +73,7 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
               >
                 Seleccionar
               </button>
-            </div>`
+            </div> </div>`
         }
     } catch(error) {
         console.log(error)
@@ -82,6 +82,7 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
 
 async function servicio(inicio, final, cantidadHuespedes, categoria = null, esCiclo = false) {
     const hoy = new Date();
+    console.log(categoria)
     hoy.setHours(0, 0, 0, 0);
     if (isNaN(inicio.getTime()) || isNaN(final.getTime())) {
             alert('Debe de introducir un rango de fechas');
@@ -93,7 +94,22 @@ async function servicio(inicio, final, cantidadHuespedes, categoria = null, esCi
             alert('La fecha de inicio tiene que ser futura.');
             return;
     }
-    contenedor.innerHTML = ''
+    contenedor.innerHTML = `   <div class="flex flex-col sm:flex-row gap-4 items-end w-full">
+            <div class="flex flex-col border-b border-outline-variant pb-1 flex-grow w-full">
+                <select class="w-full bg-transparent border-none focus:ring-0 px-8 py-4 font-label-md text-label-md text-on-surface-variant transition-colors cursor-pointer" id="selectorCategoria">
+                <option>Gastronomía</option>
+                <option>Transporte</option>
+                <option>Relajación</option>
+                <option>Aventura</option>
+                <option>Cultura</option>
+                </select>
+            </div>
+            <div class="w-full sm:w-auto pb-1">
+                <button class="w-full sm:w-auto px-6 py-4 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary hover:text-on-primary transition-all whitespace-nowrap" id="botonServicios">
+                Consultar
+                </button>
+            </div>
+            </div><br>`
     consultarServicios.className = 'px-8 py-4 font-label-md text-label-md border-b-2 border-primary text-primary hover:text-primary-dark transition-all cursor-pointer';
     consultarHabitaciones.className = 'px-8 py-4 font-label-md text-label-md text-outline hover:text-primary transition-all cursor-pointer';
     try {
@@ -143,9 +159,10 @@ consultarServicios.addEventListener('click', (event) => {
     const final = new Date (document.getElementById('selectorFinal').value);
     servicio(inicio, final, cantidadHuespedes);
 })
-     
+
 document.getElementById('botonConsultar').addEventListener('click', (event) => {
     event.preventDefault();
+    contenedor.innerHTML = '<p class="font-headline-xl text-headline-xl border-outline-variant col-span-1 md:col-span-2">Consulte un rango de fechas.</p>'
     const cantidadHuespedes = document.getElementById('selectorHuespedes').value[0];
     const inicio = new Date (document.getElementById('selectorInicio').value);
     const final = new Date (document.getElementById('selectorFinal').value);
@@ -170,3 +187,16 @@ if(datosMenu) {
     const final = new Date (diccionario.final);
     habitacion(diccionario.cantidadHuespedes[0], inicio, final);
 }
+
+contenedor.addEventListener('click', (event) => {
+    if (event.target && event.target.id === 'botonServicios') {
+        event.preventDefault(); 
+        const categoria = document.getElementById('selectorCategoria');
+        if (categoria) {
+            const cantidadHuespedes = document.getElementById('selectorHuespedes').value[0];
+            const inicio = new Date (document.getElementById('selectorInicio').value);
+            const final = new Date (document.getElementById('selectorFinal').value);
+            servicio(inicio, final, cantidadHuespedes, categoria.value);
+        }
+    }
+})
