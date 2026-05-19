@@ -118,7 +118,7 @@ async function servicio(inicio, final, cantidadHuespedes, categoria = null, esCi
         <div class="p-8 space-y-4">
             <div class="flex justify-between items-baseline">
             <h4 class="font-headline-lg text-headline-lg">${data[i].nombre_servicio}</h4>
-            <span class="text-on-surface-variant font-body-md">$${data[i].precio * cantidadHuespedes} x reservación</span>
+            <span class="text-on-surface-variant font-body-md">$${data[i].precio * cantidadHuespedes}</span>
             </div>
             
             <p class="text-on-surface-variant font-body-md">
@@ -159,3 +159,14 @@ consultarHabitaciones.addEventListener('click', (event) => {
     const final = new Date (document.getElementById('selectorFinal').value);
     habitacion(cantidadHuespedes, inicio, final);
 })
+
+const datosMenu = localStorage.getItem('datosMenu')
+if(datosMenu) {
+    const diccionario = JSON.parse(datosMenu);
+    document.getElementById('selectorHuespedes').value = diccionario.cantidadHuespedes;
+    document.getElementById('selectorInicio').value = diccionario.inicio.substring(0, 10);
+    document.getElementById('selectorFinal').value = diccionario.final.substring(0, 10);
+    const inicio = new Date (diccionario.inicio);
+    const final = new Date (diccionario.final);
+    habitacion(diccionario.cantidadHuespedes[0], inicio, final);
+}
