@@ -17,6 +17,7 @@ const contenedor = document.getElementById('containerVisual');
 let consultarServicios = document.getElementById('consultarServicios');
 let consultarHabitaciones = document.getElementById('consultarHabitaciones');
 
+/////////////////////////// PARA MOSTRAR Y FILTRAR HABITACIONES /////////////////////////////////////
 async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
@@ -69,7 +70,10 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
                 ${data[i].descripcion}
               </p>
               <button
-                class="w-full py-3 border border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all"
+                data-id="${data[i].id_tipo_habitacion}" 
+                data-nombre="${data[i].nombre_tipo}" 
+                data-precio="${data[i].precio_base_noche}"
+                class="w-full py-3 border border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all reservarHabitacion"
               >
                 Seleccionar
               </button>
@@ -80,6 +84,7 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
     }
 }
 
+/////////////////////////// PARA MOSTRAR Y FILTRAR SERVICIOS /////////////////////////////////////
 async function servicio(inicio, final, cantidadHuespedes, categoria = null, esCiclo = false) {
     const hoy = new Date();
     console.log(categoria)
@@ -105,7 +110,7 @@ async function servicio(inicio, final, cantidadHuespedes, categoria = null, esCi
                 </select>
             </div>
             <div class="w-full sm:w-auto pb-1">
-                <button class="w-full sm:w-auto px-6 py-4 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary hover:text-on-primary transition-all whitespace-nowrap" id="botonServicios">
+                <button class="w-full sm:w-auto px-6 py-4 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary hover:text-on-primary transition-all whitespace-nowrap"  id="botonServicios">
                 Consultar
                 </button>
             </div>
@@ -116,7 +121,8 @@ async function servicio(inicio, final, cantidadHuespedes, categoria = null, esCi
         const response = await fetch(`http://127.0.0.1:3000/api/servicios`);
         const data = await response.json();
         for(let i = 0; i < data.length; i++) {
-            if (categoria != null && categoria != data[i].categoria) continue;
+            if (categoria !== null) document.getElementById('selectorCategoria').value = categoria
+            if (categoria !== null && categoria != data[i].categoria) continue;
             contenedor.innerHTML += `<div class="bg-white rounded-xl overflow-hidden group border border-outline-variant/30 hover:shadow-lg transition-shadow duration-500">
   
         <div class="relative aspect-[4/5] overflow-hidden">
@@ -141,7 +147,12 @@ async function servicio(inicio, final, cantidadHuespedes, categoria = null, esCi
             ${data[i].descripcion}
             </p>
             
-            <button class="w-full py-3 border border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all">
+            <button 
+            data-id="${data[i].id_servicio}" 
+            data-nombre="${data[i].nombre_servicio}" 
+            data-precio="${data[i].precio}"
+            class="w-full py-3 border border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all reservarServicio">
+            
             Seleccionar
             </button>
         </div>
@@ -162,6 +173,7 @@ consultarServicios.addEventListener('click', (event) => {
 
 document.getElementById('botonConsultar').addEventListener('click', (event) => {
     event.preventDefault();
+    resetearCarrito()
     contenedor.innerHTML = '<p class="font-headline-xl text-headline-xl border-outline-variant col-span-1 md:col-span-2">Consulte un rango de fechas.</p>'
     const cantidadHuespedes = document.getElementById('selectorHuespedes').value[0];
     const inicio = new Date (document.getElementById('selectorInicio').value);
@@ -200,3 +212,250 @@ contenedor.addEventListener('click', (event) => {
         }
     }
 })
+
+/////////////////////////// VARIABLES GLOBALES DEL CARRITO /////////////////////////////////////
+let carrito = {
+    habitacion: null, 
+    servicios: []
+};
+
+function resetearCarrito() {
+    carrito = {
+        habitacion: null,
+        servicios: []
+    };
+    actualizarResumen();
+}
+
+// Función auxiliar para calcular la diferencia de noches
+function calcularNoches(fechaInicio, fechaFin) {
+    const inicio = new Date(fechaInicio);
+    const fin = new Date(fechaFin);
+    const diferenciaTiempo = fin.getTime() - inicio.getTime();
+    if (diferenciaTiempo <= 0) return 1; 
+    return Math.ceil(diferenciaTiempo / (1000 * 60 * 60 * 24));
+}
+
+// Función encargada de pintar el resumen en tu HTML
+function actualizarResumen() {
+    const apartadoHabitacion = document.getElementById('apartadoHabitacion');
+    const apartadoServicios = document.getElementById('apartadoServicios');
+    const apartadoTotal = document.getElementById('apartadoTotal');
+    
+    let subtotalGeneral = 0;
+
+    // 1. Renderizar Habitación
+    if (carrito.habitacion) {
+        const hab = carrito.habitacion;
+        subtotalGeneral += hab.total;
+        apartadoHabitacion.innerHTML = `
+            <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Alojamiento</p>
+            <h3 class="font-body-lg text-body-lg font-bold">${hab.nombre}</h3>
+            <p class="text-on-surface-variant text-body-md">${hab.noches} Noche(s) — $${hab.total.toFixed(2)} USD</p>
+        `;
+    } else {
+        apartadoHabitacion.innerHTML = `<p class="text-on-surface-variant text-body-md">Ninguna habitación seleccionada</p>`;
+    }
+
+    // 2. Renderizar Servicios Adicionales
+    if (carrito.servicios.length > 0) {
+        let htmlServicios = '<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Servicios Adicionales</p>';
+        
+        carrito.servicios.forEach(serv => {
+            subtotalGeneral += serv.total;
+            htmlServicios += `
+                <div class="flex justify-between items-center text-body-md mb-2">
+                    <span>${serv.nombre} (${serv.cantidad})</span>
+                    <span>$${serv.total.toFixed(2)}</span>
+                </div>
+            `;
+        });
+        apartadoServicios.parentElement.innerHTML = `<div id="apartadoServicios" class="space-y-2">${htmlServicios}</div>`;
+    } else {
+        apartadoServicios.parentElement.innerHTML = `
+            <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Servicios Adicionales</p>
+            <div class="flex justify-between items-center text-body-md" id="apartadoServicios">
+                <span class="text-on-surface-variant">Ninguno seleccionado</span>
+                <span>$0.00</span>
+            </div>
+        `;
+    }
+
+    // 3. Renderizar Totales
+    apartadoTotal.innerHTML = `
+        <div class="flex justify-between text-body-md w-full">
+            <span class="text-on-surface-variant">Subtotal</span>
+            <span id="valorSubtotalCalculado">$${subtotalGeneral.toFixed(2)}</span>
+        </div>
+    `;
+}
+
+// Función de validación rápida de fechas
+function verificarFechasYCalcularNoches(inicio, final) {
+    if (!inicio || !final) {
+        alert('Por favor selecciona las fechas de entrada y salida primero.');
+        return null;
+    }
+    return calcularNoches(inicio, final);
+}
+
+/////////////////////////// UN SOLO ESCUCHADOR PARA SELECCIONAR (INTERFAZ) /////////////////////////////////////
+
+contenedor.addEventListener('click', (event) => {
+    // A. Mantener filtro de servicios activo
+    if (event.target && event.target.id === 'botonServicios') {
+        event.preventDefault(); 
+        const categoria = document.getElementById('selectorCategoria');
+        if (categoria) {
+            const cantidadHuespedes = document.getElementById('selectorHuespedes').value[0];
+            const inicio = new Date(document.getElementById('selectorInicio').value);
+            const final = new Date(document.getElementById('selectorFinal').value);
+            servicio(inicio, final, cantidadHuespedes, categoria.value);
+        }
+        return; 
+    }
+
+    // B. CUANDO SE SELECCIONA UNA HABITACIÓN (Solo actualiza el carrito en pantalla)
+    const botonHabitacion = event.target.closest('.reservarHabitacion');
+    if (botonHabitacion) {
+        event.preventDefault();
+        
+        const inicioWeb = document.getElementById('selectorInicio').value;
+        const finalWeb = document.getElementById('selectorFinal').value;
+        const noches = verificarFechasYCalcularNoches(inicioWeb, finalWeb);
+
+        if(!noches) return;
+
+        const precioNoche = parseFloat(botonHabitacion.getAttribute('data-precio')) || 0;
+        
+        carrito.habitacion = {
+            id: parseInt(botonHabitacion.getAttribute('data-id')),
+            nombre: botonHabitacion.getAttribute('data-nombre') || 'Habitación seleccionada',
+            precio: precioNoche,
+            noches: noches,
+            total: precioNoche * noches
+        };
+
+        actualizarResumen();
+        return;
+    }
+
+    // C. CUANDO SE SELECCIONA UN SERVICIO (Solo actualiza el carrito en pantalla)
+    const botonServicio = event.target.closest('.reservarServicio');
+if (botonServicio) {
+    event.preventDefault();
+    
+    const idServ = parseInt(botonServicio.getAttribute('data-id'));
+    const nombreServ = botonServicio.getAttribute('data-nombre') || 'Servicio';
+    const precioUnitario = parseFloat(botonServicio.getAttribute('data-precio')) || 0;
+    const cantidadHuespedes = parseInt(document.getElementById('selectorHuespedes').value[0]) || 1;
+
+    // 1. Buscamos si el servicio ya fue agregado previamente al Array
+    const servicioExistente = carrito.servicios.find(s => s.id === idServ);
+
+    if (servicioExistente) {
+        // Si ya existe, NO lo repetimos; sumamos la cantidad y recalculamos su total
+        servicioExistente.cantidad += cantidadHuespedes;
+        servicioExistente.total = servicioExistente.cantidad * precioUnitario;
+    } else {
+        // Si es nuevo, lo empujamos al array normalmente
+        carrito.servicios.push({
+            id: idServ,
+            nombre: nombreServ,
+            cantidad: cantidadHuespedes,
+            precio: precioUnitario,
+            total: precioUnitario * cantidadHuespedes
+        });
+    }
+
+        actualizarResumen();
+        return;
+    }
+});
+
+
+/////////////////////////// EL FETCH REAL A LA BASE DE DATOS (AL CONFIRMAR) /////////////////////////////////////
+
+// Buscamos tu botón final de compra (Asegúrate de poner id="botonConfirmarReserva" a ese botón en tu HTML)
+const botonConfirmar = document.getElementById('botonConfirmarReserva');
+
+if (botonConfirmar) {
+    botonConfirmar.addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        // Validación: No se puede comprar si no hay hospedaje elegido
+        if (!carrito.habitacion) {
+            alert('Por favor, selecciona una habitación antes de procesar tu reserva.');
+            return;
+        }
+
+        const cantidadHuespedes = document.getElementById('selectorHuespedes').value[0];
+        const fechaEntrada = document.getElementById('selectorInicio').value;
+        const fechaSalida = document.getElementById('selectorFinal').value;
+        const correo = localStorage.getItem('emailUsuario');
+
+        if(!correo) {
+            alert('No se encontró sesión de usuario activa.');
+            return;
+        }
+
+        try {
+            // 1. Obtener los datos completos del usuario logueado
+            const responseUsuario = await fetch(`http://127.0.0.1:3000/api/usuarios/status/${correo}`);
+            const dataUsuario = await responseUsuario.json();
+            const idUsuarioLogueado = dataUsuario.id_usuario || dataUsuario[0]?.id_usuario; 
+
+            if (!idUsuarioLogueado) {
+                alert('Error al autenticar el perfil del usuario.');
+                return;
+            }
+
+            const serviciosTexto = carrito.servicios
+                .map(s => `${s.nombre} (${s.cantidad})`)
+                .join(', ');
+
+            const subtotalValor = carrito.habitacion.total;
+            const impuestosValor = subtotalValor * 0.16; 
+            
+            const totalValor = subtotalValor + impuestosValor;
+            const nuevaReservacion = {
+                id_usuario: idUsuarioLogueado,
+                id_habitacion: carrito.habitacion.id,
+                id_estado_reservacion: 1, // 1 para estado activo o pendiente
+                fecha_reserva: new Date().toISOString().slice(0, 19).replace('T', ' '),
+                fecha_entrada: fechaEntrada,
+                fecha_salida: fechaSalida,
+                cantidad_huespedes: parseInt(cantidadHuespedes),
+                subtotal: subtotalValor,
+                impuestos: impuestosValor,
+                total: totalValor,
+                servicios: serviciosTexto // Columna que modificamos juntos al inicio
+            };
+
+            // 4. Mandar la reserva definitiva por POST
+            const responseReserva = await fetch('http://127.0.0.1:3000/api/reservaciones', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(nuevaReservacion)
+            });
+
+            if (responseReserva.ok) {
+                const resultado = await responseReserva.json();
+                alert('¡Reservación procesada y guardada con éxito!');
+                console.log('Servidor DB:', resultado);
+                carrito = { habitacion: null, servicios: [] };
+                actualizarResumen();
+            } else {
+                const errorData = await responseReserva.json();
+                alert('Hubo un problema en el servidor al intentar guardar la reserva.');
+                console.error(errorData);
+            }
+
+        } catch (error) {
+            console.error('Error en el proceso de comunicación de datos:', error);
+            alert('Error de conexión con el servidor.');
+        }
+    });
+}
