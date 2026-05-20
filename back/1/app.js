@@ -13,6 +13,7 @@ app.use(cors({
 const habitacionesRoutes = require('./routes/habitacionesRoutes');
 const usuariosRoutes = require('./routes/usuariosRoutes');
 const serviciosRoutes = require('./routes/serviciosRoutes');
+const reservacionesRoutes = require('./routes/reservacionesRoutes');
 const testRoutes = require('./routes/testRoutes');  // Ruta de prueba
 app.use(express.json());
 
@@ -22,6 +23,8 @@ app.use('/prueba', (req,res) => {
 app.use('/api', habitacionesRoutes);
 app.use('/api', usuariosRoutes);
 app.use('/api', serviciosRoutes);
+app.use('/api', reservacionesRoutes)
+
 //probar la conexión a la base de datos
 app.use('/test', testRoutes);
 

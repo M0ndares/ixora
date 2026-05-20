@@ -377,7 +377,7 @@ if (botonServicio) {
 /////////////////////////// EL FETCH REAL A LA BASE DE DATOS (AL CONFIRMAR) /////////////////////////////////////
 
 // Buscamos tu botón final de compra (Asegúrate de poner id="botonConfirmarReserva" a ese botón en tu HTML)
-const botonConfirmar = document.getElementById('botonConfirmarReserva');
+const botonConfirmar = document.getElementById('botonGuardar');
 
 if (botonConfirmar) {
     botonConfirmar.addEventListener('click', async (event) => {
@@ -386,6 +386,12 @@ if (botonConfirmar) {
         // Validación: No se puede comprar si no hay hospedaje elegido
         if (!carrito.habitacion) {
             alert('Por favor, selecciona una habitación antes de procesar tu reserva.');
+            return;
+        }
+        const email = localStorage.getItem('emailUsuario');
+        if (!email) {
+            alert('No has iniciado sesión');
+            window.location.href = '../../front/3/sesion.html'; // Lo regresamos
             return;
         }
 
@@ -411,7 +417,7 @@ if (botonConfirmar) {
             }
 
             const serviciosTexto = carrito.servicios
-                .map(s => `${s.nombre} (${s.cantidad})`)
+                .map(s => `${s.nombre} `)
                 .join(', ');
 
             const subtotalValor = carrito.habitacion.total;
@@ -429,11 +435,11 @@ if (botonConfirmar) {
                 subtotal: subtotalValor,
                 impuestos: impuestosValor,
                 total: totalValor,
-                servicios: serviciosTexto // Columna que modificamos juntos al inicio
+                servicios: serviciosTexto 
             };
 
             // 4. Mandar la reserva definitiva por POST
-            const responseReserva = await fetch('http://127.0.0.1:3000/api/reservaciones', {
+            const responseReserva = await fetch('http://127.0.0.1:3000/api/reservacion', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -443,7 +449,7 @@ if (botonConfirmar) {
 
             if (responseReserva.ok) {
                 const resultado = await responseReserva.json();
-                alert('¡Reservación procesada y guardada con éxito!');
+                alert('¡Reservación guardada con éxito!');
                 console.log('Servidor DB:', resultado);
                 carrito = { habitacion: null, servicios: [] };
                 actualizarResumen();
