@@ -1,3 +1,4 @@
+//boton de consultar
 document.getElementById('botonConsultar').addEventListener('click', (event) => {
     event.preventDefault();
     const cantidadHuespedes = document.getElementById('selectorHuespedes').value;
