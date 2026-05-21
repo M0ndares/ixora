@@ -303,17 +303,6 @@ function verificarFechasYCalcularNoches(inicio, final) {
 
 contenedor.addEventListener('click', (event) => {
     // A. Mantener filtro de servicios activo
-    if (event.target && event.target.id === 'botonServicios') {
-        event.preventDefault(); 
-        const categoria = document.getElementById('selectorCategoria');
-        if (categoria) {
-            const cantidadHuespedes = document.getElementById('selectorHuespedes').value[0];
-            const inicio = new Date(document.getElementById('selectorInicio').value);
-            const final = new Date(document.getElementById('selectorFinal').value);
-            servicio(inicio, final, cantidadHuespedes, categoria.value);
-        }
-        return; 
-    }
 
     // B. CUANDO SE SELECCIONA UNA HABITACIÓN (Solo actualiza el carrito en pantalla)
     const botonHabitacion = event.target.closest('.reservarHabitacion');
