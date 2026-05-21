@@ -36,10 +36,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log(fotos[current.cantidad_huespedes])
             container.innerHTML += `<div
                             class="group flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-secondary/20 bg-secondary/5 transition-all hover:bg-secondary/10">
-                            <div class="w-full md:w-48 h-32 flex-shrink-0">
-                                <img class="w-full h-full object-cover rounded-lg"
-                                    data-alt="A luxurious and spacious hotel suite at Ixora, featuring contemporary Mexican architecture and warm wooden textures. The room is filled with soft, natural morning light coming through large windows. The interior design is minimalist with high-quality linens and artisan-crafted furniture. The mood is peaceful, exclusive, and deeply serene."
-                                    src=${fotos[current.cantidad_huespedes - 1]}>
+                           <div class="w-full md:w-48 flex flex-col gap-3 flex-shrink-0">
+                                <img class="w-full h-32 object-cover rounded-lg shadow-sm"
+                                    data-alt="A luxurious and spacious hotel suite at Ixora..."
+                                    src="${fotos[current.cantidad_huespedes - 1]}">
+                                    
+                                <button class="w-full bg-primary text-on-primary px-4 py-2.5 rounded-lg font-label-sm text-xs tracking-wider uppercase hover:bg-secondary transition-all active:scale-95 shadow-sm">
+                                    Confirmar
+                                </button>
                             </div>
                             <div class="flex-grow">
                                 <div class="flex justify-between items-start mb-2">
