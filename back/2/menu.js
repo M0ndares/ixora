@@ -18,3 +18,10 @@ document.getElementById('botonConsultar').addEventListener('click', (event) => {
     localStorage.setItem('datosMenu', JSON.stringify(datosMenu))
     window.location.href = '../../front/4/reservacion.html';
 })
+
+document.getElementById('botonHistoria').addEventListener('click', (event) => {
+  window.location.href = '../../front/4/historico.html'
+})
+document.getElementById('botonReservar').addEventListener('click', (event) => {
+  window.location.href = '../../front/4/reservacion.html'
+})
