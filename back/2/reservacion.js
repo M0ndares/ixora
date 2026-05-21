@@ -448,8 +448,8 @@ if (botonConfirmar) {
             if (responseReserva.ok) {
                 const resultado = await responseReserva.json();
                 alert('¡Reservación guardada con éxito!');
-                console.log('Servidor DB:', resultado);
-                carrito = { habitacion: null, servicios: [] };
+                resetearCarrito();
+                document.window.href = '../../front/3/main.html'
                 actualizarResumen();
             } else {
                 const errorData = await responseReserva.json();
