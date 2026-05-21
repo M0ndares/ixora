@@ -449,8 +449,8 @@ if (botonConfirmar) {
                 const resultado = await responseReserva.json();
                 alert('¡Reservación guardada con éxito!');
                 resetearCarrito();
-                document.window.href = '../../front/3/main.html'
                 actualizarResumen();
+                window.location.href = '../../front/3/main.html';
             } else {
                 const errorData = await responseReserva.json();
                 alert('Hubo un problema en el servidor al intentar guardar la reserva.');
