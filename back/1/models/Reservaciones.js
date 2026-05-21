@@ -2,7 +2,7 @@ const db = require('../config/db');
 
 // Obtener todas las Reservaciones
 exports.getAllReservaciones = (callback) => {
-  const query = 'SELECT * FROM Reservacion';
+  const query = 'SELECT * FROM reservacion';
   db.query(query, callback);
 };
 
