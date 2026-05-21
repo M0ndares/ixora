@@ -11,6 +11,12 @@ exports.getReservacionesByEmail = (email, callback) => {
   db.query(query, [email], callback);
 };
 
+exports.getReservacionesById = (id_reservacion, callback) => {
+  const query = 'SELECT * FROM reservacion WHERE id_reservacion= ?';
+  
+  db.query(query, [id_reservacion], callback);
+};
+
 exports.addReservacion = (reservacionData, callback) => {
   const query = `
     INSERT INTO Reservacion 

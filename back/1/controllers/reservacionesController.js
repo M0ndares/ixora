@@ -16,6 +16,14 @@ exports.getReservacionesByEmail= (req, res) => {
   });
 };
 
+exports.getReservacionesById= (req, res) => {
+  const { id_reservacion } = req.params;
+  Reservacion.getReservacionesById(id_reservacion, (err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.status(200).json(results);
+  });
+};
+
 // Agregar un nuevo Reservacion
 exports.addReservacion = (req, res) => {
   const newReservacion = req.body;
