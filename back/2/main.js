@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <div>
                                         <span
                                             class="font-label-sm text-[11px] text-secondary bg-secondary/10 px-2 py-0.5 rounded-full uppercase mb-2 inline-block">${estadoReservacion[current.id_estado_reservacion - 1]}</span>
-                                        <h4 class="font-headline-lg text-xl text-primary">${nombreHabitacion[0].nombre_tipo} para ${current.cantidad_huespedes} persona(s)</h4>
+                                        <h5 class="font-headline-lg text-lg text-primary">${nombreHabitacion[0].nombre_tipo} para ${current.cantidad_huespedes} persona(s)</h5>
                                     </div>
                                     <span class="font-headline-lg text-lg text-primary">$${current['total']} USD</span>
                                 </div>

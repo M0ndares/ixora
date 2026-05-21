@@ -354,9 +354,7 @@ if (botonServicio) {
     const servicioExistente = carrito.servicios.find(s => s.id === idServ);
 
     if (servicioExistente) {
-        // Si ya existe, NO lo repetimos; sumamos la cantidad y recalculamos su total
-        servicioExistente.cantidad += cantidadHuespedes;
-        servicioExistente.total = servicioExistente.cantidad * precioUnitario;
+        return
     } else {
         // Si es nuevo, lo empujamos al array normalmente
         carrito.servicios.push({
