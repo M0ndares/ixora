@@ -46,11 +46,11 @@ async function servicio(categoria = null, esCiclo = false) {
                             class="p-6 pt-0 mt-auto border-t border-outline-variant/10 flex items-center justify-between">
                             <div>
                                 <p class="text-[10px] font-bold uppercase text-outline">Desde</p>
-                                <p class="font-headline-lg text-primary">$${data[i].precio} <span class="text-body-md font-body-md">/
+                                <p class="font-headline-lg text-primary">Desde $${data[i].precio} <span class="text-body-md font-body-md">/
                                         noche</span></p>
                             </div>
                             <button
-                                class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-sm hover:bg-secondary transition-colors">Seleccionar</button>
+                                class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-sm hover:bg-secondary transition-colors botonSeleccionar">Consultar</button>
                         </div>
                     </article>`
         }
@@ -65,10 +65,16 @@ document.getElementById('botonConsultar').addEventListener('click', (event) => {
     const categoria = document.getElementById('selectorCategoria').value;
     servicio(categoria);
 })
-     
-
-
+    
 document.addEventListener('DOMContentLoaded', (event) => {
     contenedorServicios.innerHTML = '';
     servicio(null);
 })
+
+contenedorServicios.addEventListener('click', (event) => {
+    const botonHabitacion = event.target.closest('.botonSeleccionar');
+    if (botonHabitacion) {
+        localStorage.setItem()
+        window.location.href = '../../front/4/reservacion.html'
+    }
+});

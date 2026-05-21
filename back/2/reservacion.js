@@ -293,7 +293,7 @@ function actualizarResumen() {
 // Función de validación rápida de fechas
 function verificarFechasYCalcularNoches(inicio, final) {
     if (!inicio || !final) {
-        alert('Por favor selecciona las fechas de entrada y salida primero.');
+        alert('No ha seleccionado un rango de fechas.');
         return null;
     }
     return calcularNoches(inicio, final);
@@ -463,3 +463,11 @@ if (botonConfirmar) {
         }
     });
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const email = localStorage.getItem('emailUsuario');
+    if(!email) {
+        alert('No ha iniciado sesión.')
+        window.location.href = '../../front/3/sesion.html'
+    }
+})

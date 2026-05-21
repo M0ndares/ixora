@@ -6,6 +6,8 @@ const fotos = ['https://lh3.googleusercontent.com/aida-public/AB6AXuBJYtQhIdgODO
 const size = ['15', '20', '30', '45', '70'];
 const cama = ['Individual', 'Matrimonial', 'King Size', '2 matrimoniales', '2 King Size'] 
 const estrellas = ['4.4', '4.7', '4.8', '4.5', '4.9']
+const contenedorHabitaciones = document.getElementById('contenedorHabitaciones');
+
 async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
@@ -23,7 +25,6 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
         const response = await fetch(`http://127.0.0.1:3000/api/habitaciones/status/${cantidadHuespedes}`);
         const data = await response.json();
         console.log(data)
-        const contenedorHabitaciones = document.getElementById('contenedorHabitaciones');
         if (!esCiclo) {{
             contenedorHabitaciones.innerHTML = ''
         }}
@@ -76,7 +77,7 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
                                         noche</span></p>
                             </div>
                             <button
-                                class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-sm hover:bg-secondary transition-colors">Seleccionar</button>
+                                class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-sm hover:bg-secondary transition-colors botonSeleccionar">Consultar</button>
                         </div>
                     </article>`
         }
@@ -102,3 +103,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
         habitacion(i, hoy, hoy, true)
     }
 })
+
+contenedorHabitaciones.addEventListener('click', (event) => {
+    const botonHabitacion = event.target.closest('.botonSeleccionar');
+    if (botonHabitacion) {
+        event.preventDefault();
+        const cantidadHuespedes = document.getElementById('selectorHuespedes').value;
+        const inicio = document.getElementById('selectorInicio').value;
+        const final = document.getElementById('selectorFinal').value;
+        if (!inicio || !final || !cantidadHuespedes) {
+        alert('Debe de incluir un rango de fechas.')
+        return;
+        } 
+        const datosMenu = {
+        'cantidadHuespedes': cantidadHuespedes,
+        'inicio': inicio,
+        'final': final
+        };
+
+        localStorage.removeItem('datosMenu');
+        localStorage.setItem('datosMenu', JSON.stringify(datosMenu))
+        window.location.href = '../../front/4/reservacion.html';
+    }
+});

@@ -6,8 +6,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
     try {
+
         const response = await fetch(`http://127.0.0.1:3000/api/usuarios/status/${email}`)
         const datos = await response.json()
+        console.log(datos)
         if (datos && datos.length > 0) {
             nombre = datos[0].nombre_usuario.split(' ')[0]
             apellido = datos[0].nombre_usuario.split(' ')[datos[0].nombre_usuario.split(' ').length - 1]
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('fechaBienvenida').innerText = `Miembro desde ${fecha.toISOString().slice(0, 10)}`
         }
 
-        const response2 = await fetch('http://127.0.0.1:3000/api/reservaciones');
+        const response2 = await fetch(`http://127.0.0.1:3000/api/reservaciones/status/${email}`);
         const data2 = await response2.json();
         const estadoReservacion = ['Pendiente', 'Confirmada', 'Cancelada', 'Completada', 'Ausente'];
         const fotos = ['https://lh3.googleusercontent.com/aida-public/AB6AXuBJYtQhIdgODOCZz_rG7ig5N0HflGTv5HsUGF_eVkcEEBBTT4Ol-CB_IOIQRiIIfe-mJ-I_OetLXONK_ssSob5-UXDMpyfH5nU4qtjCWUN3o_1erB8PnTAPANlCztA3m1pFML9zwBe6s-kPA-AoESBRTrxWyX2AsdS0jlJQP0euXIBgbkQsbGH38xBKu2E5b8hx3z8SmF-bCWe4r0g17BZ00qeq6nsyrLUMZ-2gY7Yvl3f5Na7-6nGhU0S_8fIUEg-aSEVAFNosFQ',
@@ -28,12 +30,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             'https://lh3.googleusercontent.com/aida-public/AB6AXuBeM5yPEgvmhS37cUEi9DZ-jKV3ph6z3K_IsqnnA8MRKfDFJ30Ttb5xNvfUV9gN1PYVnjucW4Ozhv9Wtly56biH2lzmZbIIcTrxHDNuG3FzBxgpE7Kk4CiEoADinwFDtslUXZldTHrgh-JerqJoW_8RbpO3r7oavSRY6Kfdn4SE1ri3Rnq6lsocEBMFw6Cj2KipcPFAehMDsIb8uG5mY1i1Vkvww7kEtFXBufgKEjMq_KCaU97P8VQKHFiJgpRXsJcPPmP0bMYsKQ']
         let container = document.getElementById('containerReservaciones');
         container.innerHTML = '';
-        console.log(data2.length)
         for(let i = 0; i < data2.length; i++) {
             const current = data2[i];
             const fetchHabitacion = await fetch(`http://127.0.0.1:3000/api/habitaciones/status/${current.cantidad_huespedes}`)
             const nombreHabitacion = await fetchHabitacion.json()
-            console.log(fotos[current.cantidad_huespedes])
             container.innerHTML += `<div
                             class="group flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-secondary/20 bg-secondary/5 transition-all hover:bg-secondary/10">
                            <div class="w-full md:w-48 flex flex-col gap-3 flex-shrink-0">
@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 </div>
                             </div>
                         </div>`
-                console.log(container)
         }
     } catch (error) {
         console.error('Error al cargar la página principal:', error);
