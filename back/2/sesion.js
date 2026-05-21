@@ -11,7 +11,7 @@ async function main(inputEmail) {
             },
             body: JSON.stringify(usuarioData)     
         });
-        localStorage.clear()
+        localStorage.removeItem('emailUsuario')
         localStorage.setItem('emailUsuario', inputEmail);   
     }
     catch (error) {

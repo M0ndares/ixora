@@ -437,6 +437,7 @@ if (botonConfirmar) {
                 alert('¡Reservación guardada con éxito!');
                 resetearCarrito();
                 actualizarResumen();
+                localStorage.removeItem('datosMenu');
                 window.location.href = '../../front/3/main.html';
             } else {
                 const errorData = await responseReserva.json();

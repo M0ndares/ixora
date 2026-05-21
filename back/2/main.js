@@ -86,7 +86,7 @@ document.getElementById('cerrarSesion').addEventListener('click', (event) => {
             },
             body: JSON.stringify(usuarioData)     
         });
-        localStorage.clear()
+        localStorage.removeItem('emailUsuario')
         window.location.href = '../../front/3/menu.html' 
     }
     catch (error) {

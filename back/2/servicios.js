@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 contenedorServicios.addEventListener('click', (event) => {
     const botonHabitacion = event.target.closest('.botonSeleccionar');
     if (botonHabitacion) {
-        localStorage.setItem()
         window.location.href = '../../front/4/reservacion.html'
     }
 });
