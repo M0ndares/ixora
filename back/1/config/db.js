@@ -3,11 +3,11 @@ const conexion= mysql.createConnection({
   host: 'localhost',   
   user: 'root', // Cambia esto por tu usuario de MySQL
   password: '1234', // Cambia esto por tu contraseña de MySQL
-  database: 'sistema_hotel', // Cambia esto por el nombre de tu base de datos
+  database: 'ixora', // Cambia esto por el nombre de tu base de datos
   port: 3306   //revisar el puerto, por defecto es 3306
 });
 
-// Probar la conexión
+// Probar la conexió
 
 
 conexion.connect((err) => {
