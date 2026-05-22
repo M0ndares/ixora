@@ -287,7 +287,6 @@ function verificarFechasYCalcularNoches(inicio, final) {
 }
 
 /////////////////////////// UN SOLO ESCUCHADOR PARA SELECCIONAR (INTERFAZ) /////////////////////////////////////
-/*
 contenedor.addEventListener('click', (event) => {
     // A. Mantener filtro de servicios activo
     if (event.target && event.target.id === 'botonServicios') {
@@ -459,4 +458,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
         window.location.href = '../../front/3/sesion.html'
     }
 })
-    */
+    
