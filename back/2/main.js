@@ -1,4 +1,5 @@
 let container = document.getElementById('containerReservaciones');
+
 document.addEventListener('DOMContentLoaded', async () => {
     const email = localStorage.getItem('emailUsuario');
     if (!email) {
@@ -6,16 +7,37 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = '../../front/3/sesion.html'; 
         return;
     }
+
+    const aromatizante = localStorage.getItem('preferenciasAromatizantes');
+    if(aromatizante) {
+        const selectAromatizante = document.getElementById('preferenciasAromatizantes');
+        const opcion = Array.from(selectAromatizante.options).find(opt => opt.text === aromatizante);
+        if (opcion) {
+            selectAromatizante.prepend(opcion); // Corregido: antes decía selectEdredon
+            selectAromatizante.value = aromatizante;
+        }
+    }
+
+    const edredones = localStorage.getItem('preferenciasEdredones');
+    if(edredones) {
+        const selectEdredon = document.getElementById('preferenciasEdredones');
+        const opcion = Array.from(selectEdredon.options).find(opt => opt.text === edredones);
+        if (opcion) {
+            selectEdredon.prepend(opcion); 
+            selectEdredon.value = edredones;
+        }
+    }
+
     try {
         const response = await fetch(`http://127.0.0.1:3000/api/usuarios/status/${email}`)
         const datos = await response.json()
         if (datos && datos.length > 0) {
-            nombre = datos[0].nombre_usuario.split(' ')[0]
-            apellido = datos[0].nombre_usuario.split(' ')[datos[0].nombre_usuario.split(' ').length - 1]
+            const nombre = datos[0].nombre_usuario.split(' ')[0]
+            const apellido = datos[0].nombre_usuario.split(' ')[datos[0].nombre_usuario.split(' ').length - 1]
             document.getElementById('anuncioBienvenida').innerText = `BIENVENID@, ${nombre.toUpperCase()}`
             document.getElementById('nombreBienvenida').innerText = `${nombre.toUpperCase()} ${apellido.toUpperCase()}`
             document.getElementById('emailBienvenida').innerText = `${datos[0].email.toLowerCase()}`
-            fecha = new Date(datos[0].fecha_registro)
+            const fecha = new Date(datos[0].fecha_registro)
             document.getElementById('fechaBienvenida').innerText = `Miembro desde ${fecha.toISOString().slice(0, 10)}`
         }
 
@@ -29,7 +51,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             'https://lh3.googleusercontent.com/aida-public/AB6AXuCKbtiwXqUibzPFet3TjjnPOUTp_UUC77Vc5Ao8V-Cpikl60c3XYE0Lme08utYeklef2Y2Lc-8H2DqWfUnf1v1BqngKfDEf4Aabkdc3Hv0yUAvZyi-VFaH4t2gJVaR0dUWMvw_AUOf88glp07710_7QdFMx9rkeuZtXC4yJTilqpvsPXTLjZJIsZr_A0t39iXCx78FX_sgWvCDyeioS9KFWqDVdnJhvqmI2EV9DPNJZ0j_E1F9k0TuY_B3TGGDdxy-nj7xonOWMMQ', 
             'https://lh3.googleusercontent.com/aida-public/AB6AXuBeM5yPEgvmhS37cUEi9DZ-jKV3ph6z3K_IsqnnA8MRKfDFJ30Ttb5xNvfUV9gN1PYVnjucW4Ozhv9Wtly56biH2lzmZbIIcTrxHDNuG3FzBxgpE7Kk4CiEoADinwFDtslUXZldTHrgh-JerqJoW_8RbpO3r7oavSRY6Kfdn4SE1ri3Rnq6lsocEBMFw6Cj2KipcPFAehMDsIb8uG5mY1i1Vkvww7kEtFXBufgKEjMq_KCaU97P8VQKHFiJgpRXsJcPPmP0bMYsKQ'
         ]
-        container.innerHTML = '';
+
+        let htmlAcumulado = '';
+
         for(let i = 0; i < data2.length; i++) {
             const current = data2[i];
             const fetchHabitacion = await fetch(`http://127.0.0.1:3000/api/habitaciones/status/${current.cantidad_huespedes}`)
@@ -37,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const botones = ['Confirmar', 'Confirmada'];
             const colores = ['#000000', '#b63c47']
             
-            container.innerHTML += `<div
+            htmlAcumulado += `<div
                             class="group flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-secondary/20 bg-secondary/5 transition-all hover:bg-secondary/10">
                            <div class="w-full md:w-48 flex flex-col gap-3 flex-shrink-0">
                                 <img class="w-full h-32 object-cover rounded-lg shadow-sm"
@@ -73,6 +97,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </div>
                         </div>`
         }
+        container.innerHTML = htmlAcumulado;
+
     } catch (error) {
         console.error('Error al cargar la página principal:', error);
     }
@@ -100,14 +126,11 @@ container.addEventListener('click', async (event) => {
     const botonReservacion = event.target.closest('.botonReservacion');
     if (botonReservacion) {
         event.preventDefault();
-        
         const idReservacion = botonReservacion.getAttribute('data-id');
 
         try {
             const fetchEstadoActual = await fetch(`http://127.0.0.1:3000/api/reservaciones/id/${idReservacion}`)
             const estadoActual = await fetchEstadoActual.json()
-            
-            // Validamos de forma segura si la respuesta es un array o un objeto directo
             const datosReserva = Array.isArray(estadoActual) ? estadoActual[0] : estadoActual;
 
             if(datosReserva && datosReserva['id_estado_reservacion'] == 1) {
@@ -123,4 +146,16 @@ container.addEventListener('click', async (event) => {
             console.error("Error al procesar el click:", error);
         }
     }
+});
+
+document.getElementById('preferenciasEdredones').addEventListener('change', function() {
+    const opcionSeleccionada = this.options[this.selectedIndex];
+    localStorage.setItem('preferenciasEdredones', opcionSeleccionada.text); // Corregido: .text
+    this.prepend(opcionSeleccionada);
+});
+
+document.getElementById('preferenciasAromatizantes').addEventListener('change', function() {
+    const opcionSeleccionada = this.options[this.selectedIndex];
+    localStorage.setItem('preferenciasAromatizantes', opcionSeleccionada.text); // Corregido: .text
+    this.prepend(opcionSeleccionada);
 });
