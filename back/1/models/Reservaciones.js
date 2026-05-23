@@ -17,6 +17,17 @@ exports.getReservacionesById = (id_reservacion, callback) => {
   db.query(query, [id_reservacion], callback);
 };
 
+exports.contarReservacionesEnBD = (fecha_inicio, fecha_salida, id_habitacion, callback) => {
+  const query = `
+    SELECT COUNT(*) AS total_ocupadas 
+    FROM reservacion 
+    WHERE id_habitacion = ?
+      AND ? < fecha_salida 
+      AND ? > fecha_entrada
+  `;
+  db.query(query, [id_habitacion, fecha_inicio, fecha_salida], callback);
+};
+
 exports.addReservacion = (reservacionData, callback) => {
   const query = `
     INSERT INTO Reservacion 

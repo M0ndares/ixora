@@ -41,8 +41,19 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
             contenedor.innerHTML = ''
         }}
         for(let i = 0; i < data.length; i++) {
-            const disponibles = await fetch(`http://127.0.0.1:3000/api/habitaciones/total/${data[i].id_tipo_habitacion}`)
-            const habitacionesDisponibles = await disponibles.json()
+            const habitacionData = {
+                "fecha_inicio": inicio,
+                "fecha_salida": final,
+                "id_habitacion": cantidadHuespedes
+            }
+            const fetchDisponibles = await fetch(`http://127.0.0.1:3000/api/reservaciones/ocupadas`, {
+                method: 'POST',
+                headers:  {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(habitacionData)
+            })
+            const habitacionesDisponibles = await fetchDisponibles.json()
             contenedor.innerHTML += `<div
             class="bg-white rounded-xl overflow-hidden group border border-outline-variant/30 hover:shadow-lg transition-shadow duration-500"
           >
@@ -56,7 +67,7 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
               <div
                 class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-1 rounded-full font-label-sm text-label-sm text-primary"
               >
-                ${habitacionesDisponibles[0]["count(id_habitacion)"]} disponible(s)
+                ${10 - habitacionesDisponibles} disponible(s)
               </div>
             </div>
             <div class="p-8 space-y-4">
@@ -176,6 +187,8 @@ document.getElementById('botonConsultar').addEventListener('click', (event) => {
     resetearCarrito()
     contenedor.innerHTML = '<p class="font-headline-xl text-headline-xl border-outline-variant col-span-1 md:col-span-2">Consulte un rango de fechas.</p>'
     const cantidadHuespedes = document.getElementById('selectorHuespedes').value[0];
+    localStorage.removeItem('cantidadHuespedes');
+    localStorage.setItem('cantidadHuespedes', cantidadHuespedes);
     const inicio = new Date (document.getElementById('selectorInicio').value);
     const final = new Date (document.getElementById('selectorFinal').value);
     habitacion(cantidadHuespedes, inicio, final);
@@ -379,7 +392,7 @@ if (botonConfirmar) {
             return;
         }
 
-        const cantidadHuespedes = document.getElementById('selectorHuespedes').value[0];
+        const cantidadHuespedes = localStorage.getItem('cantidadHuespedes');
         const fechaEntrada = document.getElementById('selectorInicio').value;
         const fechaSalida = document.getElementById('selectorFinal').value;
         const correo = localStorage.getItem('emailUsuario');
@@ -437,6 +450,7 @@ if (botonConfirmar) {
                 resetearCarrito();
                 actualizarResumen();
                 localStorage.removeItem('datosMenu');
+                localStorage.removeItem('cantidadHuespedes')
                 window.location.href = '../../front/3/main.html';
             } else {
                 const errorData = await responseReserva.json();

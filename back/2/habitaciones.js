@@ -29,8 +29,19 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
             contenedorHabitaciones.innerHTML = ''
         }}
         for(let i = 0; i < data.length; i++) {
-            const disponibles = await fetch(`http://127.0.0.1:3000/api/habitaciones/total/${data[i].id_tipo_habitacion}`)
-            const habitacionesDisponibles = await disponibles.json()
+            const habitacionData = {
+                "fecha_inicio": inicio,
+                "fecha_salida": final,
+                "id_habitacion": cantidadHuespedes
+            }
+            const fetchDisponibles = await fetch(`http://127.0.0.1:3000/api/reservaciones/ocupadas`, {
+                method: 'POST',
+                headers:  {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(habitacionData)
+            })
+            const habitacionesDisponibles = await fetchDisponibles.json()
             contenedorHabitaciones.innerHTML += `<article class="bg-surface rounded-xl overflow-hidden luxury-shadow group flex flex-col">
                         <div class="relative h-72 overflow-hidden">
                             <img alt="Suite Deluxe Ixora"
@@ -40,7 +51,7 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
                             <div
                                 class="absolute top-4 left-4 bg-surface/90 px-3 py-1 rounded-full flex items-center gap-2">
                                 <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                                <span class="font-label-sm text-label-sm text-primary uppercase">${habitacionesDisponibles[0]["count(id_habitacion)"]} Disponible(s)</span>
+                                <span class="font-label-sm text-label-sm text-primary uppercase">${10 - habitacionesDisponibles} Disponible(s)</span>
                             </div>
                         </div>
                         <div class="p-6 flex-grow">
