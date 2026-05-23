@@ -7,7 +7,7 @@ const conexion= mysql.createConnection({
   port: 3306   //revisar el puerto, por defecto es 3306
 });
 
-// Probar la conexión
+// Probar la conexió
 
 
 conexion.connect((err) => {
