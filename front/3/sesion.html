@@ -142,6 +142,33 @@
     </style>
   </head>
   <body class="bg-background font-body-md text-on-surface antialiased">
+    <header
+        class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+        <div class="absolute inset-0 pointer-events-none z-0">
+            <div class="hidden md:block absolute bottom-2 left-12 w-5 h-7 rounded-full transform -rotate-45" style="background-color: #b63c47; border-radius: 100% 0% 100% 0%;"></div>
+            <div class="hidden md:block absolute top-2 left-4 w-7 h-9 rounded-full transform rotate-12" style="background-color: #b63c47; border-radius: 100% 0% 100% 0%;"></div>
+            
+            <div class="hidden md:block absolute bottom-2 right-12 w-5 h-7 rounded-full transform rotate-45" style="background-color: #b63c47; border-radius: 0% 100% 0% 100%;"></div>
+            <div class="hidden md:block absolute top-2 right-4 w-7 h-9 rounded-full transform -rotate-12" style="background-color: #b63c47; border-radius: 0% 100% 0% 100%;"></div>
+        </div>
+        <div class="font-display-lg text-headline-lg text-primary dark:text-primary-fixed tracking-widest uppercase" onclick="window.location.href = 'menu.html'" role="button">
+            IXORA</div>
+        <nav class="hidden md:flex gap-8 items-center">
+            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                href="main.html">Perfil</a>
+            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                href="../4/habitaciones.html">Habitaciones</a>
+            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                href="../4/servicios.html">Experiencias</a>
+            <a class="font-body-md text-body-md tracking-wide text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-primary-fixed transition-colors"
+                href="../4/historico.html">Historia</a>
+        </nav>
+        <button
+            class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-sm text-label-sm uppercase hover:bg-secondary transition-all active:scale-95" onclick="window.location.href = '../4/reservacion.html'">
+            Reservar Ahora
+        </button>
+    </header>
+    <br><br>
     <!-- TopNavBar: Hidden based on Shell Visibility Rule (Transactional Page) -->
     <!-- Per instructions: Suppress navigation shell if the page intent is Linear/Transactional: Login. -->
     <main class="min-h-screen flex flex-col md:flex-row">
@@ -261,64 +288,30 @@
     </main>
     <!-- Footer Component -->
     <footer
-      class="bg-surface-container-lowest border-t border-outline-variant py-16"
-    >
-      <div
-        class="flex flex-col md:flex-row justify-between items-start gap-8 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto"
-      >
-        <div class="space-y-4">
-          <span class="font-display-lg text-headline-lg text-primary"
-            >IXORA</span
-          >
-          <p class="font-label-sm text-label-sm text-on-surface-variant">
-            © 2026 Hotel Ixora. Todos los derechos reservados.
-          </p>
+        class="w-full py-16 px-margin-mobile md:px-margin-desktop flex flex-col items-center text-center bg-primary dark:bg-surface-container-lowest border-t border-outline-variant/10">
+        <div
+            class="font-display-lg text-headline-xl text-primary-fixed dark:text-primary mb-6 tracking-widest uppercase">
+            IXORA</div>
+        <div class="flex flex-wrap justify-center gap-8 mb-12">
+            <a class="text-primary-fixed-dim/80 dark:text-on-surface-variant hover:text-secondary-fixed transition-colors font-body-md text-body-md hover:underline decoration-secondary"
+                href="#">Privacidad</a>
+            <a class="text-primary-fixed-dim/80 dark:text-on-surface-variant hover:text-secondary-fixed transition-colors font-body-md text-body-md hover:underline decoration-secondary"
+                href="#">Términos</a>
+            <a class="text-primary-fixed-dim/80 dark:text-on-surface-variant hover:text-secondary-fixed transition-colors font-body-md text-body-md hover:underline decoration-secondary"
+                href="#">Contacto</a>
+            <a class="text-primary-fixed-dim/80 dark:text-on-surface-variant hover:text-secondary-fixed transition-colors font-body-md text-body-md hover:underline decoration-secondary"
+                href="#">Prensa</a>
         </div>
-        <div class="grid grid-cols-2 md:flex gap-8 md:gap-12">
-          <nav class="flex flex-col gap-3">
-            <a
-              class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-all"
-              href="#"
-              >Privacidad</a
-            >
-            <a
-              class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-all"
-              href="#"
-              >Sostenibilidad</a
-            >
-          </nav>
-          <nav class="flex flex-col gap-3">
-            <a
-              class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-all"
-              href="#"
-              >Prensa</a
-            >
-            <a
-              class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-all"
-              href="#"
-              >Ubicación</a
-            >
-          </nav>
+        <div class="flex gap-6 mb-12">
+            <a class="text-primary-fixed-dim/60 hover:text-white transition-colors" href="#"><span
+                    class="material-symbols-outlined">public</span></a>
+            <a class="text-primary-fixed-dim/60 hover:text-white transition-colors" href="#"><span
+                    class="material-symbols-outlined">camera</span></a>
+            <a class="text-primary-fixed-dim/60 hover:text-white transition-colors" href="#"><span
+                    class="material-symbols-outlined">mail</span></a>
         </div>
-        <div class="flex gap-6">
-          <a
-            class="text-on-surface-variant hover:text-primary transition-opacity opacity-100 hover:opacity-80"
-            href="#"
-          >
-            <span class="material-symbols-outlined" data-icon="share"
-              >share</span
-            >
-          </a>
-          <a
-            class="text-on-surface-variant hover:text-primary transition-opacity opacity-100 hover:opacity-80"
-            href="#"
-          >
-            <span class="material-symbols-outlined" data-icon="language"
-              >language</span
-            >
-          </a>
-        </div>
-      </div>
+        <p class="font-body-md text-body-md text-primary-fixed-dim/40">© 2026 Hotel Ixora. Todos los derechos
+            reservados.</p>
     </footer>
     <script src="../../back/2/sesion.js"></script>
   </body>
