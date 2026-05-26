@@ -414,7 +414,7 @@ if (botonConfirmar) {
             }
 
             const serviciosTexto = carrito.servicios
-                .map(s => `${s.nombre} `)
+                .map(s => `${s.nombre}`)
                 .join(', ');
 
             const subtotalValor = carrito.habitacion.total;
