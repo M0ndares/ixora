@@ -300,7 +300,7 @@ function verificarFechasYCalcularNoches(inicio, final) {
 }
 
 /////////////////////////// UN SOLO ESCUCHADOR PARA SELECCIONAR (INTERFAZ) /////////////////////////////////////
-contenedor.addEventListener('click', (event) => {
+contenedor.addEventListener('click', async (event) => {
     // A. Mantener filtro de servicios activo
     if (event.target && event.target.id === 'botonServicios') {
         event.preventDefault(); 
@@ -318,13 +318,31 @@ contenedor.addEventListener('click', (event) => {
     const botonHabitacion = event.target.closest('.reservarHabitacion');
     if (botonHabitacion) {
         event.preventDefault();
-        
         const inicioWeb = document.getElementById('selectorInicio').value;
         const finalWeb = document.getElementById('selectorFinal').value;
+        const cantidad_huespedes = botonHabitacion.getAttribute('data-id')
+        const habitacionData = {
+            "fecha_inicio": inicioWeb,
+            "fecha_salida": finalWeb,
+            "id_habitacion": 10 - cantidad_huespedes
+        }
+        const fetchDisponibles = await fetch(`http://127.0.0.1:3000/api/reservaciones/ocupadas`, {
+            method: 'POST',
+            headers:  {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(habitacionData)
+        })
+        const habitacionesDisponibles = await fetchDisponibles.json()
+
         const noches = verificarFechasYCalcularNoches(inicioWeb, finalWeb);
-
+        console.log(habitacionesDisponibles)
         if(!noches) return;
-
+        if(habitacionesDisponibles == 0) {
+            alert('Tipo de habitación agotada en estas fechas')
+            return;
+        }
+        
         const precioNoche = parseFloat(botonHabitacion.getAttribute('data-precio')) || 0;
         
         carrito.habitacion = {
