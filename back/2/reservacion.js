@@ -336,10 +336,9 @@ contenedor.addEventListener('click', async (event) => {
         const habitacionesDisponibles = await fetchDisponibles.json()
 
         const noches = verificarFechasYCalcularNoches(inicioWeb, finalWeb);
-        console.log(cantidad_huespedes)
         if(!noches) return;
         console.log(habitacionesDisponibles)
-        if(habitacionesDisponibles == 0) {
+        if(habitacionesDisponibles == 10) {
             alert('Tipo de habitación agotada en estas fechas')
             return;
         }
