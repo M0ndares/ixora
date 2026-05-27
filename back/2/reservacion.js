@@ -324,7 +324,7 @@ contenedor.addEventListener('click', async (event) => {
         const habitacionData = {
             "fecha_inicio": inicioWeb,
             "fecha_salida": finalWeb,
-            "id_habitacion": 10 - cantidad_huespedes
+            "id_habitacion": cantidad_huespedes
         }
         const fetchDisponibles = await fetch(`http://127.0.0.1:3000/api/reservaciones/ocupadas`, {
             method: 'POST',
@@ -336,8 +336,9 @@ contenedor.addEventListener('click', async (event) => {
         const habitacionesDisponibles = await fetchDisponibles.json()
 
         const noches = verificarFechasYCalcularNoches(inicioWeb, finalWeb);
-        console.log(habitacionesDisponibles)
+        console.log(cantidad_huespedes)
         if(!noches) return;
+        console.log(habitacionesDisponibles)
         if(habitacionesDisponibles == 0) {
             alert('Tipo de habitación agotada en estas fechas')
             return;
