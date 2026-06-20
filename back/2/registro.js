@@ -17,7 +17,7 @@ async function crear(nombre_usuario, email_usuario, password_usuario) {
             activo: 0
         };
 
-        const response = await fetch('http://localhost:3000/api/usuario', {
+        const response = await fetch('https://ixora-4tb9.onrender.com/api/usuario', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' // Le avisamos al backend que le enviamos un JSON
