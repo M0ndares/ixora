@@ -4,7 +4,7 @@ async function main(inputEmail) {
             ultimo_acceso: new Date().toISOString().slice(0, 19).replace('T', ' '), // Formato YYYY-MM-DD HH:MM:SS,
             activo: 1
         };
-        const response = await fetch(`http://127.0.0.1:3000/api/usuarios/actualizar/${inputEmail}`, {
+        const response = await fetch(`https://ixora-4tb9.onrender.com/api/usuarios/actualizar/${inputEmail}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json' 
@@ -22,7 +22,7 @@ async function main(inputEmail) {
 async function autenticar(inputEmail, inputClave) {
             try {
                 const respuestaInput = document.getElementById('respuestaInput');
-                const response = await fetch('http://127.0.0.1:3000/api/usuarios');
+                const response = await fetch('https://ixora-4tb9.onrender.com/api/usuarios');
                 const data = await response.json();
                 const usuario = data.find(u => u.email === inputEmail);
                 if (!usuario) respuestaInput.innerHTML = "<h3>Usuario inexistente</h3>"

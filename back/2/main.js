@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch(`http://127.0.0.1:3000/api/usuarios/status/${email}`)
+        const response = await fetch(`https://ixora-4tb9.onrender.com/api/usuarios/status/${email}`)
         const datos = await response.json()
         if (datos && datos.length > 0) {
             const nombre = datos[0].nombre_usuario.split(' ')[0]
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('fechaBienvenida').innerText = `Miembro desde ${fecha.toISOString().slice(0, 10)}`
         }
 
-        const response2 = await fetch(`http://127.0.0.1:3000/api/reservaciones/status/${email}`);
+        const response2 = await fetch(`https://ixora-4tb9.onrender.com/api/reservaciones/status/${email}`);
         const data2 = await response2.json();
         const estadoReservacion = ['Pendiente', 'Confirmada'];
         const fotos = [
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         for(let i = 0; i < data2.length; i++) {
             const current = data2[i];
-            const fetchHabitacion = await fetch(`http://127.0.0.1:3000/api/habitaciones/status/${current.cantidad_huespedes}`)
+            const fetchHabitacion = await fetch(`https://ixora-4tb9.onrender.com/api/habitaciones/status/${current.cantidad_huespedes}`)
             const nombreHabitacion = await fetchHabitacion.json()
             const botones = ['Confirmar', 'Confirmada'];
             const colores = ['#000000', '#b63c47']
@@ -109,7 +109,7 @@ document.getElementById('cerrarSesion').addEventListener('click', (event) => {
     try {
         const email = localStorage.getItem('emailUsuario');
         const usuarioData = { activo: 0 };
-        fetch(`http://127.0.0.1:3000/api/usuarios/actualizar/${email}`, {
+        fetch(`https://ixora-4tb9.onrender.com/api/usuarios/actualizar/${email}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(usuarioData)     
@@ -129,13 +129,13 @@ container.addEventListener('click', async (event) => {
         const idReservacion = botonReservacion.getAttribute('data-id');
 
         try {
-            const fetchEstadoActual = await fetch(`http://127.0.0.1:3000/api/reservaciones/id/${idReservacion}`)
+            const fetchEstadoActual = await fetch(`https://ixora-4tb9.onrender.com/api/reservaciones/id/${idReservacion}`)
             const estadoActual = await fetchEstadoActual.json()
             const datosReserva = Array.isArray(estadoActual) ? estadoActual[0] : estadoActual;
 
             if(datosReserva && datosReserva['id_estado_reservacion'] == 1) {
                 alert('Reservación confirmada!');
-                await fetch(`http://127.0.0.1:3000/api/reservaciones/actualizar/${idReservacion}`, {
+                await fetch(`https://ixora-4tb9.onrender.com/api/reservaciones/actualizar/${idReservacion}`, {
                     method: 'PUT',
                     headers:  { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ estadoReservacion: 2 })
