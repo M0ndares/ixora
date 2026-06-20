@@ -5,7 +5,7 @@ const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: ['http://127.0.0.1:5500', 'https://ixora-4tb9.onrender.com', 'https://M0ndares.github.io/ixora/'],
+    origin: ['http://127.0.0.1:5500', 'https://ixora-4tb9.onrender.com', 'https://m0ndares.github.io/'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
