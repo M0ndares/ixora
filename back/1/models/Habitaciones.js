@@ -1,62 +1,111 @@
-const db = require('../config/db');
+const supabase = require('../config/db.js'); // Tu archivo de conexión a Supabase configurado
 
 // Obtener todas las habitaciones
-exports.getAllHabitaciones = (callback) => {
-  const query = 'SELECT * FROM Habitacion';
-  db.query(query, callback);
+exports.getAllHabitaciones = async (callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('habitacion')
+      .select('*');
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
-// Consultar habitaciones por estado de disponibilidad (Equivalente al "estatus")
-// Ejemplo de estados: 'Disponible', 'Ocupada', 'Mantenimiento'
-exports.getHabitacionesByTipo = (tipo, callback) => {
-  const query = 'SELECT * FROM tipohabitacion WHERE capacidad = ?';
-  db.query(query, [tipo], callback);
+// Consultar habitaciones por capacidad (Tu consulta original buscaba en tipohabitacion)
+exports.getHabitacionesByTipo = async (tipo, callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('tipohabitacion')
+      .select('*')
+      .eq('capacidad', tipo); // .eq() equivale al WHERE capacidad = ?
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
-exports.getTotalHabitacionesByTipo = (tipo, callback) => {
-  const query = 'SELECT count(id_habitacion) from habitacion where estado_disponibilidad = "Disponible" AND id_tipo_habitacion = ?';
-  db.query(query, [tipo], callback);
+// Contar habitaciones disponibles por tipo
+exports.getTotalHabitacionesByTipo = async (tipo, callback) => {
+  try {
+    // En Supabase podemos usar count para optimizar el rendimiento sin traer filas
+    const { count, error } = await supabase
+      .from('habitacion')
+      .select('*', { count: 'exact', head: true }) 
+      .eq('estado_disponibilidad', 'Disponible')
+      .eq('id_tipo_habitacion', tipo);
+
+    if (error) return callback(error, null);
+    
+    // Devolvemos el conteo simulando el formato que entregaría MySQL para mantener compatibilidad
+    callback(null, [{ "count(id_habitacion)": count || 0 }]);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
 // Agregar una nueva habitación
-exports.addHabitacion = (habitacionData, callback) => {
-  const query = `
-    INSERT INTO Habitacion 
-    (id_habitacion, numero_habitacion, id_tipo_habitacion, piso, estado_disponibilidad, descripcion) 
-    VALUES (?, ?, ?, ?, ?, ?)
-  `;
-  
-  // Pasamos los valores correspondientes a los signos de interrogación (?)
-  db.query(query, [
-    habitacionData.id_habitacion,
-    habitacionData.numero_habitacion,
-    habitacionData.id_tipo_habitacion,
-    habitacionData.piso,
-    habitacionData.estado_disponibilidad,
-    habitacionData.descripcion
-  ], callback);
+exports.addHabitacion = async (habitacionData, callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('habitacion')
+      .insert([
+        {
+          id_habitacion: habitacionData.id_habitacion,
+          numero_habitacion: habitacionData.numero_habitacion,
+          id_tipo_habitacion: habitacionData.id_tipo_habitacion,
+          piso: habitacionData.piso,
+          estado_disponibilidad: habitacionData.estado_disponibilidad,
+          descripcion: habitacionData.descripcion
+        }
+      ])
+      .select(); // Requerido en Supabase para retornar el registro creado
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
 // Modificar una habitación existente
-exports.updateHabitacion = (id_habitacion, habitacionData, callback) => {
-  const query = `
-    UPDATE Habitacion 
-    SET numero_habitacion = ?, id_tipo_habitacion = ?, piso = ?, estado_disponibilidad = ?, descripcion = ? 
-    WHERE id_habitacion = ?
-  `;
-  
-  db.query(query, [
-    habitacionData.numero_habitacion,
-    habitacionData.id_tipo_habitacion,
-    habitacionData.piso,
-    habitacionData.estado_disponibilidad,
-    habitacionData.descripcion,
-    id_habitacion 
-  ], callback);
+exports.updateHabitacion = async (id_habitacion, habitacionData, callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('habitacion')
+      .update({
+        numero_habitacion: habitacionData.numero_habitacion,
+        id_tipo_habitacion: habitacionData.id_tipo_habitacion,
+        piso: habitacionData.piso,
+        estado_disponibilidad: habitacionData.estado_disponibilidad,
+        descripcion: habitacionData.descripcion
+      })
+      .eq('id_habitacion', id_habitacion)
+      .select();
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
 // Eliminar una habitación
-exports.deleteHabitacion = (id_habitacion, callback) => {
-  const query = 'DELETE FROM Habitacion WHERE id_habitacion = ?';
-  db.query(query, [id_habitacion], callback);
+exports.deleteHabitacion = async (id_habitacion, callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('habitacion')
+      .delete()
+      .eq('id_habitacion', id_habitacion)
+      .select();
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };

@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+require('dotenv').config();
 
 app.use(cors({
-    origin: 'http://127.0.0.1:5500',
+    origin: ['http://127.0.0.1:5500', 'https://M0ndares.github.io/ixora/'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
