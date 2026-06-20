@@ -1,48 +1,76 @@
-const db = require('../config/db');
+const supabase = require('../config/db.js'); // Tu archivo de conexión a Supabase
 
-// Obtener todas las Servicios
-exports.getAllServicios = (callback) => {
-  const query = 'SELECT * FROM servicioadicional';
-  db.query(query, callback);
+// Obtener todos los Servicios
+exports.getAllServicios = async (callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('servicioadicional')
+      .select('*');
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
-// Agregar una nueva habitación
-exports.addServicio = (servicioData, callback) => {
-  const query = `
-    INSERT INTO servicioadicional
-    (id_servicio, nombre_servicio, descripcion, precio, categoria) 
-    VALUES (?, ?, ?, ?, ?)
-  `;
-  
-  // Pasamos los valores correspondientes a los signos de interrogación (?)
-  db.query(query, [
-    servicioData.id_servicio,
-    servicioData.nombre_servicio,
-    servicioData.descripcion,
-    servicioData.precio,
-    servicioData.categoria,
-  ], callback);
+// Agregar un nuevo Servicio (Omitimos el id_servicio porque es autoincrementable)
+exports.addServicio = async (servicioData, callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('servicioadicional')
+      .insert([
+        {
+          nombre_servicio: servicioData.nombre_servicio,
+          descripcion: servicioData.descripcion,
+          precio: servicioData.precio,
+          activo: servicioData.activo ?? true // Si no viene, lo ponemos activo por defecto
+          // NOTA: Si en tu base de datos añadiste la columna 'categoria', descomenta la línea de abajo:
+          // categoria: servicioData.categoria 
+        }
+      ])
+      .select();
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
-// Modificar una habitación existente
-exports.updateServicio = (id_servicio, servicioData, callback) => {
-  const query = `
-    UPDATE servicio 
-    SET numero_servicio = ?, id_tipo_servicio = ?, piso = ?, estado_disponibilidad = ?, descripcion = ? 
-    WHERE id_servicio = ?
-  `;
-  
-  db.query(query, [
-    servicioData.nombre_servicio,
-    servicioData.descripcion,
-    servicioData.precio,
-    servicioData.categoria,
-    id_servicio // El ID va al final porque corresponde al último '?' en el WHERE
-  ], callback);
+// Modificar un Servicio existente
+exports.updateServicio = async (id_servicio, servicioData, callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('servicioadicional')
+      .update({
+        nombre_servicio: servicioData.nombre_servicio,
+        descripcion: servicioData.descripcion,
+        precio: servicioData.precio
+        // activo: servicioData.activo (añádelo si lo vas a actualizar desde el front)
+      })
+      .eq('id_servicio', id_servicio)
+      .select();
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
-// Eliminar una habitación
-exports.deleteServicio = (id_servicio, callback) => {
-  const query = 'DELETE FROM servicio WHERE id_servicio = ?';
-  db.query(query, [id_servicio], callback);
+// Eliminar un Servicio
+exports.deleteServicio = async (id_servicio, callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('servicioadicional')
+      .delete()
+      .eq('id_servicio', id_servicio)
+      .select();
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };

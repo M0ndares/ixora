@@ -1,68 +1,126 @@
-const db = require('../config/db');
+const supabase = require('../config/db.js'); // Tu archivo de conexión a Supabase
 
-// Obtener todas las Reservaciones
-exports.getAllReservaciones = (callback) => {
-  const query = 'SELECT * FROM reservacion';
-  db.query(query, callback);
+exports.getAllReservaciones = async (callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('reservacion')
+      .select('*');
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
-exports.getReservacionesByEmail = (email, callback) => {
-  const query = 'SELECT * FROM reservacion INNER JOIN usuario ON usuario.id_usuario=reservacion.id_usuario WHERE email= ?';
-  db.query(query, [email], callback);
+exports.getReservacionesByEmail = async (email, callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('reservacion')
+      .select(`
+        *,
+        usuario!inner(*)
+      `) 
+      .eq('usuario.email', email);
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
-exports.getReservacionesById = (id_reservacion, callback) => {
-  const query = 'SELECT * FROM reservacion WHERE id_reservacion= ?';
-  
-  db.query(query, [id_reservacion], callback);
+exports.getReservacionesById = async (id_reservacion, callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('reservacion')
+      .select('*')
+      .eq('id_reservacion', id_reservacion)
+      .single();
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
-exports.contarReservacionesEnBD = (fecha_inicio, fecha_salida, id_habitacion, callback) => {
-  const query = `
-    SELECT COUNT(*) AS total_ocupadas 
-    FROM reservacion 
-    WHERE id_habitacion = ?
-      AND ? < fecha_salida 
-      AND ? > fecha_entrada
-  `;
-  db.query(query, [id_habitacion, fecha_inicio, fecha_salida], callback);
+// Contar reservaciones que se cruzan en un rango de fechas (Disponibilidad)
+exports.contarReservacionesEnBD = async (fecha_inicio, fecha_salida, id_habitacion, callback) => {
+  try {
+    const { count, error } = await supabase
+      .from('reservacion')
+      .select('*', { count: 'exact', head: true })
+      .eq('id_habitacion', id_habitacion)
+      .gt('fecha_salida', fecha_inicio)   // gt es "Greater Than" (>) -> fecha_salida > fecha_inicio
+      .lt('fecha_entrada', fecha_salida);  // lt es "Less Than" (<) -> fecha_entrada < fecha_salida
+
+    if (error) return callback(error, null);
+    
+    // Retornamos el conteo simulando el alias "total_ocupadas" de MySQL
+    callback(null, [{ total_ocupadas: count || 0 }]);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
-exports.addReservacion = (reservacionData, callback) => {
-  const query = `
-    INSERT INTO Reservacion 
-    (id_reservacion, id_usuario, id_habitacion, id_estado_reservacion, fecha_reserva, fecha_entrada, fecha_salida, cantidad_huespedes, subtotal, impuestos, total, servicios) 
-    VALUES ((SELECT IFNULL(MAX(r .id_reservacion), 0) + 1 FROM reservacion r), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `;
-  
-  // Pasamos los valores correspondientes a los signos de interrogación (?)
-  db.query(query, [
-    reservacionData.id_usuario,
-    reservacionData.id_habitacion,
-    reservacionData.id_estado_reservacion,
-    reservacionData.fecha_reserva,
-    reservacionData.fecha_entrada,
-    reservacionData.fecha_salida,
-    reservacionData.cantidad_huespedes,
-    reservacionData.subtotal,
-    reservacionData.impuestos,
-    reservacionData.total,
-    reservacionData.servicios
-  ], callback);
+// Agregar una nueva reservación
+exports.addReservacion = async (reservacionData, callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('reservacion')
+      .insert([
+        {
+          id_usuario: reservacionData.id_usuario,
+          id_habitacion: reservacionData.id_habitacion,
+          id_estado_reservacion: reservacionData.id_estado_reservacion,
+          fecha_reserva: reservacionData.fecha_reserva || new Date(),
+          fecha_entrada: reservacionData.fecha_entrada,
+          fecha_salida: reservacionData.fecha_salida,
+          cantidad_huespedes: reservacionData.cantidad_huespedes,
+          subtotal: reservacionData.subtotal,
+          impuestos: reservacionData.impuestos,
+          total: reservacionData.total
+          // NOTA: Si guardas 'servicios' adicionales, asegúrate de que esa columna exista en Supabase
+        }
+      ])
+      .select();
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
-exports.updateReservacion = (id_reservacion, estadoReservacion, callback) => {
-  const query = `
-    UPDATE Reservacion 
-    SET id_estado_reservacion = ?
-    WHERE id_reservacion = ?
-  `;
-  
-  db.query(query, [estadoReservacion, id_reservacion], callback);
+// Modificar el estado de una reservación
+exports.updateReservacion = async (id_reservacion, estadoReservacion, callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('reservacion')
+      .update({ id_estado_reservacion: estadoReservacion })
+      .eq('id_reservacion', id_reservacion)
+      .select();
+
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };
 
+// Eliminar una reservación
+exports.deleteReservacion = async (id_reservacion, callback) => {
+  try {
+    const { data, error } = await supabase
+      .from('reservacion')
+      .delete()
+      .eq('id_reservacion', id_reservacion)
+      .select();
 
-exports.deleteReservacion = (id_reservacion, callback) => {
-  const query = 'DELETE FROM reservacion WHERE id_reservacion = ?';
-  db.query(query, [id_reservacion], callback);
+    if (error) return callback(error, null);
+    callback(null, data);
+  } catch (err) {
+    callback(err, null);
+  }
 };

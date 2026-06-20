@@ -1,3 +1,4 @@
+/* 
 const mysql = require('mysql2');
 const conexion= mysql.createConnection({
   host: 'localhost',   
@@ -7,8 +8,9 @@ const conexion= mysql.createConnection({
   port: 3306   //revisar el puerto, por defecto es 3306
 });
 
-// Probar la conexió
-
+const express = require('express');
+const app = express();
+app.use(express.json());
 
 conexion.connect((err) => {
   if (err) {
@@ -17,5 +19,13 @@ conexion.connect((err) => {
   }
   console.log('Conectado a MySQL.');
 });
+========================================================== */
 
-module.exports = conexion
+require('dotenv').config();
+const { createClient } = require('@supabase/supabase-js');
+
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+module.exports = supabase;
