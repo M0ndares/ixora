@@ -8,7 +8,7 @@ const estrellas = ['4.4', '4.7', '4.8', '4.5', '4.9']
 const contenedorServicios = document.getElementById('contenedorServicios');
 async function servicio(categoria = null, esCiclo = false) {
     try {
-        const response = await fetch(`http://127.0.0.1:3000/api/servicios`);
+        const response = await fetch(`https://ixora-4tb9.onrender.com/api/servicios`);
         const data = await response.json();
         for(let i = 0; i < data.length; i++) {
             if (categoria != null && categoria != data[i].categoria) continue;

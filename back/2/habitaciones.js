@@ -22,7 +22,7 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
             return;
     }
     try {
-        const response = await fetch(`http://127.0.0.1:3000/api/habitaciones/status/${cantidadHuespedes}`);
+        const response = await fetch(`https://ixora-4tb9.onrender.com/api/habitaciones/status/${cantidadHuespedes}`);
         const data = await response.json();
         console.log(data)
         if (!esCiclo) {{
@@ -34,7 +34,7 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
                 "fecha_salida": final,
                 "id_habitacion": cantidadHuespedes
             }
-            const fetchDisponibles = await fetch(`http://127.0.0.1:3000/api/reservaciones/ocupadas`, {
+            const fetchDisponibles = await fetch(`https://ixora-4tb9.onrender.com/api/reservaciones/ocupadas`, {
                 method: 'POST',
                 headers:  {
                     'Content-Type': 'application/json'

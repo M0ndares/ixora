@@ -34,7 +34,7 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
     consultarHabitaciones.className = 'px-8 py-4 font-label-md text-label-md border-b-2 border-primary text-primary hover:text-primary-dark transition-all cursor-pointer';
     consultarServicios.className = 'px-8 py-4 font-label-md text-label-md text-outline hover:text-primary transition-all cursor-pointer';
     try {
-        const response = await fetch(`http://127.0.0.1:3000/api/habitaciones/status/${cantidadHuespedes}`);
+        const response = await fetch(`https://ixora-4tb9.onrender.com/api/habitaciones/status/${cantidadHuespedes}`);
         const data = await response.json();
         
         if (!esCiclo) {{
@@ -46,7 +46,7 @@ async function habitacion(cantidadHuespedes, inicio, final, esCiclo = false) {
                 "fecha_salida": final,
                 "id_habitacion": cantidadHuespedes
             }
-            const fetchDisponibles = await fetch(`http://127.0.0.1:3000/api/reservaciones/ocupadas`, {
+            const fetchDisponibles = await fetch(`https://ixora-4tb9.onrender.com/api/reservaciones/ocupadas`, {
                 method: 'POST',
                 headers:  {
                     'Content-Type': 'application/json'
@@ -129,7 +129,7 @@ async function servicio(inicio, final, cantidadHuespedes, categoria = null, esCi
     consultarServicios.className = 'px-8 py-4 font-label-md text-label-md border-b-2 border-primary text-primary hover:text-primary-dark transition-all cursor-pointer';
     consultarHabitaciones.className = 'px-8 py-4 font-label-md text-label-md text-outline hover:text-primary transition-all cursor-pointer';
     try {
-        const response = await fetch(`http://127.0.0.1:3000/api/servicios`);
+        const response = await fetch(`https://ixora-4tb9.onrender.com/api/servicios`);
         const data = await response.json();
         for(let i = 0; i < data.length; i++) {
             if (categoria !== null) document.getElementById('selectorCategoria').value = categoria
@@ -326,7 +326,7 @@ contenedor.addEventListener('click', async (event) => {
             "fecha_salida": finalWeb,
             "id_habitacion": cantidad_huespedes
         }
-        const fetchDisponibles = await fetch(`http://127.0.0.1:3000/api/reservaciones/ocupadas`, {
+        const fetchDisponibles = await fetch(`https://ixora-4tb9.onrender.com/api/reservaciones/ocupadas`, {
             method: 'POST',
             headers:  {
                 'Content-Type': 'application/json'
@@ -422,7 +422,7 @@ if (botonConfirmar) {
 
         try {
             // 1. Obtener los datos completos del usuario logueado
-            const responseUsuario = await fetch(`http://127.0.0.1:3000/api/usuarios/status/${correo}`);
+            const responseUsuario = await fetch(`https://ixora-4tb9.onrender.com/api/usuarios/status/${correo}`);
             const dataUsuario = await responseUsuario.json();
             const idUsuarioLogueado = dataUsuario.id_usuario || dataUsuario[0]?.id_usuario; 
 
@@ -454,7 +454,7 @@ if (botonConfirmar) {
             };
 
             // 4. Mandar la reserva definitiva por POST
-            const responseReserva = await fetch('http://127.0.0.1:3000/api/reservacion', {
+            const responseReserva = await fetch('https://ixora-4tb9.onrender.com/api/reservacion', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
