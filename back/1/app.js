@@ -1,8 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const PORT = process.env.PORT || 3000;
-require('dotenv').config();
 
 app.use(cors({
     origin: ['http://127.0.0.1:5500', 'https://M0ndares.github.io/ixora/'],
@@ -21,6 +21,7 @@ app.use(express.json());
 app.use('/prueba', (req,res) => {
    res.send('Esto es un ruta de prueba, puedo definir una ruta o algo aquí');
 });  
+
 app.use('/api', habitacionesRoutes);
 app.use('/api', usuariosRoutes);
 app.use('/api', serviciosRoutes);
