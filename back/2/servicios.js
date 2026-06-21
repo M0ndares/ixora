@@ -25,8 +25,6 @@ async function servicio(categoria = null, esCiclo = false) {
                             </div>
                         </div>
                         <div class="p-6 flex-grow">
-                            <span class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest">Deluxe
-                                Garden View</span>
                             <h2 class="font-headline-lg text-headline-lg text-primary mt-2 mb-3">${data[i].nombre_servicio}
                             </h2>
                             <p class="font-body-md text-on-surface-variant line-clamp-2 mb-6">${data[i].descripcion}
