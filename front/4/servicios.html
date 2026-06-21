@@ -247,23 +247,26 @@
         <p class="font-body-md text-body-md text-primary-fixed-dim/60">© 2026 Hotel Ixora. Todos los derechos
             reservados.</p>
     </footer>
-    <nav
-        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface md:hidden border-t border-outline-variant/20 shadow-[0_-4px_12px_rgba(44,51,58,0.04)]">
-        <a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
-            <span class="material-symbols-outlined" data-icon="home">home</span>
+ <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface dark:bg-primary md:hidden shadow-[0_-4px_12px_rgba(44,51,58,0.04)] border-t border-outline-variant/20 rounded-t-xl">
+        <a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim active:scale-110 transition-transform"
+            href="../3/menu.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
             <span class="font-label-sm text-label-sm">Inicio</span>
         </a>
-        <a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
-            <span class="material-symbols-outlined" data-icon="search">search</span>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest/50"
+            href="habitaciones.html">
+            <span class="material-symbols-outlined">search</span>
             <span class="font-label-sm text-label-sm">Buscar</span>
         </a>
-        <a class="flex flex-col items-center justify-center text-secondary" href="#">
-            <span class="material-symbols-outlined" data-icon="calendar_month"
-                style="font-variation-settings: 'FILL' 1;">calendar_month</span>
-            <span class="font-label-sm text-label-sm">Reservas</span>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest/50"
+            href="reservacion.html">
+            <span class="material-symbols-outlined">calendar_month</span>
+            <span class="font-label-sm text-label-sm">Reservar</span>
         </a>
-        <a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
-            <span class="material-symbols-outlined" data-icon="person">person</span>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest/50"
+            href="../3/main.html">
+            <span class="material-symbols-outlined">person</span>
             <span class="font-label-sm text-label-sm">Perfil</span>
         </a>
     </nav>

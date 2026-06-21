@@ -262,27 +262,28 @@
         <p class="font-body-md text-body-md opacity-60">© 2026 Hotel Ixora. Todos los derechos reservados.</p>
     </footer>
     <!-- BottomNavBar -->
-    <nav
-        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface dark:bg-primary md:hidden border-t border-outline-variant/20 rounded-t-xl shadow-[0_-4px_12px_rgba(44,51,58,0.04)]">
-        <button
-            class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest/50 flex-1 h-full">
-            <span class="material-symbols-outlined">home</span>
+<nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface dark:bg-primary md:hidden shadow-[0_-4px_12px_rgba(44,51,58,0.04)] border-t border-outline-variant/20 rounded-t-xl">
+        <a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim active:scale-110 transition-transform"
+            href="menu.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
             <span class="font-label-sm text-label-sm">Inicio</span>
-        </button>
-        <button
-            class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest/50 flex-1 h-full">
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest/50"
+            href="../4/habitaciones.html">
             <span class="material-symbols-outlined">search</span>
             <span class="font-label-sm text-label-sm">Buscar</span>
-        </button>
-        <button
-            class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest/50 flex-1 h-full">
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest/50"
+            href="../4/reservacion.html">
             <span class="material-symbols-outlined">calendar_month</span>
-            <span class="font-label-sm text-label-sm">Reservas</span>
-        </button>
-        <button class="flex flex-col items-center justify-center text-secondary flex-1 h-full font-semibold">
+            <span class="font-label-sm text-label-sm">Reservar</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-highest/50"
+            href="main.html">
             <span class="material-symbols-outlined">person</span>
             <span class="font-label-sm text-label-sm">Perfil</span>
-        </button>
+        </a>
     </nav>
     <script src="../../back/2/main.js"></script>
 </body>
